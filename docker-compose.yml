@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  web:
+    build: ./
+    container_name: 'web_app'
+    working_dir: /opt/app/
+    volumes:
+      - ./docs:/opt/app/
+    ports:
+      - '8000:8000'
+    tty: true
