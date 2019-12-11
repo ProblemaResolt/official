@@ -1,0 +1,12 @@
+@import "../../styles/colors";
+
+.banner {
+  background-color: $dark;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: left;
+
+  &__text {
+    color: $dark-red;
+  }
+}
