@@ -9,7 +9,7 @@ export default class Contents extends React.Component<IProps> {
     return (
       <section className="contents">
         <h2>About Me</h2>
-        <p>こうちくちゅう。
+        <p>こうちくちゅうde。
         </p>
       </section>
     );

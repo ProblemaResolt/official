@@ -5,6 +5,7 @@ services:
     build: ./docs
     container_name: 'react_app'
     working_dir: /opt/app/
+    command: yarn run webpack:dev
     volumes:
       - ./:/opt/app/
     ports:
