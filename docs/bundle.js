@@ -52584,7 +52584,7 @@ function (_React$Component) {
         className: "title"
       }, React.createElement("span", {
         className: "title__text"
-      }, "Ploblema ", this.props.name, "!"));
+      }, "Problema ", this.props.name, "!"));
     }
   }]);
 

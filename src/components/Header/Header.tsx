@@ -10,7 +10,7 @@ export default class Header extends React.Component<IProps> {
     return (
       <header className="title">
         <span className="title__text">
-          Ploblema {this.props.name}!
+          Problema {this.props.name}!
         </span>
       </header>
     );
