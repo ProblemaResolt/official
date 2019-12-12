@@ -19279,7 +19279,7 @@ module.exports = path;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "section {\n  background-color: #dddddd;\n  box-sizing: border-box;\n  padding: 2rem;\n  text-align: left; }\n  section__text {\n    color: darkRed; }\n", ""]);
+exports.push([module.i, "section {\n  background-color: #dddddd;\n  box-sizing: border-box;\n  padding: 2rem;\n  text-align: left; }\n", ""]);
 
 
 /***/ }),
@@ -19293,7 +19293,7 @@ exports.push([module.i, "section {\n  background-color: #dddddd;\n  box-sizing: 
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".banner {\n  background-color: #1b1b1b;\n  box-sizing: border-box;\n  padding: 2rem;\n  text-align: left; }\n  .banner__text {\n    color: darkRed; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 
 /***/ }),
@@ -19307,7 +19307,7 @@ exports.push([module.i, ".banner {\n  background-color: #1b1b1b;\n  box-sizing: 
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".banner {\n  background-color: #1b1b1b;\n  box-sizing: border-box;\n  padding: 2rem;\n  text-align: left; }\n  .banner__text {\n    color: darkRed; }\n", ""]);
+exports.push([module.i, ".title {\n  background-color: #1b1b1b;\n  box-sizing: border-box;\n  padding: 2rem;\n  text-align: left; }\n  .title__text {\n    color: #dddddd; }\n", ""]);
 
 
 /***/ }),
@@ -52393,7 +52393,7 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("section", {
         className: "contents"
-      }, React.createElement("h2", null, "About Me"), React.createElement("p", null, "\u3053\u3046\u3061\u304F\u3061\u3085\u3046\u3002"));
+      }, React.createElement("h2", null, "About Me"), React.createElement("p", null, "\u3053\u3046\u3061\u304F\u3061\u3085\u3046de\u3002"));
     }
   }]);
 
@@ -52492,7 +52492,7 @@ function (_React$Component) {
         "aria-label": "Follow @ProblemaResolt on GitHub"
       }, "Follow @ProblemaResolt"), "\xA9 ProblemaResolt\uFF1A2015 - ", React.createElement("span", {
         id: "footerYear"
-      }, "."));
+      }, new Date().getFullYear()));
     }
   }]);
 
@@ -52581,9 +52581,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("header", {
-        className: "banner"
+        className: "title"
       }, React.createElement("span", {
-        className: "banner__text"
+        className: "title__text"
       }, "Ploblema ", this.props.name, "!"));
     }
   }]);
