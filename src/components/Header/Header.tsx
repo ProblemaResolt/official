@@ -8,8 +8,8 @@ interface IProps {
 export default class Header extends React.Component<IProps> {
   public render() {
     return (
-      <header className="banner">
-        <span className="banner__text">
+      <header className="title">
+        <span className="title__text">
           Ploblema {this.props.name}!
         </span>
       </header>
