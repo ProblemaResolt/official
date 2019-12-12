@@ -7,7 +7,7 @@
       {
         "modules": false,
         "targets": {
-          "chrome": "58",
+          "chrome": "78",
           "ie": "11"
         }
       }
