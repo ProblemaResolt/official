@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Contents from "./components/Contents/Contents";
 import Footer from "./components/Footer/Footer";
 import "./styles/global.scss";
+import "./styles/nomalize.scss"
 
 ReactDOM.render(
   <article>
