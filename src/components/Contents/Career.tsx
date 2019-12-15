@@ -13,8 +13,7 @@ export default class Contents extends React.Component<IProps> {
         <CssBaseline />
         <Container maxWidth="xl">
               <section className="contents">
-                <h2>経歴</h2>
-                <h3>期間 2018年1月 〜 2019年9月</h3>
+                <h3>業務内容</h3>
                 <p>
                   勤怠管理システムやフロアマップ作成、機材管理ツールのフロントエンド担当
                   主に製作者と社内調整を行い、社内の要望や改善点をまとめ制作の仕様決めから制作まで行っていました。
