@@ -7,13 +7,6 @@ import {Twitter, GitHub} from "@material-ui/icons/";
 interface IProps {
 }
 
-const TwitterLinks = [
-  "//twitter.com/ProblemaResolt"
-];
-const GitHubLinks = [
-  "//github.com/ProblemaResolt"
-];
-
 export default class Footer extends React.Component<IProps> {
   public render() {
     return (
@@ -23,9 +16,13 @@ export default class Footer extends React.Component<IProps> {
             <Grid item xs={11}>
               © ProblemaResolt：2015 -{new Date().getFullYear()}
             </Grid>
-            <Grid item xs={1} alignItems="flex-end">
-              <Twitter />
-              <GitHub />
+            <Grid item xs={1} className="snsFollowLinks">
+              <a href="//twitter.com/ProblemaResol" target="blank">
+                <Twitter />
+              </a>
+              <a href="//github.com/ProblemaResolt" target="blank">
+                <GitHub />
+              </a>
             </Grid>
           </Grid>
         </Container>

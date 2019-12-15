@@ -14,7 +14,7 @@ export default class Header extends React.Component<IProps> {
       <MuiThemeProvider theme={theme}>
         <AppBar position="static" color="primary">
           <h1 className="title">
-            <span className="title__text">Problema {this.props.name}!</span>
+            <span className="title__text">Problema {this.props.name}</span>
           </h1>
         </AppBar>
       </MuiThemeProvider>
