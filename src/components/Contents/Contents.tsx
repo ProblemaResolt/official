@@ -17,17 +17,24 @@ export default class Contents extends React.Component<IProps> {
   public render() {
     return (
       <React.Fragment>
+        <Container maxWidth="xl">
+          <h2>
+            業務経歴
+          </h2>
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-          > Carrer
+          >
+            <h3>期間 2018年1月 〜 2019年9月</h3>
+
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Carrer />
           </ExpansionPanelDetails>
         </ExpansionPanel>
+        </Container>
         <CssBaseline />
         <Container maxWidth="xl">
           <section className="contents">
