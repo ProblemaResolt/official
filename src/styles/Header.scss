@@ -1,11 +1,10 @@
-@import "../../styles/colors";
+@import "./colors.scss";
 
 .title {
   box-sizing: border-box;
   padding: 0 2rem;
   text-align: left;
   &__text {
-    color: $white;
     font-size: 1.2em;
   }
 }
