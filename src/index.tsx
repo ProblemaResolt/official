@@ -13,12 +13,11 @@ import "./styles/nomalize.scss"
 ReactDOM.render(
 
   <React.Fragment>
-  <article>
-    <Header name="Resolt" />
-    <Contents />
-    <Footer />
-  </article>
-
-    </React.Fragment>,
+    <article>
+      <Header name="Resolt" />
+      <Contents />
+      <Footer />
+    </article>
+  </React.Fragment>,
   document.getElementById("app")
 );

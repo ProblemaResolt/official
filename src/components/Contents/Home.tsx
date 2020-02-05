@@ -10,8 +10,13 @@ export default class Contents extends React.Component<IProps> {
     return (
       <React.Fragment>
         <section className="contents">
-          <h2>職業</h2>
-          <p>Web Director　だったエンジニアでもない何か</p>
+        <h2>Self-introduction</h2>
+          <dl>
+           <dt>skills/languages</dt>
+            <dd>ギャルの画像を検索する能力</dd>
+            <dt>learning/trying</dt>
+            <dd>ElixirとElmを挑戦中</dd>
+          </dl>
         </section>
       </React.Fragment>
     );

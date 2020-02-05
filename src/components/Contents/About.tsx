@@ -1,6 +1,5 @@
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "../../styles/Contents.scss";
 
 interface IProps { }
@@ -59,7 +58,6 @@ export default class Contents extends React.Component<IProps> {
                          チームで出来る人はSCSS、PostCssはリプレイスを行う際に利用しています。
 　ただ大半の現場ではルール化ルール化とか言ってコロコロ変わるので曖昧な場合があると思ってます。</dd>
           <dd>
-
             Q.レスポンシブで画面制作できますか。</dd>
           <dd>
             A.よくこういう質問されます。
