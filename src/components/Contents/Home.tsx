@@ -15,8 +15,10 @@ export default class Contents extends React.Component<IProps> {
            <dt>skills/languages</dt>
             <dd>ギャルの画像を検索する能力</dd>
             <dt>learning/trying</dt>
-            <dd>ElixirとElmを挑戦中</dd>
+            <dd>早寝(PM20:00)早起き(AM3:00)挑戦中</dd>
           </dl>
+          https://dev.to/problemaresolt <br />
+          https://github.com/ProblemaResolt
         </section>
       </React.Fragment>
     );
