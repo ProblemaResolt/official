@@ -15,7 +15,6 @@ export default class Contents extends React.Component<IProps> {
           <td>どこかにいます。</td>
           </tbody>
         </table>
-        <hr />
        <table>
        <tbody>
           <tr>
@@ -76,7 +75,6 @@ export default class Contents extends React.Component<IProps> {
           </tr>
           </tbody>
         </table>
-        <hr />
        <table>
        <tbody>
           <tr>
@@ -128,7 +126,6 @@ export default class Contents extends React.Component<IProps> {
           </tr>
           </tbody>
         </table>
-        <hr />
        <table>
        <tbody>
           <tr>
