@@ -1,5 +1,6 @@
 
 import * as React from "react";
+import * as ReactDOM from 'react-dom';
 import "../../styles/Contents.scss";
 
 interface IProps { }
@@ -9,6 +10,17 @@ export default class Contents extends React.Component<IProps> {
     return (
       <React.Fragment>
         <h2>Career</h2>
+        <ul>
+          <li>
+            <a href='#cygaems'>さいきん</a>
+          </li>
+          <li>
+            <a href='#toyotamedia'>そのまえ</a>
+          </li>
+          <li>
+            <a href='#hankoya'>もうすこしまえ</a>
+          </li>
+        </ul>
         <table>
         <tbody>
           <th>現在</th>
@@ -16,14 +28,14 @@ export default class Contents extends React.Component<IProps> {
           </tbody>
         </table>
        <table>
-       <tbody>
+       <tbody id="cygaems">
           <tr>
             <th>企業名</th>
             <td>Cygames</td>
           </tr>
           <tr>
             <th>業態</th>
-            <td>常駐</td>
+            <td>常駐委託</td>
           </tr>
           <tr>
             <th>期間</th>
@@ -76,7 +88,7 @@ export default class Contents extends React.Component<IProps> {
           </tbody>
         </table>
        <table>
-       <tbody>
+       <tbody id="toyotamedia">
           <tr>
             <th>企業名</th>
             <td>トヨタメディアサービス</td>
@@ -127,7 +139,7 @@ export default class Contents extends React.Component<IProps> {
           </tbody>
         </table>
        <table>
-       <tbody>
+       <tbody id="hankoya">
           <tr>
             <th> 企業名</th>
             <td>ハンコヤドットコム</td>
