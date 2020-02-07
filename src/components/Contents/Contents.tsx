@@ -16,9 +16,9 @@ export default class Contents extends React.Component<IProps> {
       <section>
         <Router>
           <Navbar /><hr />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Career" component={Career} />
-          <Route exact path="/About" component={About} />
+          <Route exact path="/official/" component={Home} />
+          <Route exact path="/official/Career" component={Career} />
+          <Route exact path="/official/About" component={About} />
         </Router>
       </section>
     );

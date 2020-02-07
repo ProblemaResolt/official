@@ -6,9 +6,9 @@ class Navbar extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <NavLink className="column button button-clear" to="/">Home</NavLink>
-          <NavLink className="column button button-clear" to="/About">About</NavLink>
-          <NavLink className="column button button-clear" to="/Career">Career</NavLink>
+          <NavLink className="column button button-clear" to="/official/">Home</NavLink>
+          <NavLink className="column button button-clear" to="/official/About">About</NavLink>
+          <NavLink className="column button button-clear" to="/official/Career">Career</NavLink>
         </div>
       </div>
     )
