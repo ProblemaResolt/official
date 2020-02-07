@@ -38,7 +38,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --history-api-fallback --config webpack.prod.js",
     "start": "webpack-dev-server --hot --inline --history-api-fallback --config webpack.dev.js",
     "webpack:dev": " npx webpack --config webpack.config.js"
   }
