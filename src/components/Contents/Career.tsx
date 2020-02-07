@@ -27,8 +27,9 @@ export default class Contents extends React.Component<IProps> {
           <td>どこかにいます。</td>
           </tbody>
         </table>
+        <h3 id="cygaems">さいきん</h3>
        <table>
-       <tbody id="cygaems">
+       <tbody>
           <tr>
             <th>企業名</th>
             <td>Cygames</td>
@@ -87,8 +88,9 @@ export default class Contents extends React.Component<IProps> {
           </tr>
           </tbody>
         </table>
+        <h3 id="toyotamedia">そのまえ</h3>
        <table>
-       <tbody id="toyotamedia">
+       <tbody>
           <tr>
             <th>企業名</th>
             <td>トヨタメディアサービス</td>
@@ -138,8 +140,10 @@ export default class Contents extends React.Component<IProps> {
           </tr>
           </tbody>
         </table>
+
+       <h3 id="hankoya">もうすこしまえ</h3>
        <table>
-       <tbody id="hankoya">
+       <tbody>
           <tr>
             <th> 企業名</th>
             <td>ハンコヤドットコム</td>

@@ -14,7 +14,7 @@ export default class Contents extends React.Component<IProps> {
   public render() {
     return (
       <section>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Navbar /><hr />
           <Route exact path="/official/" component={Home} />
           <Route exact path="/official/Career" component={Career} />

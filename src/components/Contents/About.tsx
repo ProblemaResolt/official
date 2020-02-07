@@ -10,13 +10,13 @@ export default class Contents extends React.Component<IProps> {
     return (
       <React.Fragment>
         <section>
-          <h2>About</h2>
+          <h2>About Me</h2>
           <p>Arch Linuxがさいきんすきです<br />
             Thinkpad見ると欲しくなります。</p>
           <h3> よくあるご質問に関しまして</h3>
           <p>ところどころ書く必要ないと思うかもしれませんが、実際あったので書いてます。</p>
           <dl>
-            <dd>Q.Githubなど公開できるソースコードをお持ちの場合は　書類選考通過率を高めるためにいただけますでしょうか。</dd>
+            <dt>Q.Githubなど公開できるソースコードをお持ちの場合は　書類選考通過率を高めるためにいただけますでしょうか。</dt>
             <dd>A.GitHubで公開しているものに関しまして、環境構築用のDockerの設定ファイルぐらいしかなくソースコードという部分では無い状態です。
    https://github.com/ProblemaResolt/Problema
    基本個人開発のものはプライベートですし、チーム開発の場合はチームのGitを使います。
@@ -61,8 +61,7 @@ export default class Contents extends React.Component<IProps> {
             </dd>
           </dl>
           <dl>
-            <dt>
-              Q.CSSプリプロセッサの使用経験はありますか。</dt>
+            <dt> Q.CSSプリプロセッサの使用経験はありますか。</dt>
             <dd>
               A.現場でSASS、SCSS、PostCssを使用しておりました。
                            チームで出来る人はSCSS、PostCssはリプレイスを行う際に利用しています。
