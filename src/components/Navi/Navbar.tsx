@@ -14,21 +14,31 @@ class Navbar extends React.Component {
   render() {
     return (
       <Menu
-        pageWrapId={"page-wrap"}
-        outerContainerId={"outer-container"}
         onStateChange={isMenuOpen}
       >
-        <div className="row">
-          <NavLink className="column button button-clear" to="/official/">
-            Home
-          </NavLink>
-          <NavLink className="column button button-clear" to="/official/About">
-            About
-          </NavLink>
-          <NavLink className="column button button-clear" to="/official/Career">
-            Career
-          </NavLink>
-        </div>
+        <ul>
+          <li>
+            <NavLink className="button" to="/official/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="button"
+              to="/official/About"
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="button"
+              to="/official/Career"
+            >
+              Career
+            </NavLink>
+          </li>
+        </ul>
       </Menu>
     );
   }

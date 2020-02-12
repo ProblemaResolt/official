@@ -12,19 +12,43 @@ export default class Contents extends React.Component<IProps> {
     return (
       <React.Fragment>
         <section className="contents">
-        <h2>Self-introduction</h2>
+          <h2>Self-introduction</h2>
           <dl>
-           <dt>skills/languages</dt>
+            <dt>skills/languages</dt>
             <dd>ギャルの画像を検索する能力</dd>
             <dt>learning/trying</dt>
             <dd>早寝(PM20:00)早起き(AM3:00)挑戦中</dd>
           </dl>
           <h2>Links</h2>
-          <p className="row">
-            <a href="https://dev.to/problemaresolt" className="column button button-clear"><FaDev size={iconSize} /></a>
-            <a href="https://github.com/ProblemaResolt" className="column button button-clear"><FaGithubSquare size={iconSize} /></a>
-            <a href="https://twitter.com/ProblemaResolt" className="column button button-clear"><FaTwitterSquare size={iconSize} /></a>
-          </p>
+          <ul>
+            <li>
+              <FaDev size={iconSize} className="linksIcon" />
+              <a
+                href="https://dev.to/problemaresolt"
+                className="button button-clear links"
+              >
+                Dev.to
+              </a>
+            </li>
+            <li>
+              <FaGithubSquare size={iconSize} className="linksIcon" />
+              <a
+                href="https://github.com/ProblemaResolt"
+                className="button button-clear links"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <FaTwitterSquare size={iconSize} className="linksIcon" />
+              <a
+                href="https://twitter.com/ProblemaResolt"
+                className="button button-clear links"
+              >
+                Twitter
+              </a>
+            </li>
+          </ul>
         </section>
       </React.Fragment>
     );

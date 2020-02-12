@@ -5,3 +5,21 @@ section {
   box-sizing: border-box;
   padding: 2rem;
   text-align: left;}
+
+
+table{
+  th{width: 20vw;}
+   td,th {
+  background: #eee;
+}
+
+tr:nth-child(odd) td,th {
+  background: #fff;
+}
+}
+.links {
+  vertical-align: baseline;
+}
+.linksIcon{
+  vertical-align: middle;
+}
