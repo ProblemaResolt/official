@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "../../styles/Contents.scss";
 import Navbar from "../Navi/Navbar";
@@ -16,9 +15,9 @@ export default class Contents extends React.Component<IProps> {
       <section>
         <Router basename={process.env.PUBLIC_URL}>
           <Navbar />
-          <Route exact path="/official/" component={Home} />
-          <Route exact path="/official/Career" component={Career} />
-          <Route exact path="/official/About" component={About} />
+          <Route path="/official/" element={<Home />} />
+          <Route path="/official/Career" element={<Career />} />
+          <Route path="/official/About" element={<About />} />
         </Router>
       </section>
     );
