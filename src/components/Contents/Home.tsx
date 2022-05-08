@@ -19,7 +19,8 @@ export default class Contents extends React.Component<IProps> {
     return (
   <section className="Box">
     <h1>自己紹介</h1>
-    <p>とくになにもありません。サッカーよく見ます。サッカー分析家と言われる人を罵るのが趣味です。</p>
+    <p>主にWeb広告分析、Web広告コンサルタント＆ページ作成を行っておりました。</p>
+    <p>Webページのフロントエンドの作成を主にページ解析やユーザーの流入改善、問題提起と企画</p>
   </section>
     );
   }

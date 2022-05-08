@@ -12,8 +12,9 @@ export default class Contents extends React.Component<IProps> {
         <section id="topWrap">
           <h2>Career</h2>
           <ul>
-            <li>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -23,9 +24,10 @@ export default class Contents extends React.Component<IProps> {
               >
                 直近
               </Link>
-            </li>
-            <li>
+            </ol>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -35,9 +37,10 @@ export default class Contents extends React.Component<IProps> {
               >
                 さいきん
               </Link>
-            </li>
-            <li>
+            </ol>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -47,9 +50,10 @@ export default class Contents extends React.Component<IProps> {
               >
                 そのまえ
               </Link>
-            </li>
-            <li>
+            </ol>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -59,7 +63,7 @@ export default class Contents extends React.Component<IProps> {
               >
                 もうすこしまえ
               </Link>
-            </li>
+            </ol>
           </ul>
           <h3 id="vallabo">直近</h3>
           <table>
@@ -255,6 +259,7 @@ export default class Contents extends React.Component<IProps> {
           </table>
 
           <Link
+            className="Link--primary no-underline"
             activeClass="active"
             spy={true}
             smooth={true}
