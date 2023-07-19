@@ -1,23 +1,27 @@
-import "core-js";
-import "regenerator-runtime/runtime";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import Header from "./components/Header/Header";
-import Contents from "./components/Contents/Contents";
-import Footer from "./components/Footer/Footer";
-import "react-milligram";
-import "milligram";
-import "./styles/global.scss";
-import "./styles/nomalize.scss"
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
-ReactDOM.render(
+import {ThemeProvider} from '@primer/react';
 
-  <React.Fragment>
-    <article>
+import Header from './components/Header/Header';
+import Home from './components/Contents/Home';
+import Career from './components/Contents/Career';
+import About from './components/Contents/About';
+import Footer from './components/Footer/Footer';
+
+import './styles/global.scss';
+import './styles/nomalize.scss'
+
+root.render(
+  <article>
+    <ThemeProvider>
       <Header name="Resolt" />
-      <Contents />
+      <Home />
+      <Career />
+      <About />
       <Footer />
-    </article>
-  </React.Fragment>,
-  document.getElementById("app")
+    </ThemeProvider>
+  </article>
 );

@@ -1,6 +1,5 @@
 
 import * as React from "react";
-import * as ReactDOM from 'react-dom';
 import "../../styles/Contents.scss";
 import { Link } from "react-scroll";
 
@@ -13,8 +12,22 @@ export default class Contents extends React.Component<IProps> {
         <section id="topWrap">
           <h2>Career</h2>
           <ul>
-            <li>
+            <ol>
               <Link
+                className="Link--primary no-underline"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={800}
+                to="vallabo"
+              >
+                直近
+              </Link>
+            </ol>
+            <ol>
+              <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -24,9 +37,10 @@ export default class Contents extends React.Component<IProps> {
               >
                 さいきん
               </Link>
-            </li>
-            <li>
+            </ol>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -36,9 +50,10 @@ export default class Contents extends React.Component<IProps> {
               >
                 そのまえ
               </Link>
-            </li>
-            <li>
+            </ol>
+            <ol>
               <Link
+                className="Link--primary no-underline"
                 activeClass="active"
                 spy={true}
                 smooth={true}
@@ -48,12 +63,25 @@ export default class Contents extends React.Component<IProps> {
               >
                 もうすこしまえ
               </Link>
-            </li>
+            </ol>
           </ul>
+          <h3 id="vallabo">直近</h3>
           <table>
+            <thead>
+              <tr>
+                <th>企業名</th>
+                <td>Val研究所</td>
+              </tr>
+            </thead>
             <tbody>
-              <th>現在</th>
-              <td>どこかにいます。</td>
+              <tr>
+                <th>業態</th>
+                <td>常駐委託</td>
+              </tr>
+              <tr>
+                <th>期間</th>
+                <td> 2019年10月 〜 2022年5月</td>
+              </tr>
             </tbody>
           </table>
           <h3 id="cygaems">さいきん</h3>
@@ -76,7 +104,6 @@ export default class Contents extends React.Component<IProps> {
               <tr>
                 <th>業務内容</th>
                 <td>
-                  　
                   <dl>
                     <dt>社内サービス開発</dt>
                     <dd>
@@ -232,6 +259,7 @@ export default class Contents extends React.Component<IProps> {
           </table>
 
           <Link
+            className="Link--primary no-underline"
             activeClass="active"
             spy={true}
             smooth={true}
