@@ -20,6 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  // .storybook配下のjsxも含める
+  "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.tsx"],
+  // import reactせずにjsxを通す
+  "jsx": "react-jsx",
   "references": [{ "path": "./tsconfig.node.json" }]
 }
