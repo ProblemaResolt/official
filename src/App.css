@@ -735,9 +735,10 @@ body {
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #fff, #3498db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .hero-subtitle {
@@ -749,9 +750,9 @@ body {
 .hero-button {
   font-size: 1.2rem;
   padding: 1em 2em;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: rgb(255 255 255 / 50%);
+  border: 2px solid rgb(255 255 255 / 50%);
+  color: rgb(91 91 91 / 81%);
   backdrop-filter: blur(10px);
 }
 
@@ -813,6 +814,18 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  background: transparent;
+}
+
+.animation-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+  z-index: 0;
+  overflow: hidden;
 }
 
 .video-background {
@@ -822,6 +835,16 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(160, 160, 160, 0.5); /* 透過率を0.5に設定 */
+  z-index: 1;
 }
 
 .youtube-video {
@@ -834,7 +857,7 @@ body {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -847,12 +870,8 @@ body {
 .hero-content h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(62, 166, 255, 0.5);
-}
-
-.hero-content p {
-  font-size: 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important; /* 優先度を上げる */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Hero ナビゲーションのスタイル */
@@ -860,7 +879,7 @@ body {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 2;
+  z-index: 2; /* オーバーレイの上に表示されるようにz-indexを設定 */
 }
 
 .hero-nav ul {
@@ -897,4 +916,45 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1vw;
+  justify-content: center;
+}
+
+/* アニメーションリンク */
+.animated-link {
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.animated-link:hover {
+  transform: translateY(-3px);
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.animated-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3498db;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.animated-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
