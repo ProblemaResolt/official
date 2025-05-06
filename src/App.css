@@ -977,22 +977,21 @@ body {
 
 .hero-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 2vh;
+  flex-direction: row;  /* PCでは横並び */
+  gap: 2vw;
+  justify-content: center;
   align-items: center;
   padding: 0 1rem;
 }
 
 @media (max-width: 768px) {
   .hero-buttons {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3vh 4vw;
-    padding: 0 5vw;
-    max-width: 100%;
+    flex-direction: column;  /* スマホでは縦並び */
+    gap: 2vh;
   }
 
   .animated-link {
-    width: 100%;
+    width: 200px;
     text-align: center;
     font-size: 1.2rem;
     padding: 0.8rem 1rem;
