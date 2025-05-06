@@ -34,20 +34,20 @@ const Skills = () => {
 
   const renderSkillBars = (skillSet) => {
     return skillSet.map((skill, index) => {
-      const experience = skill.experience.match(/(\d+)年|(\d+)ヶ月/g); // 年と月を抽出
+      const experience = skill.experience.match(/(\d+)年|(\d+)ヶ月/g);
       let totalMonths = 0;
 
       if (experience) {
         experience.forEach((exp) => {
           if (exp.includes("年")) {
-            totalMonths += parseInt(exp) * 12; // 年を月に変換
+            totalMonths += parseInt(exp) * 12;
           } else if (exp.includes("ヶ月")) {
-            totalMonths += parseInt(exp); // 月をそのまま加算
+            totalMonths += parseInt(exp);
           }
         });
       }
 
-      const percentage = Math.min((totalMonths / 60) * 100, 100); // 5年(60ヶ月)を100%とする
+      const percentage = Math.min((totalMonths / 60) * 100, 100);
 
       return (
         <div key={index} className="skill-item">
@@ -55,8 +55,15 @@ const Skills = () => {
             <span className="skill-name">{skill.name}</span>
             <span className="skill-experience">{skill.experience}</span>
           </div>
-          <div className="skill-bar" data-skill={`${percentage}%`}>
-            <div className="skill-bar-fill"></div>
+          <div className="skill-bar">
+            <div 
+              className="skill-bar-fill" 
+              ref={(el) => {
+                if (el) {
+                  el.setAttribute('data-percentage', percentage);
+                }
+              }}
+            ></div>
           </div>
           {skill.level && <p className="skill-description">{skill.level}</p>}
         </div>
@@ -65,25 +72,23 @@ const Skills = () => {
   };
 
   useEffect(() => {
-    const skillBars = document.querySelectorAll('.skill-bar-fill');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const bar = entry.target;
-            const parent = bar.parentElement;
-            const skillLevel = parent.getAttribute('data-skill');
-            bar.style.transition = 'width 1s ease-in-out';
-            bar.style.width = skillLevel;
+            const percentage = bar.getAttribute('data-percentage');
+            setTimeout(() => {
+              bar.style.width = `${percentage}%`;
+            }, 100);
           }
         });
       },
-      { threshold: 0.1 } // 要素が10%表示されたときに発火
+      { threshold: 0.1 }
     );
 
-    skillBars.forEach((bar) => observer.observe(bar));
-
-    return () => observer.disconnect(); // クリーンアップ
+    document.querySelectorAll('.skill-bar-fill').forEach((bar) => observer.observe(bar));
+    return () => observer.disconnect();
   }, []);
 
   return (
