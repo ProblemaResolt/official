@@ -81,7 +81,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section">
       <div className="container">
-        <h2 className="section-title">主要プロジェクト</h2>
+        <h2 className="section-title">直近のプロジェクト</h2>
         <div className="project-nav">
           {projects.map((project, index) => (
             <button
