@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import YouTube from 'react-youtube'; // YouTubeコンポーネントをインポート
 import './App.css';
 import Profile from './components/Profile';
 import Career from './components/Career';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import PR from './components/PR';
+import Hero from './components/Hero';
 
 const App = () => {
+  const [showHero, setShowHero] = useState(true);
   const [activeTab, setActiveTab] = useState('career'); // 初期タブを 'career' に変更
   const [menuOpen, setMenuOpen] = useState(false); // ハンバーガーメニューの状態
 
@@ -16,61 +16,76 @@ const App = () => {
     setMenuOpen(false); // メニューを閉じる
   };
 
+  const handleNavigate = (tab) => {
+    setShowHero(false);
+    setActiveTab(tab);
+  };
+
+  const handleReturnToTop = () => {
+    setShowHero(true);
+  };
+
   return (
     <div className="container">
+      {showHero ? (
+        <Hero onNavigate={handleNavigate} />
+      ) : (
+        <>
+          <header className="header text-center d-flex align-items-center justify-content-between">
+            <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
+              Portfolio
+            </h1>
+            <nav className="navigation"> 
+              <div className="container">
+                <button
+                  className="hamburger-menu"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                >
+                  ☰
+                </button>
+                <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
+                  <li className={activeTab === 'top' ? 'active' : ''}>
+                    <a href="#top" onClick={handleReturnToTop}>
+                      Top
+                    </a>
+                  </li>
+                  <li className={activeTab === 'profile' ? 'active' : ''}>
+                    <a href="#profile" onClick={() => handleTabClick('profile')}>
+                      Profile
+                    </a>
+                  </li>
+                  <li className={activeTab === 'career' ? 'active' : ''}>
+                    <a href="#career" onClick={() => handleTabClick('career')}>
+                      Career
+                    </a>
+                  </li>
+                  <li className={activeTab === 'skills' ? 'active' : ''}>
+                    <a href="#skills" onClick={() => handleTabClick('skills')}>
+                      Skills
+                    </a>
+                  </li>
+                  <li className={activeTab === 'projects' ? 'active' : ''}>
+                    <a href="#projects" onClick={() => handleTabClick('projects')}>
+                      Projects
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
 
-      <header className="header text-center d-flex align-items-center justify-content-between">
-        <h1 className="title mb-0">Portfolio</h1>
-        <nav className="navigation"> 
-          <div className="container">
-            <button
-              className="hamburger-menu"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              ☰
-            </button>
-            <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-              <li className={activeTab === 'career' ? 'active' : ''}>
-                <a href="#career" onClick={() => handleTabClick('career')}>
-                  職務経歴
-                </a>
-              </li>
-              <li className={activeTab === 'profile' ? 'active' : ''}>
-                <a href="#profile" onClick={() => handleTabClick('profile')}>
-                  プロフィール
-                </a>
-              </li>
-              <li className={activeTab === 'skills' ? 'active' : ''}>
-                <a href="#skills" onClick={() => handleTabClick('skills')}>
-                  スキル
-                </a>
-              </li>
-              <li className={activeTab === 'projects' ? 'active' : ''}>
-                <a href="#projects" onClick={() => handleTabClick('projects')}>
-                  プロジェクト
-                </a>
-              </li>
-              <li className={activeTab === 'pr' ? 'active' : ''}>
-                <a href="#pr" onClick={() => handleTabClick('pr')}>
-                  自己PR
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+          <main className="content">
+            {activeTab === 'profile' && <Profile />}
+            {activeTab === 'career' && <Career />}
+            {activeTab === 'skills' && <Skills />}
+            {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
+          </main>
 
-      <main className="content">
-        {activeTab === 'career' && <Career />}
-        {activeTab === 'profile' && <Profile />}
-        {activeTab === 'skills' && <Skills />}
-        {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
-        {activeTab === 'pr' && <PR />}
-      </main>
-
-      <footer className="footer text-center">
-        <p>&copy; 2025 Portfolio</p>
-      </footer>
+          <footer className="footer text-center">
+            <p>&copy; 2025 Portfolio</p>
+          </footer>
+        </>
+      )}
     </div>
   );
 };
