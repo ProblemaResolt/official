@@ -41,6 +41,18 @@ const Profile = () => (
                   サイトの制作開発に関しましてフロントエンド開発を主に従事しバックエンドのAPI開発なども同時並行で行っておりました。
                 </p>
               </div>
+
+              <div className="social-links">
+                <a href="https://www.linkedin.com/in/takahiro-yamamoto-07614391/" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-twitter"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
