@@ -804,6 +804,7 @@ body {
 
 @media (max-width: 768px) {
   .navigation ul.tabs {
+    margin-top: 5vh;
     padding-left: 0;
   }
 }
