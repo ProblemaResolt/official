@@ -7,6 +7,11 @@ import Skills from './components/Skills';
 import Hero from './components/Hero';
 
 const App = () => {
+  // ベースURLを環境に応じて設定
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? '/official/'
+    : '/';
+
   const [showHero, setShowHero] = useState(() => {
     // URLハッシュがない場合のみHeroを表示
     return !window.location.hash;
@@ -20,13 +25,16 @@ const App = () => {
   const [menuOpen, setMenuOpen] = useState(false); // ハンバーガーメニューの状態
 
   useEffect(() => {
+    // 初期化時のURL処理を修正
+    const pathname = window.location.pathname;
     const hash = window.location.hash.replace('#', '');
+    
     if (hash) {
       setShowHero(false);
       setActiveTab(hash);
-      window.history.replaceState({ page: hash }, '', `#${hash}`);
-    } else {
-      window.history.replaceState({ page: 'hero' }, '', '/');
+      window.history.replaceState({ page: hash }, '', `${baseUrl}#${hash}`);
+    } else if (pathname === '/official/' || pathname === '/') {
+      window.history.replaceState({ page: 'hero' }, '', baseUrl);
     }
   }, []);
 
@@ -58,7 +66,7 @@ const App = () => {
   };
 
   const handleReturnToTop = () => {
-    window.history.pushState({ page: 'hero' }, '', '/');
+    window.history.pushState({ page: 'hero' }, '', baseUrl);
     setShowHero(true);
   };
 
