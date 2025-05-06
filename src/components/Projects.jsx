@@ -37,7 +37,7 @@ const Projects = () => {
         "テスト仕様書作成",
         "ドキュメント作成&整理"
       ],
-      environment: "Javascript（angular), Java(JavaSpringBoot",
+      environment: "Javascript（angular), Java(JavaSpringBoot)",
       role: "メンバー (要員数：1名, PJ全体：20名)"
     },
     {

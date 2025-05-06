@@ -89,6 +89,8 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
+  width: 100vw;
+  margin: 0;
 }
 
 .content {
@@ -99,12 +101,12 @@ body {
 /* ヘッダー */
 .header {
   position: relative;
-  height: 300px;
   overflow: hidden;
   padding:15vh 2vw 2vh;
   background-color: var(--secondary-color);
   color: white;
   margin-bottom: 3rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .background-video {
@@ -125,16 +127,6 @@ body {
   height: 100vh;
   transform: translate(-50%, -50%);
   pointer-events: none; /* ユーザー操作を無効化 */
-}
-
-.title {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.subtitle {
-  font-size: 2rem;
-  font-weight: 300;
 }
 
 /* ナビゲーション */
@@ -181,6 +173,43 @@ body {
 
 .tabs li a:hover {
   color: var(--primary-color);
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tabs.open {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .tabs {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .tabs.open {
+    display: flex;
+  }
+
+  .tabs li {
+    margin: 10px 0;
+  }
 }
 
 /* セクション */
@@ -239,7 +268,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 10%; /* 固定値からパーセンテージに変更 */
+  left: 13vw; /* 固定値からパーセンテージに変更 */
   width: 3px;
   background: var(--light-gray);
 }
@@ -250,8 +279,8 @@ body {
 }
 
 .timeline-info {
-  flex: 0 0 10%; /* 固定値からパーセンテージに変更 */
-  padding-right: 2rem; /* 適切な余白を設定 */
+  flex: 0 0 11vw; 
+  padding-right: 2rem;
 }
 
 .timeline-period {
@@ -377,6 +406,18 @@ body {
   border-top: 1px solid var(--light-gray);
 }
 
+.project-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* PR */
 .pr-content {
   background: white;
@@ -400,6 +441,20 @@ body {
   background-color: var(--secondary-color);
   color: white;
   margin-top: 3rem;
+}
+
+/* アニメーション */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* レスポンシブ対応 */
@@ -430,5 +485,69 @@ body {
   
   .project-nav {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline:before {
+    display: none; /* スマホ時に非表示 */
+  }
+
+  .timeline-item {
+    flex-direction: column; /* スマホ時に縦並び */
+    align-items: flex-start;
+  }
+
+  .timeline-info {
+    width: auto; /* 幅を解除 */
+    text-align: left; /* 左寄せ */
+    margin-bottom: 10px; /* コンテンツとの間隔 */
+  }
+}
+
+.skill-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 幅に応じて列数を調整 */
+  gap: 20px; /* カテゴリ間のスペース */
+}
+
+.skill-category {
+  background: #f9f9f9; /* 背景色 */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+}
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.timeline-info {
+  flex-shrink: 0;
+  width: 150px; /* 日付部分の固定幅 */
+  text-align: right;
+}
+
+.timeline-content {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    flex-direction: column; /* スマホ時に縦並び */
+    align-items: flex-start;
+  }
+
+  .timeline-info {
+    width: auto; /* 幅を解除 */
+    text-align: left; /* 左寄せ */
+    margin-bottom: 10px; /* コンテンツとの間隔 */
   }
 }

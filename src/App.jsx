@@ -9,9 +9,11 @@ import PR from './components/PR';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('career'); // 初期タブを 'career' に変更
+  const [menuOpen, setMenuOpen] = useState(false); // ハンバーガーメニューの状態
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    setMenuOpen(false); // メニューを閉じる
   };
 
   const videoOptions = {
@@ -27,15 +29,21 @@ const App = () => {
     <div className="container">
       <nav className="navigation fixed-top"> {/* ナビゲーションをページトップに固定 */}
         <div className="container">
-          <ul className="tabs">
-            <li className={activeTab === 'profile' ? 'active' : ''}>
-              <a href="#profile" onClick={() => handleTabClick('profile')}>
-                プロフィール
-              </a>
-            </li>
+          <button
+            className="hamburger-menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+          <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
             <li className={activeTab === 'career' ? 'active' : ''}>
               <a href="#career" onClick={() => handleTabClick('career')}>
                 職務経歴
+              </a>
+            </li>
+            <li className={activeTab === 'profile' ? 'active' : ''}>
+              <a href="#profile" onClick={() => handleTabClick('profile')}>
+                プロフィール
               </a>
             </li>
             <li className={activeTab === 'skills' ? 'active' : ''}>
@@ -66,10 +74,10 @@ const App = () => {
       </header>
 
       <main className="content">
-        {activeTab === 'profile' && <Profile />}
         {activeTab === 'career' && <Career />}
+        {activeTab === 'profile' && <Profile />}
         {activeTab === 'skills' && <Skills />}
-        {activeTab === 'projects' && <Projects />}
+        {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
         {activeTab === 'pr' && <PR />}
       </main>
 
