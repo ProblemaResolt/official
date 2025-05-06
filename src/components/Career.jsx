@@ -1,6 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Career = () => {
+  const timelineRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('timeline-item-visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    timelineRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      timelineRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   const careers = [
     {
       company: "NTS Japan",
@@ -52,7 +77,11 @@ const Career = () => {
         <h2 className="section-title">職務経歴</h2>
         <div className="timeline">
           {careers.map((career, index) => (
-            <div key={index} className="timeline-item">
+            <div
+              key={index}
+              className="timeline-item"
+              ref={(el) => (timelineRefs.current[index] = el)}
+            >
               <div className="timeline-info">
                 <span className="timeline-period">{career.period}</span>
               </div>
