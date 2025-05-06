@@ -7,10 +7,28 @@ import Skills from './components/Skills';
 import Hero from './components/Hero';
 
 const App = () => {
-  const [showHero, setShowHero] = useState(true);
-  const [activeTab, setActiveTab] = useState('career'); // 初期タブを 'career' に変更
+  const [showHero, setShowHero] = useState(() => {
+    // URLハッシュがない場合のみHeroを表示
+    return !window.location.hash;
+  });
+  const [activeTab, setActiveTab] = useState(() => {
+    // URLハッシュから初期タブを設定
+    const hash = window.location.hash.replace('#', '');
+    return hash || 'career';
+  });
   const [previousTab, setPreviousTab] = useState('career'); // 前のタブを記憶する状態を追加
   const [menuOpen, setMenuOpen] = useState(false); // ハンバーガーメニューの状態
+
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setShowHero(false);
+      setActiveTab(hash);
+      window.history.replaceState({ page: hash }, '', `#${hash}`);
+    } else {
+      window.history.replaceState({ page: 'hero' }, '', '/');
+    }
+  }, []);
 
   useEffect(() => {
     const handlePopState = (event) => {
