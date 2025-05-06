@@ -977,15 +977,34 @@ body {
 
 .hero-buttons {
   display: flex;
-  gap: 1vw;
-  justify-content: center;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3vh 4vw;
+    padding: 0 5vw;
+    max-width: 100%;
+  }
+
+  .animated-link {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
 }
 
 /* アニメーションリンク */
 .animated-link {
-  font-size: 1.5rem;
-  color: #fff;
-  padding: 1rem 2rem;
+  width: 200px; /* 固定幅を設定 */
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.8rem 1rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
