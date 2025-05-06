@@ -1,0 +1,390 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+h2 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5em;
+  padding: 0;
+  margin: 0;
+  line-height:1;
+}
+
+h4{
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+  line-height:1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* カスタムスタイル */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --light-gray: #e9ecef;
+  --dark-gray: #6c757d;
+  --border-radius: 4px;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+  width: 96vw;
+  margin: 0 2vw 0 2vw;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+/* ヘッダー */
+.header {
+  padding: 2vw 2vh;
+  background-color: var(--secondary-color);
+  color: white;
+  margin-bottom: 3rem;
+
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* ナビゲーション */
+.navigation {
+  margin-bottom: 3rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabs {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.tabs li {
+  margin: 0;
+}
+
+.tabs li a {
+  display: block;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  color: var(--dark-gray);
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tabs li.active a {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.tabs li a:hover {
+  color: var(--primary-color);
+}
+
+/* セクション */
+.section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  margin-bottom: 3rem;
+  color: var(--secondary-color);
+  position: relative;
+}
+
+.section-title:after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 1rem auto;
+}
+
+/* プロフィール */
+.profile-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.profile-heading {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.profile-item {
+  margin-bottom: 2rem;
+}
+
+.profile-item h4 {
+  color: var(--secondary-color);
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+/* タイムライン */
+.timeline {
+  position: relative;
+  padding: 0;
+  list-style: none;
+  margin-left: 0; /* 左余白をリセット */
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%; /* 固定値からパーセンテージに変更 */
+  width: 3px;
+  background: var(--light-gray);
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.timeline-info {
+  flex: 0 0 10%; /* 固定値からパーセンテージに変更 */
+  padding-right: 2rem; /* 適切な余白を設定 */
+}
+
+.timeline-period {
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+}
+
+.timeline-marker {
+  flex: 0 0 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  margin-top: 5px;
+  margin-left: -8px;
+  margin-right: 24px;
+  z-index: 1;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-left: 2rem; /* タイムラインとコンテンツの間に余白を追加 */
+}
+
+.timeline-company {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-position {
+  color: var(--primary-color);
+}
+
+/* スキル */
+.skill-category {
+  margin-bottom: 3rem;
+}
+
+.skill-category h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 0.5rem;
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-experience {
+  color: var(--dark-gray);
+}
+
+.skill-bar {
+  height: 10px;
+  background: var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background: var(--primary-color);
+}
+
+.skill-description {
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+  margin-top: 0.5rem;
+}
+
+/* プロジェクト */
+.project-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project-detail {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.project-period {
+  color: var(--dark-gray);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.project-tasks {
+  padding-left: 2rem;
+}
+
+.project-meta {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* PR */
+.pr-content {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.pr-item {
+  margin-bottom: 2rem;
+}
+
+.pr-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* フッター */
+.footer {
+  padding: 2rem 0;
+  background-color: var(--secondary-color);
+  color: white;
+  margin-top: 3rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 767px) {
+  .timeline:before {
+    left: 5%; /* 狭い画面での位置調整 */
+  }
+
+  .timeline-info {
+    flex: 0 0 20%; /* 狭い画面での幅調整 */
+  }
+
+  .timeline-content {
+    padding-left: 1rem; /* 狭い画面での余白調整 */
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .tabs li a {
+    padding: 1rem;
+  }
+  
+  .project-nav {
+    flex-direction: column;
+  }
+}
