@@ -23,12 +23,15 @@ const Skills = () => {
     ],
     databases: [
       { name: "MySQL", experience: "5年以上", level: "クエリを作成、テーブル作成が可能" },
-      { name: "PostgreSQL", experience: "5年以上", level: "クエリを作成、テーブル作成が可能" }
+      { name: "PostgreSQL", experience: "5年以上", level: "クエリを作成、テーブル作成が可能" },
+      { name: "SQLServer", experience: "1年", level: "クエリを作成が可能" }
     ],
     others: [
       { name: "Apache", experience: "1年", level: "インストールから設定可能" },
       { name: "Nginx", experience: "1年2ヶ月", level: "インストールから設定可能" },
-      { name: "Docker", experience: "5年以上", level: "DockerFile作成し環境構築が可能" }
+      { name: "Docker", experience: "5年以上", level: "DockerFile作成し環境構築が可能" },
+      { name: "Figma", experience: "1年", level: "基本操作と編集が可能" },
+      { name: "PhotoShop", experience: "3年", level: "レタッチ、修正が可能" }
     ]
   };
 
