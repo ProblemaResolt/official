@@ -1,12 +1,41 @@
-# React + Vite
+職　務　経　歴　書
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2025年04月12日現在
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　氏名　山本 高廣
+■職務要約
+・2018年01月～現在　　　NTS Japan　 SESのエンジニアとして従事。
+　　　　　　フロントエンド開発が中心。
+　　　　　　要件定義から詳細設計などの開発を経験。
+・2015年09月～2017年09月　スタッフサービスエンジニアリング株式会社
+　　　　　　　　　　　　　　フロントエンド開発、SEO、広告担当を中心に従事
+　　　　　　　　　　　　　　GoogleAnalyticsなどのサイトの解析を元にキャンペーンの企画を立案など
+・2011年05月～2015年08月　ハンコヤドットコム
+　　　　　　　　　　　　　　フロントエンド開発、SEO担当を中心に従事
+　　　　　　　　　　　　　　Google手動対応の解除担当
+　　　　　　　　　　　　　　SEOにて単一ワード複数上位獲得（2025年現在も継続中）
+　　　　　　　　　　　　　　製品の売り上げを1.5倍達成
+・2011年01月～2011年04月　株式会社BMC
+　　　　　　　　　　　　　　ナイトレジャーのWeb広告出稿、イベント企画などに従事
+・2008年05月～2010年12月　株式会社スターリンク
+　　　　　　　　　　　　　　HTMLコーダー従事
+・2006年02月～2008年05月　有限会社ハイテクラボ
+　　　　　　　　　　　　　　電子基板作成
+　　　　　　　　　　　　　　電子基板ケース作成
+・2002年04月～2005年12月　有限会社ゲーム
+　　　　　　　　　　　　　　HTMLコーダー従事
+　　　　　　　　　　　　　　
+■活かせる経験・知識・技術
+マーケティング
+ECサイトにて主にGoogleAnalyticsを使用しサイトの流入改善を行いコンテンツの作成・改善を行い製品の売り上げアップの経験があり、それを応用しサイトやブランドの認知度アップなどを行ってまいりました。
+一部単一ワードは10年たった現在も上位を保っています。
+リスティング広告を行いランディングページを作成した際はサイト解析をもとにABテストを行い売り上げのアップに貢献いたしました。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+プロジェクトマネジメント
+Webディレクタとしてスケジュール管理・進捗管理を経験しています。
+現場によって外部協力会社や他チームと連携を行いスムーズなサイト作成を遂行を行ってまいりました。
+またチームメンバーの困りごとなどを拾い上げ、チームパフォーマンスの最適解を常に求めていました。
+　
+業務知識・開発経験
+サイトの制作開発に関しましてフロントエンド開発を主に従事しバックエンドのAPI開発なども同時並行で行っておりました。
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+以上
