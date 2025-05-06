@@ -36,6 +36,7 @@ const App = () => {
     window.history.pushState({ page: tab }, '', `#${tab}`);
     setShowHero(false);
     setActiveTab(tab);
+    setMenuOpen(false);
   };
 
   const handleReturnToTop = () => {
