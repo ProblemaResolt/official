@@ -43,12 +43,8 @@ const Skills = () => {
             <span className="skill-name">{skill.name}</span>
             <span className="skill-experience">{skill.experience}</span>
           </div>
-          <div className="skill-bar">
-            <div
-              className="skill-level"
-              style={{ width: 0 }}
-              data-width={`${percentage}%`}
-            ></div>
+          <div className="skill-bar" data-skill={`${percentage}%`}>
+            <div className="skill-bar-fill"></div>
           </div>
           {skill.level && <p className="skill-description">{skill.level}</p>}
         </div>
@@ -57,12 +53,11 @@ const Skills = () => {
   };
 
   useEffect(() => {
-    const skillLevels = document.querySelectorAll('.skill-level');
-    skillLevels.forEach((level) => {
-      const width = level.getAttribute('data-width');
-      setTimeout(() => {
-        level.style.width = width;
-      }, 300);
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    skillBars.forEach((bar) => {
+      const parent = bar.parentElement;
+      const skillLevel = parent.getAttribute('data-skill');
+      bar.style.width = skillLevel;
     });
   }, []);
 

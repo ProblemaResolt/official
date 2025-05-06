@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import YouTube from 'react-youtube'; // YouTubeコンポーネントをインポート
 import './App.css';
 import Profile from './components/Profile';
 import Career from './components/Career';
@@ -13,14 +14,18 @@ const App = () => {
     setActiveTab(tab);
   };
 
+  const videoOptions = {
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      loop: 1,
+      playlist: '9g2U12SsRns', // ループ再生のために動画IDを指定
+    },
+  };
+
   return (
     <div className="container">
-      <header className="header text-center">
-        <h1 className="title">山本 高廣</h1>
-        <p className="subtitle">フロントエンドエンジニア・マーケティングコンサルタント</p>
-      </header>
-
-      <nav className="navigation">
+      <nav className="navigation fixed-top"> {/* ナビゲーションをページトップに固定 */}
         <div className="container">
           <ul className="tabs">
             <li className={activeTab === 'profile' ? 'active' : ''}>
@@ -51,6 +56,14 @@ const App = () => {
           </ul>
         </div>
       </nav>
+
+      <header className="header text-center">
+        <div className="background-video">
+          <YouTube videoId="9g2U12SsRns" opts={videoOptions} className="youtube-video" />
+        </div>
+        <h1 className="title">ポートフォリオ</h1>
+        <p className="subtitle">フロントエンドエンジニア・マーケティングコンサルタント</p>
+      </header>
 
       <main className="content">
         {activeTab === 'profile' && <Profile />}
