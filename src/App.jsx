@@ -5,6 +5,7 @@ import Career from './components/Career';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Hero from './components/Hero';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const App = () => {
   // ベースURLを環境に応じて設定
@@ -76,65 +77,75 @@ const App = () => {
 
   return (
     <div className="container">
-      {showHero ? (
-        <Hero onNavigate={handleNavigate} />
-      ) : (
-        <>
-          <header className="header text-center d-flex align-items-center justify-content-between">
-            <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
-              Portfolio
-            </h1>
-            <nav className="navigation">
-              <div className="container">
-                <button
-                  className="hamburger-menu"
-                  onClick={() => setMenuOpen(!menuOpen)}
-                >
-                  ☰
-                </button>
-                <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                  <li className={activeTab === 'top' ? 'active' : ''}>
-                    <a href="#top" onClick={handleReturnToTop}>
-                      Top
-                    </a>
-                  </li>
-                  <li className={activeTab === 'profile' ? 'active' : ''}>
-                    <a href="#profile" onClick={() => handleTabClick('profile')}>
-                      Profile
-                    </a>
-                  </li>
-                  <li className={activeTab === 'career' ? 'active' : ''}>
-                    <a href="#career" onClick={() => handleTabClick('career')}>
-                      Career
-                    </a>
-                  </li>
-                  <li className={activeTab === 'skills' ? 'active' : ''}>
-                    <a href="#skills" onClick={() => handleTabClick('skills')}>
-                      Skills
-                    </a>
-                  </li>
-                  <li className={activeTab === 'projects' ? 'active' : ''}>
-                    <a href="#projects" onClick={() => handleTabClick('projects')}>
-                      Projects
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </header>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={showHero ? 'hero' : activeTab}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+        >
+          {showHero ? (
+            <Hero onNavigate={handleNavigate} />
+          ) : (
+            <>
+              <header className="header text-center d-flex align-items-center justify-content-between">
+                <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
+                  Portfolio
+                </h1>
+                <nav className="navigation">
+                  <div className="container">
+                    <button
+                      className="hamburger-menu"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                      ☰
+                    </button>
+                    <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
+                      <li className={activeTab === 'top' ? 'active' : ''}>
+                        <a href="#top" onClick={handleReturnToTop}>
+                          Top
+                        </a>
+                      </li>
+                      <li className={activeTab === 'profile' ? 'active' : ''}>
+                        <a href="#profile" onClick={() => handleTabClick('profile')}>
+                          Profile
+                        </a>
+                      </li>
+                      <li className={activeTab === 'career' ? 'active' : ''}>
+                        <a href="#career" onClick={() => handleTabClick('career')}>
+                          Career
+                        </a>
+                      </li>
+                      <li className={activeTab === 'skills' ? 'active' : ''}>
+                        <a href="#skills" onClick={() => handleTabClick('skills')}>
+                          Skills
+                        </a>
+                      </li>
+                      <li className={activeTab === 'projects' ? 'active' : ''}>
+                        <a href="#projects" onClick={() => handleTabClick('projects')}>
+                          Projects
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </header>
 
-          <main className="content">
-            {activeTab === 'profile' && <Profile />}
-            {activeTab === 'career' && <Career />}
-            {activeTab === 'skills' && <Skills />}
-            {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
-          </main>
+              <main className="content">
+                {activeTab === 'profile' && <Profile />}
+                {activeTab === 'career' && <Career />}
+                {activeTab === 'skills' && <Skills />}
+                {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
+              </main>
 
-          <footer className="footer text-center">
-            <p>&copy; 2025 Portfolio</p>
-          </footer>
-        </>
-      )}
+              <footer className="footer text-center">
+                <p>&copy; 2025 Portfolio</p>
+              </footer>
+            </>
+          )}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

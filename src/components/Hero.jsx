@@ -5,6 +5,8 @@ const Hero = ({ onNavigate }) => {
   const animDomRef = useRef();
   const careerBtnRef = useRef();
   const skillsBtnRef = useRef();
+  const profileBtnRef = useRef();
+  const projectsBtnRef = useRef();
 
   useEffect(() => {
     // シンプルな円のアニメーション
@@ -73,6 +75,34 @@ const Hero = ({ onNavigate }) => {
       }
     });
 
+    // プロファイルボタンのアニメーション
+    const profileBurst = new mojs.Burst({
+      parent: profileBtnRef.current,
+      radius: { 20: 40 },
+      count: 5,
+      children: {
+        shape: 'circle',
+        fill: ['#3498db', '#2980b9'],
+        scale: { 1: 0 },
+        duration: 800,
+        repeat: 0
+      }
+    });
+
+    // プロジェクトボタンのアニメーション
+    const projectsBurst = new mojs.Burst({
+      parent: projectsBtnRef.current,
+      radius: { 20: 40 },
+      count: 5,
+      children: {
+        shape: 'circle',
+        fill: ['#3498db', '#2980b9'],
+        scale: { 1: 0 },
+        duration: 800,
+        repeat: 0
+      }
+    });
+
     // クリックハンドラーを設定
     const handleCareerClick = () => {
       careerBurst.replay();
@@ -84,8 +114,20 @@ const Hero = ({ onNavigate }) => {
       setTimeout(() => onNavigate('skills'), 300);
     };
 
+    const handleProfileClick = () => {
+      profileBurst.replay();
+      setTimeout(() => onNavigate('profile'), 300);
+    };
+
+    const handleProjectsClick = () => {
+      projectsBurst.replay();
+      setTimeout(() => onNavigate('projects'), 300);
+    };
+
     careerBtnRef.current.addEventListener('click', handleCareerClick);
     skillsBtnRef.current.addEventListener('click', handleSkillsClick);
+    profileBtnRef.current.addEventListener('click', handleProfileClick);
+    projectsBtnRef.current.addEventListener('click', handleProjectsClick);
 
     // クリーンアップ
     return () => {
@@ -93,6 +135,8 @@ const Hero = ({ onNavigate }) => {
       circles.forEach(c => c.stop());
       careerBtnRef.current?.removeEventListener('click', handleCareerClick);
       skillsBtnRef.current?.removeEventListener('click', handleSkillsClick);
+      profileBtnRef.current?.removeEventListener('click', handleProfileClick);
+      projectsBtnRef.current?.removeEventListener('click', handleProjectsClick);
     };
   }, [onNavigate]);
 
@@ -103,11 +147,17 @@ const Hero = ({ onNavigate }) => {
         <h1 className="hero-title">Portfolio</h1>
         <p className="hero-subtitle">Web Developer</p>
         <div className="hero-buttons">
+          <div ref={profileBtnRef} className="animated-link">
+            Profile
+          </div>
           <div ref={careerBtnRef} className="animated-link">
             Career
           </div>
           <div ref={skillsBtnRef} className="animated-link">
             Skills
+          </div>
+          <div ref={projectsBtnRef} className="animated-link">
+            Projects
           </div>
         </div>
       </div>
