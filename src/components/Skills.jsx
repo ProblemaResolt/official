@@ -1,7 +1,49 @@
-import React, { useEffect } from 'react';
-import { skills } from '../data/skills';
+import React, { useEffect, useState } from 'react';
 
 const Skills = () => {
+  const [skills, setSkills] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch('../data/skills.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('スキルデータの読み込みに失敗しました');
+        }
+        return response.json();
+      })
+      .then(data => setSkills(data))
+      .catch(error => {
+        console.error('Error loading skills:', error);
+        setError(error.message);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!skills) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const percentage = bar.getAttribute('data-percentage');
+            setTimeout(() => {
+              bar.style.width = `${percentage}%`;
+            }, 100);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.skill-bar-fill').forEach((bar) => observer.observe(bar));
+    return () => observer.disconnect();
+  }, [skills]);
+
+  if (error) return <div>Error: {error}</div>;
+  if (!skills) return <div>Loading...</div>;
+
   const renderSkillBars = (skillSet) => {
     return skillSet.map((skill, index) => {
       const experience = skill.experience.match(/(\d+)年|(\d+)ヶ月/g);
@@ -40,26 +82,6 @@ const Skills = () => {
       );
     });
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const bar = entry.target;
-            const percentage = bar.getAttribute('data-percentage');
-            setTimeout(() => {
-              bar.style.width = `${percentage}%`;
-            }, 100);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.skill-bar-fill').forEach((bar) => observer.observe(bar));
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section id="skills" className="section">

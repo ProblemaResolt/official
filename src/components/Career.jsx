@@ -1,12 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { careers } from '../data/careers'; // 職務経歴データをインポート
 import '../styles/Career.css';
 
 const Career = () => {
   const timelineRefs = useRef([]);
   const [expandedItem, setExpandedItem] = useState(null);
+  const [careers, setCareers] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    fetch('../data/careers.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('キャリアデータの読み込みに失敗しました');
+        }
+        return response.json();
+      })
+      .then(data => setCareers(data))
+      .catch(error => {
+        console.error('Error loading careers:', error);
+        setError(error.message);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!careers) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -27,7 +45,7 @@ const Career = () => {
         if (ref) observer.unobserve(ref);
       });
     };
-  }, []);
+  }, [careers]);
 
   const toggleDetails = (index) => {
     const currentItem = timelineRefs.current[index];
@@ -37,7 +55,6 @@ const Career = () => {
 
     if (currentItem) {
       setTimeout(() => {
-        // ヘッダーの高さ（60px）分上にスクロール
         const headerOffset = 120;
         const elementPosition = currentItem.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -49,6 +66,9 @@ const Career = () => {
       }, wasExpanded ? 0 : 50);
     }
   };
+
+  if (error) return <div>Error: {error}</div>;
+  if (!careers) return <div>Loading...</div>;
 
   return (
     <section id="career" className="section">
