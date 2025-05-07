@@ -5,7 +5,11 @@ const Skills = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('../data/skills.json')
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? '/official'
+      : '';
+      
+    fetch(`${baseUrl}/data/skills.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error('スキルデータの読み込みに失敗しました');
