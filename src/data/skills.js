@@ -1,22 +1,33 @@
 export const skills = {
-  os: [
-    { name: "Windows10", experience: "4年2ヶ月", level: "手順書をもとにインストール可能" },
-    { name: "Linux（CentOS）", experience: "5年以上", level: "手順書をもとにインストール、CUI操作可能" }
-  ],
-  languages: [
-    { name: "JavaScript", experience: "3年", level: "React、Node.jsを使用した開発経験あり" },
-    { name: "Python", experience: "2年", level: "データ分析、スクリプト作成経験あり" }
-  ],
-  frameworks: [
-    { name: "React", experience: "3年", level: "SPA開発経験あり" },
-    { name: "Node.js", experience: "2年", level: "バックエンド開発経験あり" }
-  ],
-  databases: [
-    { name: "MySQL", experience: "3年", level: "データベース設計、クエリ作成経験あり" },
-    { name: "MongoDB", experience: "2年", level: "NoSQLデータベース設計経験あり" }
-  ],
-  others: [
-    { name: "Git", experience: "5年以上", level: "バージョン管理、チーム開発経験あり" },
-    { name: "Docker", experience: "2年", level: "コンテナ化、デプロイ経験あり" }
-  ]
-};
+    "os": [
+      { "name": "Windows10", "experience": "4年2ヶ月", "level": "手順書をもとにインストール可能" },
+      { "name": "Linux（CentOS）", "experience": "5年以上", "level": "手順書をもとにインストール、CUI操作可能" }
+    ],
+    "languages": [
+      { "name": "PHP", "experience": "5年以上", "level": "状況に応じて最適なコードが書け、指導が可能" },
+      { "name": "Javascript", "experience": "5年以上", "level": "状況に応じて最適なコードが書け、指導が可能" },
+      { "name": "HTML", "experience": "5年以上", "level": "状況に応じて最適なコードが書け、指導が可能" },
+      { "name": "CSS", "experience": "5年以上", "level": "状況に応じて最適なコードが書け、指導が可能" },
+      { "name": "Java", "experience": "5ヶ月", "level": "簡単なプログラミングが可能" }
+    ],
+    "frameworks": [
+      { "name": "Springs", "experience": "5ヶ月", "level": "" },
+      { "name": "Laravel", "experience": "5年以上", "level": "" },
+      { "name": "CakePHP", "experience": "5年以上", "level": "" },
+      { "name": "React.js", "experience": "5年以上", "level": "" },
+      { "name": "Vue.js", "experience": "3ヶ月", "level": "" },
+      { "name": "Next.js", "experience": "6ヶ月", "level": "" }
+    ],
+    "databases": [
+      { "name": "MySQL", "experience": "5年以上", "level": "クエリを作成、テーブル作成が可能" },
+      { "name": "PostgreSQL", "experience": "5年以上", "level": "クエリを作成、テーブル作成が可能" },
+      { "name": "SQLServer", "experience": "1年", "level": "クエリを作成が可能" }
+    ],
+    "others": [
+      { "name": "Apache", "experience": "1年", "level": "インストールから設定可能" },
+      { "name": "Nginx", "experience": "1年2ヶ月", "level": "インストールから設定可能" },
+      { "name": "Docker", "experience": "5年以上", "level": "DockerFile作成し環境構築が可能" },
+      { "name": "Figma", "experience": "1年", "level": "基本操作と編集が可能" },
+      { "name": "PhotoShop", "experience": "3年", "level": "レタッチ、修正が可能" }
+    ]
+  };
