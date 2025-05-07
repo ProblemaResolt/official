@@ -156,9 +156,6 @@ const Hero = ({ onNavigate }) => {
           <div ref={skillsBtnRef} className="animated-link">
             Skills
           </div>
-          <div ref={projectsBtnRef} className="animated-link">
-            Projects
-          </div>
         </div>
       </div>
     </div>
