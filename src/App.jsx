@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Profile from './components/Profile';
 import Career from './components/Career';
-import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Hero from './components/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -53,10 +52,20 @@ const App = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  useEffect(() => {
+    // ハッシュ変更時のスクロール処理
+    const handleHashChange = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const handleTabClick = (tab) => {
     setPreviousTab(activeTab); // 前のタブを記憶
     setActiveTab(tab);
     setMenuOpen(false); // メニューを閉じる
+    window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
   const handleNavigate = (tab) => {
@@ -64,6 +73,7 @@ const App = () => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
+    window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
   const handleReturnToTop = () => {
@@ -122,11 +132,6 @@ const App = () => {
                           Skills
                         </a>
                       </li>
-                      <li className={activeTab === 'projects' ? 'active' : ''}>
-                        <a href="#projects" onClick={() => handleTabClick('projects')}>
-                          Projects
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </nav>
@@ -134,10 +139,11 @@ const App = () => {
 
               <main className="content">
                 {activeTab === 'profile' && <Profile />}
-                {activeTab === 'career' && <Career />}
+                {activeTab === 'career' && <Career showModal={true} />}
                 {activeTab === 'skills' && <Skills />}
-                {activeTab === 'projects' && <Projects animate={true} />} {/* アニメーションを有効化 */}
               </main>
+
+              <div id="modal-root"></div>
 
               <footer className="footer text-center">
                 <p>&copy; 2025 Portfolio</p>

@@ -588,16 +588,6 @@ body {
   z-index: 1000;
 }
 
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
 .close-button {
   position: absolute;
   top: 1rem;
