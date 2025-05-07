@@ -82,7 +82,7 @@ const Profile = () => (
         </div>
       </div>
     
-    <h2 className="section-title">自己PR</h2>
+    <h2 className="section-title">事例</h2>
       <div className="pr-content">
         <div className="pr-item">
           <h3>【チームリーダー事例】進捗遅延メンバーの支援</h3>
