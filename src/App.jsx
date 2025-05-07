@@ -13,27 +13,27 @@ const App = () => {
     : '/';
 
   const [showHero, setShowHero] = useState(() => {
-    // URLハッシュがない場合のみHeroを表示
-    return !window.location.hash;
+    // URLパスが初期状態の場合のみHeroを表示
+    const pathname = window.location.pathname.replace(baseUrl, '');
+    return pathname === '';
   });
   const [activeTab, setActiveTab] = useState(() => {
-    // URLハッシュから初期タブを設定
-    const hash = window.location.hash.replace('#', '');
-    return hash || 'career';
+    // URLパスから初期タブを設定
+    const pathname = window.location.pathname.replace(baseUrl, '');
+    return pathname || 'career';
   });
   const [previousTab, setPreviousTab] = useState('career'); // 前のタブを記憶する状態を追加
   const [menuOpen, setMenuOpen] = useState(false); // ハンバーガーメニューの状態
 
   useEffect(() => {
     // 初期化時のURL処理を修正
-    const pathname = window.location.pathname;
-    const hash = window.location.hash.replace('#', '');
+    const pathname = window.location.pathname.replace(baseUrl, '');
     
-    if (hash) {
+    if (pathname) {
       setShowHero(false);
-      setActiveTab(hash);
-      window.history.replaceState({ page: hash }, '', `${baseUrl}#${hash}`);
-    } else if (pathname === '/official/' || pathname === '/') {
+      setActiveTab(pathname);
+      window.history.replaceState({ page: pathname }, '', `${baseUrl}${pathname}`);
+    } else {
       window.history.replaceState({ page: 'hero' }, '', baseUrl);
     }
   }, []);
@@ -53,23 +53,24 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // ハッシュ変更時のスクロール処理
-    const handleHashChange = () => {
+    // URL変更時のスクロール処理
+    const handlePathChange = () => {
       window.scrollTo(0, 0);
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePathChange);
+    return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
 
   const handleTabClick = (tab) => {
     setPreviousTab(activeTab); // 前のタブを記憶
     setActiveTab(tab);
     setMenuOpen(false); // メニューを閉じる
+    window.history.pushState({ page: tab }, '', `${baseUrl}${tab}`);
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
   const handleNavigate = (tab) => {
-    window.history.pushState({ page: tab }, '', `#${tab}`);
+    window.history.pushState({ page: tab }, '', `${baseUrl}${tab}`);
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
@@ -112,23 +113,27 @@ const App = () => {
                       ☰
                     </button>
                     <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                      <li className={activeTab === 'top' ? 'active' : ''}>
-                        <a href="#top" onClick={handleReturnToTop}>
-                          Top
-                        </a>
-                      </li>
                       <li className={activeTab === 'profile' ? 'active' : ''}>
-                        <a href="#profile" onClick={() => handleTabClick('profile')}>
+                        <a onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick('profile');
+                        }}>
                           Profile
                         </a>
                       </li>
                       <li className={activeTab === 'career' ? 'active' : ''}>
-                        <a href="#career" onClick={() => handleTabClick('career')}>
+                        <a onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick('career');
+                        }}>
                           Career
                         </a>
                       </li>
                       <li className={activeTab === 'skills' ? 'active' : ''}>
-                        <a href="#skills" onClick={() => handleTabClick('skills')}>
+                        <a onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick('skills');
+                        }}>
                           Skills
                         </a>
                       </li>

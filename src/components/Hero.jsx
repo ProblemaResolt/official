@@ -119,15 +119,9 @@ const Hero = ({ onNavigate }) => {
       setTimeout(() => onNavigate('profile'), 300);
     };
 
-    const handleProjectsClick = () => {
-      projectsBurst.replay();
-      setTimeout(() => onNavigate('projects'), 300);
-    };
-
     careerBtnRef.current.addEventListener('click', handleCareerClick);
     skillsBtnRef.current.addEventListener('click', handleSkillsClick);
     profileBtnRef.current.addEventListener('click', handleProfileClick);
-    projectsBtnRef.current.addEventListener('click', handleProjectsClick);
 
     // クリーンアップ
     return () => {
@@ -136,7 +130,6 @@ const Hero = ({ onNavigate }) => {
       careerBtnRef.current?.removeEventListener('click', handleCareerClick);
       skillsBtnRef.current?.removeEventListener('click', handleSkillsClick);
       profileBtnRef.current?.removeEventListener('click', handleProfileClick);
-      projectsBtnRef.current?.removeEventListener('click', handleProjectsClick);
     };
   }, [onNavigate]);
 
