@@ -8,7 +8,11 @@ const Career = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('../data/careers.json')
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? '/official'
+      : '';
+      
+    fetch(`${baseUrl}/data/careers.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error('キャリアデータの読み込みに失敗しました');
