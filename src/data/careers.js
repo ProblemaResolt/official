@@ -1,4 +1,4 @@
-[
+export const careers = [
   {
     "company": "NTS Japan",
     "position": "SESエンジニア",

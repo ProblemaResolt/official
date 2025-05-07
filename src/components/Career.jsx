@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { careers } from '../data/careers'; // 職務経歴データをインポート
 import '../styles/Career.css';
-import { careers } from '../data/careers';
 
 const Career = () => {
   const timelineRefs = useRef([]);
