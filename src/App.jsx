@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import './App.css';
 import Profile from './components/Profile';
-import Career from './components/Career';
 import Skills from './components/Skills';
 import Hero from './components/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
+
+const Career = React.lazy(() => import('./components/Career'));
 
 const App = () => {
   const navigate = useNavigate();
@@ -154,9 +155,22 @@ const App = () => {
               </header>
 
               <main className="content">
-                {activeTab === 'profile' && <Profile />}
-                {activeTab === 'career' && <Career showModal={true} />}
-                {activeTab === 'skills' && <Skills />}
+                <Routes>
+                  <Route path="/profile" element={<Profile />} />
+                  <Route 
+                    path="/career" 
+                    element={
+                      <Suspense fallback={
+                        <div className="loading-screen">
+                          <div className="loading-spinner"></div>
+                        </div>
+                      }>
+                        <Career showModal={true} />
+                      </Suspense>
+                    } 
+                  />
+                  <Route path="/skills" element={<Skills />} />
+                </Routes>
               </main>
 
               <div id="modal-root"></div>
