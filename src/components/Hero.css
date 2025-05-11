@@ -1,0 +1,26 @@
+.slot-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  font-family: monospace;
+  margin: 0 2px;
+}
+
+.slot-char.visible {
+  animation: slotMachine 0.1s ease-out forwards;
+}
+
+.subtitle-char.visible {
+  animation: slotMachine 0.1s ease-out forwards;
+}
+
+@keyframes slotMachine {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}

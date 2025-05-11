@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mojs from '@mojs/core';
 
 const Hero = ({ onNavigate }) => {
@@ -7,6 +7,10 @@ const Hero = ({ onNavigate }) => {
   const skillsBtnRef = useRef();
   const profileBtnRef = useRef();
   const projectsBtnRef = useRef();
+  const [titleVisible, setTitleVisible] = useState(false);
+  const [subtitleVisible, setSubtitleVisible] = useState(false);
+  const titleChars = 'Portfolio'.split('');
+  const subtitleChars = 'Web Developer'.split('');
 
   useEffect(() => {
     // シンプルな円のアニメーション
@@ -123,6 +127,50 @@ const Hero = ({ onNavigate }) => {
     skillsBtnRef.current.addEventListener('click', handleSkillsClick);
     profileBtnRef.current.addEventListener('click', handleProfileClick);
 
+    const animateText = (selector, delay = 0) => {
+      const chars = document.querySelectorAll(selector);
+      chars.forEach((char, index) => {
+        const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+        let currentIndex = 0;
+        const finalChar = char.getAttribute('data-final');
+        const interval = setInterval(() => {
+          if (currentIndex < 3) { // 回転回数
+            char.textContent = randomChars[Math.floor(Math.random() * randomChars.length)];
+            currentIndex++;
+          } else {
+            char.textContent = finalChar;
+            clearInterval(interval);
+          }
+        }, 30 + (index * 20)); // インターバル
+      });
+    };
+
+    // タイトルのアニメーション
+    setTimeout(() => {
+      setTitleVisible(true);
+      animateText('.title-char');
+    }, 0);
+
+    // サブタイトルのアニメーション（タイトルの後に開始）
+    setTimeout(() => {
+      setSubtitleVisible(true);
+      animateText('.subtitle-char', 500);
+    }, 500);
+
+    // リンクボタンのスライドアニメーション
+    const links = document.querySelectorAll('.animated-link');
+    links.forEach((link, index) => {
+      new mojs.Html({
+        el: link,
+        x: { [-100]: 0 },
+        opacity: { 0: 1 },
+        delay: 1000 + (index * 200),
+        duration: 500,
+        easing: 'quint.out',
+        isForce3d: true
+      }).play();
+    });
+
     // クリーンアップ
     return () => {
       circle.stop();
@@ -137,18 +185,51 @@ const Hero = ({ onNavigate }) => {
     <div className="hero-section">
       <div ref={animDomRef} className="animation-background"></div>
       <div className="hero-content">
-        <h1 className="hero-title">Portfolio</h1>
-        <p className="hero-subtitle">Web Developer</p>
+        <h1 className="hero-title">
+          {titleChars.map((char, index) => (
+            <span
+              key={index}
+              className={`slot-char title-char ${titleVisible ? 'visible' : ''}`}
+              data-final={char}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {char}
+            </span>
+          ))}
+        </h1>
+        <p className="hero-subtitle">
+          {subtitleChars.map((char, index) => (
+            <span
+              key={index}
+              className={`slot-char subtitle-char ${subtitleVisible ? 'visible' : ''}`}
+              data-final={char}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {char}
+            </span>
+          ))}
+        </p>
         <div className="hero-buttons">
-          <div ref={profileBtnRef} className="animated-link">
-            Profile
-          </div>
-          <div ref={careerBtnRef} className="animated-link">
-            Career
-          </div>
-          <div ref={skillsBtnRef} className="animated-link">
-            Skills
-          </div>
+          {[
+            { ref: profileBtnRef, text: 'Profile', handler: () => onNavigate('profile') },
+            { ref: careerBtnRef, text: 'Career', handler: () => onNavigate('career') },
+            { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') }
+          ].map((button, index) => (
+            <div
+              key={index}
+              ref={button.ref}
+              className="animated-link"
+              onClick={button.handler}
+              style={{ 
+                opacity: 0,
+                transform: 'translate3d(-100px, 0, 0)',
+                willChange: 'transform',
+                visibility: 'visible'
+              }}
+            >
+              {button.text}
+            </div>
+          ))}
         </div>
       </div>
     </div>
