@@ -14,7 +14,7 @@ const App = () => {
     const redirect = sessionStorage.getItem('redirect');
     if (redirect) {
       sessionStorage.removeItem('redirect');
-      navigate(redirect.replace('/official', ''));
+      navigate(redirect);
     }
   }, []);
 
