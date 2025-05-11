@@ -5,8 +5,19 @@ import Career from './components/Career';
 import Skills from './components/Skills';
 import Hero from './components/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const redirect = sessionStorage.getItem('redirect');
+    if (redirect) {
+      sessionStorage.removeItem('redirect');
+      navigate(redirect.replace('/official', ''));
+    }
+  }, []);
+
   // ベースURLを環境に応じて設定
   const baseUrl = process.env.NODE_ENV === 'production' 
     ? '/official/'
