@@ -3,8 +3,6 @@ import '../styles/Career.css';
 
 const Career = () => {
   const timelineRefs = useRef([]);
-  const timelineContainerRef = useRef(null);
-  const timelineRef = useRef(null);
   const [expandedItem, setExpandedItem] = useState(null);
   const [careers, setCareers] = useState(null);
   const [error, setError] = useState(null);
@@ -53,23 +51,6 @@ const Career = () => {
     };
   }, [careers]);
 
-  useEffect(() => {
-    const updateTimeline = () => {
-      if (!timelineRef.current) return;
-
-      const timeline = timelineRef.current;
-      const rect = timeline.getBoundingClientRect();
-      const scrollProgress = (window.innerHeight - rect.top) / (rect.height + window.innerHeight);
-      
-      timeline.style.setProperty('--scroll-progress', Math.max(0, Math.min(1, scrollProgress)));
-    };
-
-    window.addEventListener('scroll', updateTimeline);
-    updateTimeline();
-
-    return () => window.removeEventListener('scroll', updateTimeline);
-  }, [careers]);
-
   const toggleDetails = (index) => {
     const currentItem = timelineRefs.current[index];
     const wasExpanded = expandedItem === index;
@@ -97,13 +78,12 @@ const Career = () => {
     <section id="career" className="section">
       <div className="container">
         <h2 className="section-title">職務経歴</h2>
-        <div ref={timelineRef} className="timeline">
+        <div className="timeline">
           {careers.map((career, index) => (
             <div
               key={index}
               className="timeline-item"
               ref={(el) => (timelineRefs.current[index] = el)}
-              style={{ '--item-index': index }}
             >
               <div className="timeline-info">
                 <span className="timeline-period">{career.period}</span>

@@ -77,15 +77,15 @@ const App = () => {
     setPreviousTab(activeTab); // 前のタブを記憶
     setActiveTab(tab);
     setMenuOpen(false); // メニューを閉じる
-    window.history.pushState({ page: tab }, '', `${baseUrl}${tab}`);
+    navigate(`/${tab}`); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
   const handleNavigate = (tab) => {
-    window.history.pushState({ page: tab }, '', `${baseUrl}${tab}`);
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
+    navigate(`/${tab}`); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
@@ -99,7 +99,7 @@ const App = () => {
   };
 
   return (
-    <div className="container">
+    <div className="app">
       <AnimatePresence mode="wait">
         <motion.div
           key={showHero ? 'hero' : activeTab}
@@ -125,36 +125,22 @@ const App = () => {
                       ☰
                     </button>
                     <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                      <li className={activeTab === 'profile' ? 'active' : ''}>
-                        <a onClick={(e) => {
-                          e.preventDefault();
-                          handleTabClick('profile');
-                        }}>
-                          Profile
-                        </a>
-                      </li>
-                      <li className={activeTab === 'career' ? 'active' : ''}>
-                        <a onClick={(e) => {
-                          e.preventDefault();
-                          handleTabClick('career');
-                        }}>
-                          Career
-                        </a>
-                      </li>
-                      <li className={activeTab === 'skills' ? 'active' : ''}>
-                        <a onClick={(e) => {
-                          e.preventDefault();
-                          handleTabClick('skills');
-                        }}>
-                          Skills
-                        </a>
-                      </li>
+                      {['profile', 'career', 'skills'].map((tab) => (
+                        <li key={tab} className={activeTab === tab ? 'active' : ''}>
+                          <a onClick={(e) => {
+                            e.preventDefault();
+                            handleTabClick(tab);
+                          }}>
+                            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </nav>
               </header>
 
-              <main className="content">
+              <main className="main-content">
                 <Routes>
                   <Route path="/profile" element={<Profile />} />
                   <Route 
@@ -165,7 +151,7 @@ const App = () => {
                           <div className="loading-spinner"></div>
                         </div>
                       }>
-                        <Career showModal={true} />
+                        <Career />
                       </Suspense>
                     } 
                   />

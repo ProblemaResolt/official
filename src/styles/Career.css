@@ -142,54 +142,6 @@
   display: none;
 }
 
-.timeline {
-  position: relative;
-  overflow: hidden;
-}
-
-.timeline:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 14vw;
-  width: 3px;
-  background: linear-gradient(to bottom, var(--primary-color) 60%, transparent);
-  transform-origin: top;
-  transform: scaleY(0);
-  animation: line-grow 1s cubic-bezier(0.2, 0, 0.1, 1) forwards;
-}
-
-.timeline-item {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.timeline-item.timeline-item-visible {
-  animation: item-appear 0.2s cubic-bezier(0.2, 0, 0.1, 1) forwards;
-  animation-delay: calc(var(--item-index, 0) * 0.1s + 0.2s);
-}
-
-@keyframes item-appear {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes line-grow {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
 @media screen and (max-width: 768px) {
   .timeline-marker {
     display: none;
@@ -197,6 +149,5 @@
   
   .timeline::before {
     display: none; /* タイムラインの縦線も非表示 */
-    left: 5%;
   }
 }
