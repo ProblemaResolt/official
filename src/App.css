@@ -11,6 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -112,6 +119,8 @@ body {
   line-height: 1.6;
   width: 100vw;
   margin: 0;
+  overflow-y: auto;
+  margin-right: 0;
 }
 
 .content {
