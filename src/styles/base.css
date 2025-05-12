@@ -1,3 +1,6 @@
+
+
+@import url(http://fonts.googleapis.com/css?family=Engagement);
 :root {
   --primary-color: #3498db;
   --secondary-color: #2c3e50;
@@ -6,8 +9,6 @@
   --light-gray: #e9ecef;
   --dark-gray: #6c757d;
   --border-radius: 4px;
-
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -147,7 +148,7 @@ h4 {
   font-family: 'Engagement', sans-serif;
   text-align: center;
   margin:0;
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 .subtitle {
