@@ -1,0 +1,57 @@
+.profile-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.profile-heading {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.profile-item {
+  margin-bottom: 2rem;
+}
+
+.profile-item h4 {
+  color: var(--secondary-color);
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+/* PR */
+.pr-content {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.pr-item {
+  margin-bottom: 2rem;
+}
+
+.pr-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* SNSリンク */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.social-links a {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  color: var(--secondary-color);
+}
