@@ -196,7 +196,7 @@
 }
 
 .hero-title,.hero-subtitle {
-  font-family: 'Engagement', sans-serif;
+  font-family: 'Engagement', 'Times New Roman', serif;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
