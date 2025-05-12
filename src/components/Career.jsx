@@ -109,8 +109,10 @@ const Career = () => {
                   <><h3>参加プロジェクト</h3>
                   <div className="projects-list">
                     {career.projects.map((project, pIndex) => (
-                      <div key={pIndex} className="project-details">
+                      
+                      <p>
                         <h4>{project.title}</h4>
+                      <div key={pIndex} className="project-details">
                         <p className="project-period">{project.period}</p>
                         <p>{project.description}</p>
                         <div className="project-info">
@@ -124,6 +126,7 @@ const Career = () => {
                           <p><strong>役割：</strong> {project.role}</p>
                         </div>
                       </div>
+                      </p>
                     ))}
                   </div>
                   </>)}
