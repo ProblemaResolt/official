@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../styles/Career.css';
 
 const Career = () => {
   const timelineRefs = useRef([]);
@@ -109,24 +108,34 @@ const Career = () => {
                   <><h3>参加プロジェクト</h3>
                   <div className="projects-list">
                     {career.projects.map((project, pIndex) => (
-                      
-                      <p>
+                      <div key={`project-${pIndex}`} className="project-item">
                         <h4>{project.title}</h4>
-                      <div key={pIndex} className="project-details">
-                        <p className="project-period">{project.period}</p>
-                        <p>{project.description}</p>
-                        <div className="project-info">
-                          <h5>担当業務：</h5>
-                          <ul>
-                            {project.tasks.map((task, i) => (
-                              <li key={i}>{task}</li>
-                            ))}
-                          </ul>
-                          <p><strong>環境：</strong> {project.environment}</p>
-                          <p><strong>役割：</strong> {project.role}</p>
+                        <div className="project-details">
+                          <dl>
+                            <dt>プロジェクト期間:</dt>
+                            <dd className="project-period">{project.period}</dd>
+                          </dl>
+                          <dl>
+                            <dt>業務内容:</dt>
+                            <dd className="project-period">
+                              <p>{project.description}</p>
+                            </dd>
+                          </dl>
+                          
+                          <dl className="project-info">
+                            <dt><h5>担当業務：</h5></dt>
+                            <dd>
+                              <ul>
+                                {project.tasks.map((task, i) => (
+                                  <li key={`task-${pIndex}-${i}`}>{task}</li>
+                                ))}
+                              </ul>
+                              <p><strong>環境：</strong> {project.environment}</p>
+                              <p><strong>役割：</strong> {project.role}</p>
+                            </dd>
+                          </dl>
                         </div>
                       </div>
-                      </p>
                     ))}
                   </div>
                   </>)}
