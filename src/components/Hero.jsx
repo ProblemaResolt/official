@@ -3,6 +3,7 @@ import mojs from '@mojs/core';
 
 const Hero = ({ onNavigate }) => {
   const animDomRef = useRef();
+  const canvasRef = useRef();
   const careerBtnRef = useRef();
   const skillsBtnRef = useRef();
   const profileBtnRef = useRef();
@@ -13,44 +14,82 @@ const Hero = ({ onNavigate }) => {
   const subtitleChars = 'Web Developer'.split('');
 
   useEffect(() => {
-    // シンプルな円のアニメーション
-    const circle = new mojs.Shape({
-      parent: animDomRef.current,
-      shape: 'circle',
-      scale: { 0: 1 },
-      duration: 1000,
-      repeat: 999,
-      fill: 'none',
-      stroke: '#3498db',
-      strokeWidth: { 50: 0 },
-      opacity: { 1: 0 }
-    });
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.zIndex = '0';
+    animDomRef.current.appendChild(canvas);
 
-    // 複数の円を作成
-    const circles = [];
-    for (let i = 0; i < 5; i++) {
-      circles.push(
-        new mojs.Shape({
-          parent: animDomRef.current,
-          shape: 'circle',
-          fill: 'none',
-          stroke: '#3498db',
-          strokeWidth: { 20: 0 },
-          opacity: { 1: 0 },
-          scale: { 0: 5 },
-          duration: 2000,
-          delay: i * 1,
-          repeat: 999,
-          left: '50%',
-          top: '50%',
-        })
-      );
-    }
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
 
-    // アニメーション開始
-    circle.play();
-    circles.forEach(c => c.play());
+    const waves = {
+      y: h * 0.25,  // 波の位置を画面の下から4分の1に
+      length: 0.01,
+      amplitude: 1, // 波の高さを20pxに抑える
+      frequency: 0.0005 // 波の周期をゆっくりに
+    };
 
+    let increment = waves.frequency;
+
+    const animate = () => {
+      // グラデーションの作成
+      const gradient = ctx.createLinearGradient(0, 0, 0, h);
+      gradient.addColorStop(0, '#87ceeb');    // 空色
+      gradient.addColorStop(0.1, '#98d8f0');  // 中間色
+      gradient.addColorStop(1, '#3498db');    // 海色
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, w, h);
+
+      // 波の描画
+      ctx.beginPath();
+      ctx.moveTo(0, h * 0.75);  // 波の開始位置を調整
+
+      for (let i = 0; i < w; i++) {
+        // より滑らかな波の動き
+        const wave1 = Math.sin(i * waves.length + increment) * waves.amplitude;
+        const wave2 = Math.sin(i * waves.length * 0.5 + increment) * waves.amplitude * 0.5;
+        ctx.lineTo(i, waves.y + wave1 + wave2);
+      }
+
+      // 波の色と透明度を一定に
+      ctx.strokeStyle = 'rgba(52, 152, 219, 0.2)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      
+      ctx.fillStyle = 'rgba(52, 152, 219, 0.1)';
+      ctx.fill();
+      
+      increment += waves.frequency;
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (animDomRef.current) {
+        animDomRef.current.removeChild(canvas);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     // キャリアボタンのアニメーション
     const careerBurst = new mojs.Burst({
       parent: careerBtnRef.current,
@@ -173,8 +212,6 @@ const Hero = ({ onNavigate }) => {
 
     // クリーンアップ
     return () => {
-      circle.stop();
-      circles.forEach(c => c.stop());
       careerBtnRef.current?.removeEventListener('click', handleCareerClick);
       skillsBtnRef.current?.removeEventListener('click', handleSkillsClick);
       profileBtnRef.current?.removeEventListener('click', handleProfileClick);

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>404 Redirect</title>
-    <script>
-      sessionStorage.setItem('redirect', location.pathname);
-      window.location.replace('/official/');
-    </script>
-  </head>
-  <body>
-    Redirecting...
-  </body>
+    <title>Redirecting...</title>
+    <link rel="canonical" href="/official/" />
+    <meta http-equiv="refresh" content="0; url=/official/" />
+</head>
+<body>
+    <p>Redirecting to <a href="/official/">/official/</a></p>
+</body>
 </html>

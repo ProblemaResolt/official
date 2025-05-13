@@ -24,9 +24,67 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
-  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    #87ceeb 0%,    /* 空色 */
+    #b0e2ff 30%,   /* 薄い青空 */
+    #98d8f0 60%,   /* 海と空の境目 */
+    #3498db 100%   /* 海の色 */
+  );
   overflow: hidden;
+  animation: skyAnimation 15s infinite;
+}
+
+.animation-background::before,
+.animation-background::after {
+  content: '';
+  position: absolute;
+  width: 300vw;
+  height: 300vh;
+  top: -150vh;
+  left: -150vw;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M30,50 a20,20 0 0,1 40,0 a15,15 0 0,1 30,0 a10,10 0 0,1 20,0 q10,0 20,-5 t20,-5 t20,5 t20,5' /%3E%3C/svg%3E");
+  background-size: 40% 40%;
+  opacity: 0.15;
+  animation: cloudMove 120s linear infinite;
+}
+
+.animation-background::after {
+  opacity: 0.1;
+  background-size: 30% 30%;
+  animation: cloudMove 80s linear infinite;
+  animation-delay: -40s;
+  top: -100vh;
+}
+
+@keyframes cloudMove {
+  from {
+    transform: translateX(-33.33%) translateY(0);
+  }
+  to {
+    transform: translateX(33.33%) translateY(0);
+  }
+}
+
+@keyframes skyAnimation {
+  0%, 100% {
+    background: linear-gradient(
+      to bottom,
+      #87ceeb 0%,
+      #b0e2ff 30%,
+      #98d8f0 60%,
+      #3498db 100%
+    );
+  }
+  50% {
+    background: linear-gradient(
+      to bottom,
+      #b0e2ff 0%,
+      #98d8f0 30%,
+      #3498db 60%,
+      #2980b9 100%
+    );
+  }
 }
 
 .slot-char {
