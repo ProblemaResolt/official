@@ -1,9 +1,12 @@
 import React from 'react';
+import { splitTextToSpans } from '../utils/textAnimation';
 
 const Profile = () => (
   <section id="profile" className="section">
     <div className="container">
-      <h2 className="section-title">プロフィール</h2>
+      <h2 className="section-title">
+        {splitTextToSpans('Profile')}
+      </h2>
       <div className="row">
         <div className="column">
           <div className="profile-card">
@@ -59,7 +62,7 @@ const Profile = () => (
       </div>
     </div>
     
-    <h2 className="section-title">自己PR</h2>
+    <h2 className="section-title">{splitTextToSpans('Promotion')}</h2>
       <div className="pr-content">
         <div className="pr-item">
           <h3>マーケティングについて</h3>
@@ -82,7 +85,8 @@ const Profile = () => (
         </div>
       </div>
     
-    <h2 className="section-title">事例</h2>
+    <h2 className="section-title">
+        {splitTextToSpans('Case Study')}</h2>
       <div className="pr-content">
         <div className="pr-item">
           <h3>【チームリーダー事例】進捗遅延メンバーの支援</h3>

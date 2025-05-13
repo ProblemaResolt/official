@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { splitTextToSpans } from '../utils/textAnimation.jsx';
 
 const Skills = () => {
   const [skills, setSkills] = useState(null);
@@ -90,7 +91,9 @@ const Skills = () => {
   return (
     <section id="skills" className="section">
       <div className="container">
-        <h2 className="section-title">テクニカルスキル</h2>
+        <h2 className="section-title">
+          {splitTextToSpans('Technical Skill')}
+        </h2>
         <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
           <div className="skill-category">
             <h3>OS</h3>

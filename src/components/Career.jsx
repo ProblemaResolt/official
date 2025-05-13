@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { splitTextToSpans } from '../utils/textAnimation.jsx';
 
 const Career = () => {
   const timelineRefs = useRef([]);
@@ -76,7 +77,9 @@ const Career = () => {
   return (
     <section id="career" className="section">
       <div className="container">
-        <h2 className="section-title">職務経歴</h2>
+        <h2 className="section-title">
+          {splitTextToSpans('Career')}
+        </h2>
         <div className="timeline">
           {careers.map((career, index) => (
             <div
