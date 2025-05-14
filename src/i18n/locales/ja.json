@@ -1,0 +1,24 @@
+{
+  "header": {
+    "profile": "プロフィール",
+    "career": "職務経歴",
+    "skills": "スキル"
+  },
+  "sections": {
+    "profile": {
+      "title": "プロフィール",
+      "summary": "職務要約",
+      "experience": "経験・知識・技術"
+    },
+    "skills": {
+      "title": "テクニカルスキル",
+      "categories": {
+        "os": "OS",
+        "languages": "言語",
+        "frameworks": "フレームワーク",
+        "databases": "データベース",
+        "others": "その他"
+      }
+    }
+  }
+}

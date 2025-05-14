@@ -6,12 +6,23 @@
       "duties": "フロントエンド開発が中心。要件定義から詳細設計などの開発を経験。",
       "projects": [
         {
+          "title": "Androidアプリ開発業務",
+          "period": "2025年2月 ~ 現在",
+          "description": "Androidアプリの開発業務。主にフロントエンドの開発を担当。",
+          "tasks": [
+            "フロントエンドの開発を単体テスト、結合テスト、Javascript修正担当",
+            "フロントエンドとミドルウェアテスト担当"
+          ],
+          "environment": "Javascript, Android Studio",
+          "role": "PL (要員数：1名, PJ全体：6名)"
+        },
+        {
           "title": "Windowインフラ管理業務",
           "period": "2024年9月 ~ 現在",
           "description": "LDAPサーバとActiveDirectoryを使用したOffice365のアカウントエラーの調査解消業務。",
           "tasks": ["インシデント報告", "インシデント調査"],
           "environment": "Windows PowerShell, SQL Management Studio, EXCEL, sakura Editor",
-          "role": "PL (要員数：1名, PJ全体：6名)"
+          "role": "PL (要員数：2名～6名, PJ全体：10名～16名)"
         },
         {
           "title": "学校CMS サイトリニューアル業務",
