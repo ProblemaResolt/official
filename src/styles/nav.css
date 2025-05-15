@@ -1,16 +1,21 @@
+
+
+/* ナビゲーション */
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 .tabs {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-x: auto;
+}
+
+.tabs li {
+  margin: 0;
 }
 
 .tabs li a {
@@ -19,44 +24,56 @@
   text-decoration: none;
   color: var(--dark-gray);
   border-bottom: 3px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: all 0.3s ease, color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
 .tabs li.active a {
   color: var(--primary-color);
   border-bottom-color: var(--primary-color);
+  transition: all 0.3s ease, color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.tabs li a:hover {
+  color: var(--primary-color);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hamburger-menu {
   display: none;
-  font-size: 24px;
   background: none;
   border: none;
-  cursor: pointer;
 }
-
 @media (max-width: 768px) {
   .hamburger-menu {
     display: block;
+  font-size: 24px;
+  cursor: pointer;
   }
 
   .tabs {
     display: none;
     flex-direction: column;
-    background: #fff;
     position: absolute;
-    top: 100%;
     left: 0;
     right: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color:var(--background-color);
   }
 
   .tabs.open {
-    display: flex;
+    display: flex;  justify-content: flex-end;
+  background-color:var(--background-color);
+
   }
 
-  .tabs li a {
-    padding: 1rem;
+  .tabs li {
+    margin: 10px 0;
   }
+  .tabs li.active a {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  transition: all 0.3s ease, color 0.3s ease, border-bottom-color 0.3s ease;
+
+}
+
 }
