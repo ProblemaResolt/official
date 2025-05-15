@@ -222,7 +222,7 @@ const Hero = ({ onNavigate }) => {
   return (
     <>
       <MetaTags 
-        title="Portfolio"
+        title="トップページ"
         description="ポートフォリオサイトです。"
         keywords="ポートフォリオ, Web Developer, React, JavaScript"
         twitterSite="@ProblemaResolt"
