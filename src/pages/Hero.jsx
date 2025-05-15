@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import MetaTags from '../components/MetaTags.jsx';
 import mojs from '@mojs/core';
 
 const Hero = ({ onNavigate }) => {
@@ -219,57 +220,66 @@ const Hero = ({ onNavigate }) => {
   }, [onNavigate]);
 
   return (
-    <div className="hero-section">
-      <div ref={animDomRef} className="animation-background"></div>
-      <div className="hero-content">
-        <h1 className="hero-title">
-          {titleChars.map((char, index) => (
-            <span
-              key={index}
-              className={`slot-char title-char ${titleVisible ? 'visible' : ''}`}
-              data-final={char}
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              {char}
-            </span>
-          ))}
-        </h1>
-        <p className="hero-subtitle">
-          {subtitleChars.map((char, index) => (
-            <span
-              key={index}
-              className={`slot-char subtitle-char ${subtitleVisible ? 'visible' : ''}`}
-              data-final={char}
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              {char}
-            </span>
-          ))}
-        </p>
-        <div className="hero-buttons">
-          {[
-            { ref: profileBtnRef, text: 'Profile', handler: () => onNavigate('profile') },
-            { ref: careerBtnRef, text: 'Career', handler: () => onNavigate('career') },
-            { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') }
-          ].map((button, index) => (
-            <div
-              key={index}
-              ref={button.ref}
-              className="animated-link"
-              onClick={button.handler}
-              style={{ 
-                opacity: 0,
-                transform: 'translate3d(-100px, 0, 0)',
-                willChange: 'transform',
-                visibility: 'visible'
-              }}
-            >
-              {button.text}
-            </div>
-          ))}
+    <>
+      <MetaTags 
+        title="Portfolio"
+        description="ポートフォリオサイトです。"
+        keywords="ポートフォリオ, Web Developer, React, JavaScript"
+        twitterSite="@ProblemaResolt"
+        twitterCreator="@ProblemaResolt"
+      />
+      <div className="hero-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div ref={animDomRef} className="animation-background"></div>
+        <div className="hero-content">
+          <h1 className="hero-title">
+            {titleChars.map((char, index) => (
+              <span
+                key={index}
+                className={`slot-char title-char ${titleVisible ? 'visible' : ''}`}
+                data-final={char}
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                {char}
+              </span>
+            ))}
+          </h1>
+          <p className="hero-subtitle">
+            {subtitleChars.map((char, index) => (
+              <span
+                key={index}
+                className={`slot-char subtitle-char ${subtitleVisible ? 'visible' : ''}`}
+                data-final={char}
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                {char}
+              </span>
+            ))}
+          </p>
+          <div className="hero-buttons">
+            {[
+              { ref: profileBtnRef, text: 'Profile', handler: () => onNavigate('profile') },
+              { ref: careerBtnRef, text: 'Career', handler: () => onNavigate('career') },
+              { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') }
+            ].map((button, index) => (
+              <div
+                key={index}
+                ref={button.ref}
+                className="animated-link"
+                onClick={button.handler}
+                style={{ 
+                  opacity: 0,
+                  transform: 'translate3d(-100px, 0, 0)',
+                  willChange: 'transform',
+                  visibility: 'visible'
+                }}
+              >
+                {button.text}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

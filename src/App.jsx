@@ -1,12 +1,13 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import './App.css';
-import Profile from './components/Profile';
-import Skills from './components/Skills';
-import Hero from './components/Hero';
+import Profile from './pages/Profile';
+import Skills from './pages/Skills';
+import Hero from './pages/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, Routes, Route } from 'react-router-dom';
+import MetaTags from './components/MetaTags';
 
-const Career = React.lazy(() => import('./components/Career'));
+const Career = React.lazy(() => import('./pages/Career'));
 
 const App = () => {
   const navigate = useNavigate();
@@ -99,76 +100,83 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={showHero ? 'hero' : activeTab}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-        >
-          {showHero ? (
-            <Hero onNavigate={handleNavigate} />
-          ) : (
-            <>
-              <header className="header text-center d-flex align-items-center justify-content-between">
-                <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
-                  Portfolio
-                </h1>
-                <nav className="navigation">
-                  <div className="container">
-                    <button
-                      className="hamburger-menu"
-                      onClick={() => setMenuOpen(!menuOpen)}
-                    >
-                      ☰
-                    </button>
-                    <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                      {['profile', 'career', 'skills'].map((tab) => (
-                        <li key={tab} className={activeTab === tab ? 'active' : ''}>
-                          <a onClick={(e) => {
-                            e.preventDefault();
-                            handleTabClick(tab);
-                          }}>
-                            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </nav>
-              </header>
+    <>
+      <MetaTags
+        title="Portfolio"
+        description="ポートフォリオサイト"
+        keywords="ポートフォリオ, React, JavaScript"
+      />
+      <div className="app">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={showHero ? 'hero' : activeTab}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+          >
+            {showHero ? (
+              <Hero onNavigate={handleNavigate} />
+            ) : (
+              <>
+                <header className="header text-center d-flex align-items-center justify-content-between">
+                  <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
+                    Portfolio
+                  </h1>
+                  <nav className="navigation">
+                    <div className="container">
+                      <button
+                        className="hamburger-menu"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                      >
+                        ☰
+                      </button>
+                      <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
+                        {['profile', 'career', 'skills'].map((tab) => (
+                          <li key={tab} className={activeTab === tab ? 'active' : ''}>
+                            <a onClick={(e) => {
+                              e.preventDefault();
+                              handleTabClick(tab);
+                            }}>
+                              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </nav>
+                </header>
 
-              <main className="main-content">
-                <Routes>
-                  <Route path="/profile" element={<Profile />} />
-                  <Route 
-                    path="/career" 
-                    element={
-                      <Suspense fallback={
-                        <div className="loading-screen">
-                          <div className="loading-spinner"></div>
-                        </div>
-                      }>
-                        <Career />
-                      </Suspense>
-                    } 
-                  />
-                  <Route path="/skills" element={<Skills />} />
-                </Routes>
-              </main>
+                <main className="main-content">
+                  <Routes>
+                    <Route path="/profile" element={<Profile />} />
+                    <Route 
+                      path="/career" 
+                      element={
+                        <Suspense fallback={
+                          <div className="loading-screen">
+                            <div className="loading-spinner"></div>
+                          </div>
+                        }>
+                          <Career />
+                        </Suspense>
+                      } 
+                    />
+                    <Route path="/skills" element={<Skills />} />
+                  </Routes>
+                </main>
 
-              <div id="modal-root"></div>
+                <div id="modal-root"></div>
 
-              <footer className="footer text-center">
-                <p>&copy; 2025 Portfolio</p>
-              </footer>
-            </>
-          )}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+                <footer className="footer text-center">
+                  <p>&copy; 2025 Portfolio</p>
+                </footer>
+              </>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </>
   );
 };
 

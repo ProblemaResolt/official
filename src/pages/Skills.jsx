@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
+import MetaTags from '../components/MetaTags.jsx';
 
 const Skills = () => {
   const [skills, setSkills] = useState(null);
@@ -89,35 +90,42 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="section">
-      <div className="container">
-        <h2 className="section-title">
-          {splitTextToSpans('Technical Skill')}
-        </h2>
-        <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
-          <div className="skill-category">
-            <h3>OS</h3>
-            {renderSkillBars(skills.os)}
-          </div>
-          <div className="skill-category">
-            <h3>言語</h3>
-            {renderSkillBars(skills.languages)}
-          </div>
-          <div className="skill-category">
-            <h3>フレームワーク</h3>
-            {renderSkillBars(skills.frameworks)}
-          </div>
-          <div className="skill-category">
-            <h3>データベース</h3>
-            {renderSkillBars(skills.databases)}
-          </div>
-          <div className="skill-category">
-            <h3>その他</h3>
-            {renderSkillBars(skills.others)}
+    <>
+      <MetaTags 
+        title="スキル"
+        description="使用可能なスキルセット"
+        keywords="スキル, React, Javascript, PHP"
+      />
+      <section id="skills" className="section">
+        <div className="container">
+          <h2 className="section-title">
+            {splitTextToSpans('Technical Skill')}
+          </h2>
+          <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
+            <div className="skill-category">
+              <h3>OS</h3>
+              {renderSkillBars(skills.os)}
+            </div>
+            <div className="skill-category">
+              <h3>言語</h3>
+              {renderSkillBars(skills.languages)}
+            </div>
+            <div className="skill-category">
+              <h3>フレームワーク</h3>
+              {renderSkillBars(skills.frameworks)}
+            </div>
+            <div className="skill-category">
+              <h3>データベース</h3>
+              {renderSkillBars(skills.databases)}
+            </div>
+            <div className="skill-category">
+              <h3>その他</h3>
+              {renderSkillBars(skills.others)}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
