@@ -1,0 +1,38 @@
+[
+  {
+    "id": "Reactの基礎",
+    "date": "2025-05-05",
+    "tags": ["React", "JavaScript"],
+    "category": "Web",
+    "title": "Reactの基礎",
+    "summary": "Reactの基本的な使い方を解説します。",
+    "content": "<strong>React</strong>のコンポーネント、JSX、状態管理について学びます。"
+  },
+  {
+    "id": "WebReact",
+    "date": "2025-05-07",
+    "tags": ["React", "JavaScript"],
+    "category": "Web",
+    "title": "ああああああ",
+    "summary": "いいいいい",
+    "content": "<strong>React</strong>ううううう"
+  },
+  {
+    "id": "SEO",
+    "date": "2025-05-01",
+    "tags": ["SEO", "Web"],
+    "category": "SEO",
+    "title": "SEO対策",
+    "summary": "SEO対策について解説します。",
+    "content": "SEOの基本から応用までを解説します。"
+  },
+  {
+    "id": "エイプリルフール",
+    "date": "2025-04-01",
+    "tags": ["エイプリルフール2", "エイプリルフール"],
+    "category": "エイプリルフール",
+    "title": "エイプリルフール",
+    "summary": "エイプリルフールについて解説します。",
+    "content": "エイプリルフール。"
+  }
+]
