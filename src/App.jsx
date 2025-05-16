@@ -23,10 +23,8 @@ const App = () => {
     }
   }, []);
 
-  // ベースURLを環境に応じて設定（末尾のスラッシュを削除）
-  const baseUrl = process.env.NODE_ENV === 'production' 
-    ? '/official'
-    : '';
+  // ベースURLを環境に応じて設定（本番環境では/officialを使用）
+  const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
 
   const [showHero, setShowHero] = useState(() => {
     // URLパスが初期状態の場合のみHeroを表示
@@ -78,21 +76,19 @@ const App = () => {
   }, []);
 
   const handleTabClick = (tab) => {
-    setPreviousTab(activeTab); // 前のタブを記憶
+    setPreviousTab(activeTab);
     setActiveTab(tab);
-    setMenuOpen(false); // メニューを閉じる
-    const path = `${baseUrl}/${tab}`; // パスの生成を修正
-    navigate(path); // useNavigateを使用
-    window.scrollTo(0, 0); // ページ上部へスクロール
+    setMenuOpen(false);
+    navigate(tab); // パスをシンプルに
+    window.scrollTo(0, 0);
   };
 
   const handleNavigate = (tab) => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = `${baseUrl}/${tab}`; // パスの生成を修正
-    navigate(path); // useNavigateを使用
-    window.scrollTo(0, 0); // ページ上部へスクロール
+    navigate(tab); // パスをシンプルに
+    window.scrollTo(0, 0);
   };
 
   const handleReturnToTop = () => {
@@ -154,15 +150,15 @@ const App = () => {
 
                 <main className="main-content">
                   <Routes>
-                    <Route path={`${baseUrl}/profile`} element={<Profile />} />
-                    <Route path={`${baseUrl}/career`} element={
-                        <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
-                            <Career />
-                        </Suspense>
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="career" element={
+                      <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
+                        <Career />
+                      </Suspense>
                     } />
-                    <Route path={`${baseUrl}/skills`} element={<Skills />} />
-                    <Route path={`${baseUrl}/blog`} element={<BlogList />} />
-                    <Route path={`${baseUrl}/blog/:id`} element={<BlogPost />} />
+                    <Route path="skills" element={<Skills />} />
+                    <Route path="blog" element={<BlogList />} />
+                    <Route path="blog/:id" element={<BlogPost />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
@@ -182,17 +178,18 @@ const App = () => {
 };
 
 const NotFound = () => {
-  const baseUrl = process.env.NODE_ENV === 'production' 
-    ? '/official'
-    : '';
+  const navigate = useNavigate();
+  const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
+
+  useEffect(() => {
+    // 開発環境では/に、本番環境では/official/にリダイレクト
+    navigate(baseUrl || '/', { replace: true });
+  }, [navigate, baseUrl]);
 
   return (
-    <div className="section">
-      <div className="container">
-        <h1>404 Not Found</h1>
-        <p>ページが見つかりませんでした。</p>
-        <p><a href={baseUrl}>トップページへ戻る</a></p>
-      </div>
+    <div className="not-found">
+      <h1>404 Not Found</h1>
+      <p>ページが見つかりませんでした。</p>
     </div>
   );
 };

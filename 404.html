@@ -6,7 +6,8 @@
     <script>
       const l = window.location;
       const port = l.port ? ':' + l.port : '';
-      const redirectPath = l.protocol + '//' + l.hostname + port + '/official/';
+      const path = l.pathname.replace('/official/official/', '/official/');
+      const redirectPath = l.protocol + '//' + l.hostname + port + path;
       window.location.replace(redirectPath);
     </script>
 </head>
