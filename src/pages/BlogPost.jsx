@@ -63,7 +63,7 @@ const BlogPost = () => {
       <section className="section">
         <div className="container">
           <div className="blog-navigation">
-            <Link to={createPath('/blog')} className="back-to-list">
+            <Link to="/blog" className="back-to-list">
               ← 記事一覧に戻る
             </Link>
           </div>
