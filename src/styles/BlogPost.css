@@ -44,3 +44,15 @@
 .blog-post-content strong {
   color: #2980b9;
 }
+pre {
+  padding: 1em;
+ margin: 0 0 1.5em;
+ border: solid 1px #4d4d4d;
+ background: #25292f;
+}
+code {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: #f1f2f3;
+  margin: 0 0.2em;
+}

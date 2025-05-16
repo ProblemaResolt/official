@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 
+import { splitTextToSpans } from '../utils/textAnimation.jsx';
+
 const BlogPost = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
@@ -54,14 +56,9 @@ const BlogPost = () => {
       />
       <section className="section">
         <div className="container">
-          <div className="blog-navigation">
-            <Link to={`${baseUrl}/blog`} className="back-to-list">
-              ← 記事一覧に戻る
-            </Link>
-          </div>
           <article className="blog-post">
             <header className="blog-post-header">
-              <h2 className="section-title">{article.title}</h2>
+              <h2 className="section-title">{splitTextToSpans(article.title)}</h2>
               <div className="blog-meta">
                 <Link to={`${baseUrl}/blog?date=${article.date}`}>
                   <time dateTime={article.date}>
@@ -83,6 +80,11 @@ const BlogPost = () => {
             <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: article.content }} />
           </article>
         </div>
+          <div className="blog-navigation">
+            <Link to={`${baseUrl}/blog`} className="back-to-list">
+              ← 記事一覧に戻る
+            </Link>
+          </div>
       </section>
     </>
   );

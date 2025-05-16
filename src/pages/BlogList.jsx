@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 
+import { splitTextToSpans } from '../utils/textAnimation.jsx';
+
 const BlogList = () => {
   const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -65,7 +67,8 @@ const BlogList = () => {
       />
       <section className="section">
         <div className="container">
-          <h2 className="section-title">ブログ</h2>
+          <h2 className="section-title">
+                      {splitTextToSpans('Blogs')}</h2>
           
           <div className="blog-filters">
             <div className="archives">
