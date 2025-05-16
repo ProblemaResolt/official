@@ -9,6 +9,12 @@ const BlogPost = () => {
   const [article, setArticle] = useState(null);
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
 
+  const createPath = (path) => {
+    return process.env.NODE_ENV === 'production' 
+      ? `/official${path}`
+      : path;
+  };
+
   useEffect(() => {
     const fetchArticle = async () => {
       try {
@@ -57,7 +63,7 @@ const BlogPost = () => {
       <section className="section">
         <div className="container">
           <div className="blog-navigation">
-            <Link to="/blog" className="back-to-list">
+            <Link to={createPath('/blog')} className="back-to-list">
               ← 記事一覧に戻る
             </Link>
           </div>
@@ -65,17 +71,17 @@ const BlogPost = () => {
             <header className="blog-post-header">
               <h2 className="section-title">{splitTextToSpans(article.title)}</h2>
               <div className="blog-meta">
-                <Link to={`${baseUrl}/blog?date=${article.date}`}>
+                <Link to={createPath(`/blog?date=${article.date}`)}>
                   <time dateTime={article.date}>
                     {new Date(article.date).toLocaleDateString('ja-JP')}
                   </time>
                 </Link>
-                <Link to={`${baseUrl}/blog?category=${article.category}`}>
+                <Link to={createPath(`/blog?category=${article.category}`)}>
                   <span className="category">{article.category}</span>
                 </Link>
                 <div className="tags">
                   {article.tags.map(tag => (
-                    <Link key={tag} to={`${baseUrl}/blog?tag=${tag}`}>
+                    <Link key={tag} to={createPath(`/blog?tag=${tag}`)}>
                       <span className="tag">{tag}</span>
                     </Link>
                   ))}
