@@ -9,6 +9,7 @@ const Hero = ({ onNavigate }) => {
   const skillsBtnRef = useRef();
   const profileBtnRef = useRef();
   const projectsBtnRef = useRef();
+  const blogBtnRef = useRef();
   const [titleVisible, setTitleVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
   const titleChars = 'Portfolio'.split('');
@@ -147,6 +148,20 @@ const Hero = ({ onNavigate }) => {
       }
     });
 
+    // ブログボタンのアニメーション
+    const blogBurst = new mojs.Burst({
+      parent: blogBtnRef.current,
+      radius: { 20: 40 },
+      count: 5,
+      children: {
+        shape: 'circle',
+        fill: ['#3498db', '#2980b9'],
+        scale: { 1: 0 },
+        duration: 800,
+        repeat: 0
+      }
+    });
+
     // クリックハンドラーを設定
     const handleCareerClick = () => {
       careerBurst.replay();
@@ -163,9 +178,15 @@ const Hero = ({ onNavigate }) => {
       setTimeout(() => onNavigate('profile'), 300);
     };
 
+    const handleBlogClick = () => {
+      blogBurst.replay();
+      setTimeout(() => onNavigate('blog'), 300);
+    };
+
     careerBtnRef.current.addEventListener('click', handleCareerClick);
     skillsBtnRef.current.addEventListener('click', handleSkillsClick);
     profileBtnRef.current.addEventListener('click', handleProfileClick);
+    blogBtnRef.current.addEventListener('click', handleBlogClick);
 
     const animateText = (selector, delay = 0) => {
       const chars = document.querySelectorAll(selector);
@@ -216,6 +237,7 @@ const Hero = ({ onNavigate }) => {
       careerBtnRef.current?.removeEventListener('click', handleCareerClick);
       skillsBtnRef.current?.removeEventListener('click', handleSkillsClick);
       profileBtnRef.current?.removeEventListener('click', handleProfileClick);
+      blogBtnRef.current?.removeEventListener('click', handleBlogClick);
     };
   }, [onNavigate]);
 
@@ -259,7 +281,8 @@ const Hero = ({ onNavigate }) => {
             {[
               { ref: profileBtnRef, text: 'Profile', handler: () => onNavigate('profile') },
               { ref: careerBtnRef, text: 'Career', handler: () => onNavigate('career') },
-              { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') }
+              { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') },
+              { ref: blogBtnRef, text: 'Blog', handler: () => onNavigate('blog') }
             ].map((button, index) => (
               <div
                 key={index}

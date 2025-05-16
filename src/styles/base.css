@@ -265,3 +265,29 @@ h4 {
   background-color: var(--secondary-color);
   color: white;
 }
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-item {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.blog-item:hover {
+  background-color: #f9f9f9;
+}
+
+.blog-item h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.blog-item p {
+  color: #666;
+}

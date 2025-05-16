@@ -36,6 +36,7 @@
 .tabs li a:hover {
   color: var(--primary-color);
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .hamburger-menu {

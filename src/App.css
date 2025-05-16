@@ -3,7 +3,9 @@
 @import url(https://fonts.googleapis.com/css?family=Engagement);
 @import './styles/base.css';
 @import './styles/nav.css';
-@import './styles/career.css';
-@import './styles/hero.css';
+@import './styles/Career.css';
+@import './styles/Hero.css';
 @import './styles/skills.css';
 @import './styles/profile.css';
+@import './styles/Blog.css';
+@import './styles/BlogPost.css';
