@@ -154,15 +154,15 @@ const App = () => {
 
                 <main className="main-content">
                   <Routes>
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/career" element={
+                    <Route path={`${baseUrl}/profile`} element={<Profile />} />
+                    <Route path={`${baseUrl}/career`} element={
                         <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
                             <Career />
                         </Suspense>
                     } />
-                    <Route path="/skills" element={<Skills />} />
-                    <Route path="/blog" element={<BlogList />} />
-                    <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path={`${baseUrl}/skills`} element={<Skills />} />
+                    <Route path={`${baseUrl}/blog`} element={<BlogList />} />
+                    <Route path={`${baseUrl}/blog/:id`} element={<BlogPost />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
@@ -184,14 +184,16 @@ const App = () => {
 const NotFound = () => {
   const baseUrl = process.env.NODE_ENV === 'production' 
     ? '/official'
-    : '/';
+    : '';
 
   return (
-    <>
-      <h1>404 Not Found</h1>
-      <p>ページが見つかりませんでした。</p>
-      <Navigate to={`${baseUrl}404.html`} replace={true} />
-    </>
+    <div className="section">
+      <div className="container">
+        <h1>404 Not Found</h1>
+        <p>ページが見つかりませんでした。</p>
+        <p><a href={baseUrl}>トップページへ戻る</a></p>
+      </div>
+    </div>
   );
 };
 
