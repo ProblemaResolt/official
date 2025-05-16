@@ -2,11 +2,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <link rel="canonical" href="/official" />
-    <meta http-equiv="refresh" content="0; url=/official" />
+    <title>Page Not Found</title>
+    <script>
+      const l = window.location;
+      const port = l.port ? ':' + l.port : '';
+      const redirectPath = l.protocol + '//' + l.hostname + port + '/official/';
+      window.location.replace(redirectPath);
+    </script>
 </head>
 <body>
-    <p>Redirecting to <a href="/official">トップページ</a></p>
+    <p>Redirecting...</p>
 </body>
 </html>
