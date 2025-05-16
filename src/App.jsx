@@ -4,13 +4,16 @@ import Profile from './pages/Profile';
 import Skills from './pages/Skills';
 import Hero from './pages/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import MetaTags from './components/MetaTags';
+import BlogList from './pages/BlogList';
+import BlogPost from './pages/BlogPost';
 
 const Career = React.lazy(() => import('./pages/Career'));
 
 const App = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const redirect = sessionStorage.getItem('redirect');
@@ -78,7 +81,8 @@ const App = () => {
     setPreviousTab(activeTab); // 前のタブを記憶
     setActiveTab(tab);
     setMenuOpen(false); // メニューを閉じる
-    navigate(`/${tab}`); // useNavigateを使用
+    const path = process.env.NODE_ENV === 'production' ? `/official/${tab}` : `/${tab}`;
+    navigate(path); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
@@ -86,7 +90,8 @@ const App = () => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    navigate(`/${tab}`); // useNavigateを使用
+    const path = process.env.NODE_ENV === 'production' ? `/official/${tab}` : `/${tab}`;
+    navigate(path); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
 
@@ -132,7 +137,7 @@ const App = () => {
                         ☰
                       </button>
                       <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                        {['profile', 'career', 'skills'].map((tab) => (
+                        {['profile', 'career', 'skills', 'blog'].map((tab) => (
                           <li key={tab} className={activeTab === tab ? 'active' : ''}>
                             <a onClick={(e) => {
                               e.preventDefault();
@@ -150,19 +155,15 @@ const App = () => {
                 <main className="main-content">
                   <Routes>
                     <Route path="/profile" element={<Profile />} />
-                    <Route 
-                      path="/career" 
-                      element={
-                        <Suspense fallback={
-                          <div className="loading-screen">
-                            <div className="loading-spinner"></div>
-                          </div>
-                        }>
-                          <Career />
+                    <Route path="/career" element={
+                        <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
+                            <Career />
                         </Suspense>
-                      } 
-                    />
+                    } />
                     <Route path="/skills" element={<Skills />} />
+                    <Route path="/blog" element={<BlogList />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
 
@@ -176,6 +177,20 @@ const App = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+    </>
+  );
+};
+
+const NotFound = () => {
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? '/official/'
+    : '/';
+
+  return (
+    <>
+      <h1>404 Not Found</h1>
+      <p>ページが見つかりませんでした。</p>
+      <Navigate to={`${baseUrl}404.html`} replace={true} />
     </>
   );
 };
