@@ -23,10 +23,10 @@ const App = () => {
     }
   }, []);
 
-  // ベースURLを環境に応じて設定
+  // ベースURLを環境に応じて設定（末尾のスラッシュを削除）
   const baseUrl = process.env.NODE_ENV === 'production' 
-    ? '/official/'
-    : '/';
+    ? '/official'
+    : '';
 
   const [showHero, setShowHero] = useState(() => {
     // URLパスが初期状態の場合のみHeroを表示
@@ -81,7 +81,7 @@ const App = () => {
     setPreviousTab(activeTab); // 前のタブを記憶
     setActiveTab(tab);
     setMenuOpen(false); // メニューを閉じる
-    const path = process.env.NODE_ENV === 'production' ? `/official/${tab}` : `/${tab}`;
+    const path = `${baseUrl}/${tab}`; // パスの生成を修正
     navigate(path); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
@@ -90,7 +90,7 @@ const App = () => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = process.env.NODE_ENV === 'production' ? `/official/${tab}` : `/${tab}`;
+    const path = `${baseUrl}/${tab}`; // パスの生成を修正
     navigate(path); // useNavigateを使用
     window.scrollTo(0, 0); // ページ上部へスクロール
   };
@@ -183,7 +183,7 @@ const App = () => {
 
 const NotFound = () => {
   const baseUrl = process.env.NODE_ENV === 'production' 
-    ? '/official/'
+    ? '/official'
     : '/';
 
   return (
