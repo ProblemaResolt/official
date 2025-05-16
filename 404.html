@@ -6,8 +6,10 @@
     <script>
       const l = window.location;
       const port = l.port ? ':' + l.port : '';
+      // 二重パスとクエリパラメータを処理
       const path = l.pathname.replace('/official/official/', '/official/');
-      const redirectPath = l.protocol + '//' + l.hostname + port + path;
+      const query = l.search || '';
+      const redirectPath = l.protocol + '//' + l.hostname + port + path + query;
       window.location.replace(redirectPath);
     </script>
 </head>

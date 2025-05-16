@@ -4,7 +4,7 @@ import Profile from './pages/Profile';
 import Skills from './pages/Skills';
 import Hero from './pages/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation, Navigate, useSearchParams } from 'react-router-dom';
 import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
@@ -14,6 +14,9 @@ const Career = React.lazy(() => import('./pages/Career'));
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const tag = searchParams.get('tag');
+  const category = searchParams.get('category');
 
   useEffect(() => {
     const redirect = sessionStorage.getItem('redirect');
@@ -75,21 +78,19 @@ const App = () => {
     return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
 
-  const handleTabClick = (tab, params = '') => {
+  const handleTabClick = (tab) => {
     setPreviousTab(activeTab);
     setActiveTab(tab);
     setMenuOpen(false);
-    const query = params ? `?${params}` : '';
-    navigate(`${tab}${query}`);
+    navigate(tab); // パスをシンプルに
     window.scrollTo(0, 0);
   };
 
-  const handleNavigate = (tab, params = '') => {
+  const handleNavigate = (tab) => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const query = params ? `?${params}` : '';
-    navigate(`${tab}${query}`);
+    navigate(tab); // パスをシンプルに
     window.scrollTo(0, 0);
   };
 
