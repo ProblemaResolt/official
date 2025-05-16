@@ -88,7 +88,7 @@ const BlogList = () => {
                 {tags.map(tag => (
                   <Link 
                     key={tag}
-                    to={`${baseUrl}/blog?tag=${tag}`}
+                    to={`/blog?tag=${tag}`}
                     className={`tag-button ${filterTag === tag ? 'active' : ''}`}
                   >
                     {tag}
@@ -101,7 +101,7 @@ const BlogList = () => {
           <div className="blog-list">
             {filteredArticles.map(article => (
               <article key={article.id} className="blog-item">
-                <Link to={`${baseUrl}/blog/${article.id}`}>
+                <Link to={`/blog/${article.id}`}>
                   <h3>{article.title}</h3>
                   <div className="blog-meta">
                     <dl>
