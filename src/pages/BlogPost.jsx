@@ -56,6 +56,11 @@ const BlogPost = () => {
       />
       <section className="section">
         <div className="container">
+          <div className="blog-navigation">
+            <Link to="/blog" className="back-to-list">
+              ← 記事一覧に戻る
+            </Link>
+          </div>
           <article className="blog-post">
             <header className="blog-post-header">
               <h2 className="section-title">{splitTextToSpans(article.title)}</h2>
@@ -80,11 +85,6 @@ const BlogPost = () => {
             <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: article.content }} />
           </article>
         </div>
-          <div className="blog-navigation">
-            <Link to={`${baseUrl}/blog`} className="back-to-list">
-              ← 記事一覧に戻る
-            </Link>
-          </div>
       </section>
     </>
   );
