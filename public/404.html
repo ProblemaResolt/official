@@ -15,7 +15,7 @@
       };
 
       if (pathname === '/official' || pathname === '/official/') {
-        return;
+        location.replace('/');
       } else if (pathname === '/official/official' || pathname === '/official/official/') {
         location.replace('/official');
       } else if (pathname.startsWith('/official/official/')) {
