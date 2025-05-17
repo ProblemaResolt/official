@@ -5,12 +5,16 @@
     <title>Redirecting...</title>
     <script>
       const pathname = location.pathname;
+
       // /official/official でアクセスされた場合は必ず /official にリダイレクト
       if (pathname === '/official/official' || pathname === '/official/official/') {
         location.replace('/official');
       } else if (pathname.startsWith('/official/official/')) {
         // /official/official/xxx の場合も /official/xxx へ
         location.replace(pathname.replace('/official/official', '/official'));
+      } else if (pathname === '/official' || pathname === '/official/') {
+        // /official または /official/ の場合はリダイレクトせずSPAに任せる
+        // 何もしない
       } else {
         // 通常のリダイレクト処理
         const isExternalRedirect = document.referrer && new URL(document.referrer).host !== location.host;
