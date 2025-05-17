@@ -36,7 +36,7 @@
       "静的サイト",
       "ブログ"
     ],
-    "category": "開発",
+    "category": "Vite",
     "title": "React+ViteでMarkdownブログを自動HTML化して公開する方法",
     "summary": "Markdownで記事を書き、ビルド時に自動でHTML化・JSON化してReactで表示する静的ブログ構築手法を解説します。",
     "contentPath": "contents/markdown-to-json-blog.json"
