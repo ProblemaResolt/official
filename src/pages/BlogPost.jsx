@@ -11,7 +11,7 @@ const BlogPost = () => {
 
   const createPath = (path) => {
     return process.env.NODE_ENV === 'production' 
-      ? `/official${path}`
+      ? path
       : path;
   };
 
