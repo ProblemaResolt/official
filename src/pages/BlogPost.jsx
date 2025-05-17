@@ -9,6 +9,19 @@ const BlogPost = () => {
   const [article, setArticle] = useState(null);
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
 
+  // SNSシェア用のURLを生成する関数を追加
+  const getShareLinks = (title) => {
+    const encodedTitle = encodeURIComponent(title);
+    const encodedUrl = encodeURIComponent(`${window.location.origin}${baseUrl}/blog/${id}`);
+    
+    return {
+      twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      line: `https://social-plugins.line.me/lineit/share?url=${encodedUrl}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+    };
+  };
+
   // createPath関数を修正
   const createPath = (path) => {
     // パスをそのまま返す（baseUrlは React Router が処理する）
@@ -106,6 +119,23 @@ const BlogPost = () => {
                     <Link key={tag} to={createPath(`/blog?tag=${tag}`)}>
                       <span className="tag">{tag}</span>
                     </Link>
+                  ))}
+                </div>
+              </div>
+              {/* SNSシェアボタンを追加 */}
+              <div className="social-share">
+                <div className="share-buttons">
+                  {Object.entries(getShareLinks(article.title)).map(([platform, url]) => (
+                    <a
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`share-button ${platform}`}
+                      aria-label={`Share on ${platform}`}
+                    >
+                      {platform.charAt(0).toUpperCase() + platform.slice(1)}
+                    </a>
                   ))}
                 </div>
               </div>

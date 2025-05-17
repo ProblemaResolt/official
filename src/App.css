@@ -9,3 +9,43 @@
 @import './styles/profile.css';
 @import './styles/Blog.css';
 @import './styles/BlogPost.css';
+
+/* SNSシェアボタンのスタイル */
+.social-share {
+  margin: 1rem 0;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.share-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+.share-button:hover {
+  opacity: 0.8;
+}
+
+.share-button.twitter {
+  background-color: #1DA1F2;
+}
+
+.share-button.facebook {
+  background-color: #1877F2;
+}
+
+.share-button.line {
+  background-color: #00B900;
+}
+
+.share-button.linkedin {
+  background-color: #0A66C2;
+}

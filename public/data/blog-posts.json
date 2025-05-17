@@ -25,5 +25,32 @@
     "title": "スキルページのバーアニメーション実装解説",
     "summary": "バーアニメーション実装について解説します。",
     "contentPath": "contents/skills-implementation.json"
+  },
+  {
+    "id": "sns-share-implementation",
+    "date": "2025-05-12",
+    "tags": ["React19", "SNS", "シェアボタン"],
+    "category": "React",
+    "title": "ReactでのSNSシェアボタンの実装方法",
+    "summary": "ブログ記事にTwitter、Facebook、LINE、LinkedInのシェアボタンを実装する方法を解説します。",
+    "contentPath": "contents/sns-share-implementation.json"
+  },
+  {
+    "id": "github-blog-implementation",
+    "date": "2025-05-13",
+    "tags": ["React19", "GitHub Pages", "ブログ"],
+    "category": "React",
+    "title": "GitHub Pagesでブログ機能を実装する方法",
+    "summary": "React + GitHub Pagesでブログ機能を実装する方法を解説します。",
+    "contentPath": "contents/github-blog-implementation.json"
+  },
+  {
+    "id": "blog-implementation-details",
+    "date": "2025-05-14",
+    "tags": ["React19", "GitHub Pages", "ブログ", "実装"],
+    "category": "開発",
+    "title": "ReactとGitHub Pagesでブログ機能を実装する詳細解説",
+    "summary": "BlogPost.jsxとBlogList.jsxの具体的な実装方法について、コードと共に詳しく解説します。",
+    "contentPath": "contents/blog-implementation-details.json"
   }
 ]
