@@ -80,7 +80,8 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    navigate(baseUrl + path);
+    // baseUrlを含むフルパスを構築
+    navigate(path); // ここからbaseUrlを削除
     window.scrollTo(0, 0);
   };
 
@@ -89,7 +90,8 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    navigate(baseUrl + path);
+    // baseUrlを含むフルパスを構築
+    navigate(path); // ここからbaseUrlを削除
     window.scrollTo(0, 0);
   };
 
@@ -152,15 +154,15 @@ const App = () => {
 
                 <main className="main-content">
                   <Routes>
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="career" element={
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/career" element={
                       <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
                         <Career />
                       </Suspense>
                     } />
-                    <Route path="skills" element={<Skills />} />
-                    <Route path="blog" element={<BlogList />} />
-                    <Route path="blog/:id" element={<BlogPost />} />
+                    <Route path="/skills" element={<Skills />} />
+                    <Route path="/blog" element={<BlogList />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
