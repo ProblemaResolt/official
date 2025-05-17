@@ -56,13 +56,13 @@ const App = () => {
   useEffect(() => {
     // 初期化時のURL処理を修正
     const pathname = window.location.pathname.replace(baseUrl, '');
-    
     if (pathname) {
       setShowHero(false);
       setActiveTab(pathname);
       window.history.replaceState({ page: pathname }, '', `${baseUrl}${pathname}`);
     } else {
-      window.history.replaceState({ page: 'hero' }, '', baseUrl);
+      // ここを修正: baseUrlが空なら'/'、そうでなければ必ず末尾に'/'をつける
+      window.history.replaceState({ page: 'hero' }, '', baseUrl ? `${baseUrl}/` : '/');
     }
   }, []);
 
@@ -108,7 +108,7 @@ const App = () => {
   };
 
   const handleReturnToTop = () => {
-    window.history.pushState({ page: 'hero' }, '', baseUrl);
+    navigate('/', { replace: true });
     setShowHero(true);
   };
 
