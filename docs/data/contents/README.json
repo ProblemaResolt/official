@@ -1,0 +1,3 @@
+{
+  "content": "<h1>Markdown記事運用ガイド</h1>\n<h2>記事の追加・編集・削除方法</h2>\n<ul>\n<li>記事は <code>src/content/posts/</code> フォルダ内の <code>.md</code> ファイルとして作成・編集・削除してください。</li>\n<li>例: <code>src/content/posts/your-article.md</code></li>\n</ul>\n<h2>ビルド時の自動変換</h2>\n<ul>\n<li><code>npm run build</code> または <code>npm run build:content</code> を実行すると、すべてのMarkdown記事が\n<ul>\n<li>本文HTML: <code>public/data/contents/[id].json</code></li>\n<li>メタデータ: <code>public/data/blog-posts.json</code>\nに自動変換されます。</li>\n</ul>\n</li>\n</ul>\n<h2>注意</h2>\n<ul>\n<li><code>public/data/contents/</code> や <code>public/data/blog-posts.json</code> は自動生成物なので直接編集しないでください。</li>\n<li>記事の管理・公開は必ず <code>src/content/posts/</code> のMarkdownで行ってください。</li>\n</ul>\n"
+}
