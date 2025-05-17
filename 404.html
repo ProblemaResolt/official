@@ -9,13 +9,13 @@
       
       // パスの正規化処理
       const normalizePath = (path) => {
-        // 連続したスラッシュを1つに置換
-        const normalizedPath = path.replace(/\/+/g, '/');
-        // official/officialを/officialに置換
-        if (normalizedPath.includes('/official/official')) {
-          return normalizedPath.replace('/official/official', '/official');
+        // 全てのofficial/officialのパターンを/officialに置換
+        let normalizedPath = path;
+        while (normalizedPath.includes('/official/official')) {
+          normalizedPath = normalizedPath.replace('/official/official', '/official');
         }
-        return normalizedPath;
+        // 連続したスラッシュを1つに置換
+        return normalizedPath.replace(/\/+/g, '/');
       };
 
       const path = normalizePath(l.pathname);

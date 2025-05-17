@@ -78,16 +78,17 @@ const App = () => {
   // パス生成のヘルパー関数を追加
   const createPath = (path) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    return process.env.NODE_ENV === 'production' 
-      ? `/official/${cleanPath}`
-      : `/${cleanPath}`;
+    if (process.env.NODE_ENV === 'production') {
+      return `/official/${cleanPath}`.replace('/official/official/', '/official/');
+    }
+    return `/${cleanPath}`;
   };
 
   const handleTabClick = (tab) => {
     setPreviousTab(activeTab);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = createPath(tab);
+    const path = createPath(tab).replace('/official/official/', '/official/');
     navigate(path);
     window.scrollTo(0, 0);
   };
@@ -96,14 +97,14 @@ const App = () => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = createPath(tab);
+    const path = createPath(tab).replace('/official/official/', '/official/');
     navigate(path);
     window.scrollTo(0, 0);
   };
 
   const handleReturnToTop = () => {
-    const path = process.env.NODE_ENV === 'production' ? '/official' : '/';
-    window.history.pushState({ page: 'hero' }, '', path);
+    const basePath = process.env.NODE_ENV === 'production' ? '/official' : '/';
+    window.history.pushState({ page: 'hero' }, '', basePath);
     setShowHero(true);
   };
 
