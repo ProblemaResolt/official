@@ -12,12 +12,16 @@
         // 連続したスラッシュを1つに置換
         const normalizedPath = path.replace(/\/+/g, '/');
         // official/officialを/officialに置換
-        return normalizedPath.replace('/official/official', '/official');
+        if (normalizedPath.includes('/official/official')) {
+          return normalizedPath.replace('/official/official', '/official');
+        }
+        return normalizedPath;
       };
 
       const path = normalizePath(l.pathname);
       const query = l.search || '';
-      const redirectPath = l.protocol + '//' + l.hostname + port + path + query;
+      const hash = l.hash || '';
+      const redirectPath = l.protocol + '//' + l.hostname + port + path + query + hash;
       window.location.replace(redirectPath);
     </script>
 </head>

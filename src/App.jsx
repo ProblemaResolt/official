@@ -79,30 +79,31 @@ const App = () => {
   const createPath = (path) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
     return process.env.NODE_ENV === 'production' 
-      ? `${baseUrl}/${cleanPath}`.replace('/official/official/', '/official/')
+      ? `/official/${cleanPath}`
       : `/${cleanPath}`;
   };
 
-  const handleTabClick = (tab, params = '') => {
+  const handleTabClick = (tab) => {
     setPreviousTab(activeTab);
     setActiveTab(tab);
     setMenuOpen(false);
-    const query = params ? `?${params}` : '';
-    navigate(createPath(`${tab}${query}`));
+    const path = createPath(tab);
+    navigate(path);
     window.scrollTo(0, 0);
   };
 
-  const handleNavigate = (tab, params = '') => {
+  const handleNavigate = (tab) => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const query = params ? `?${params}` : '';
-    navigate(createPath(`${tab}${query}`));
+    const path = createPath(tab);
+    navigate(path);
     window.scrollTo(0, 0);
   };
 
   const handleReturnToTop = () => {
-    window.history.pushState({ page: 'hero' }, '', baseUrl || '/');
+    const path = process.env.NODE_ENV === 'production' ? '/official' : '/';
+    window.history.pushState({ page: 'hero' }, '', path);
     setShowHero(true);
   };
 
