@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:content": "node scripts/md-to-json.cjs",
+    "build": "npm run build:content && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -14,8 +15,10 @@
     "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.10.0",
+    "gray-matter": "^4.0.3",
     "gsap": "^3.13.0",
     "i18next": "^25.1.2",
+    "markdown-it": "^14.1.0",
     "milligram": "^1.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
