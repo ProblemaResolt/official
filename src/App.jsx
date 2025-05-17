@@ -94,8 +94,7 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    // baseUrlを含むフルパスを構築
-    navigate(path); // ここからbaseUrlを削除
+    navigate(path); // baseUrlは絶対に付けない
     window.scrollTo(0, 0);
   };
 
@@ -104,7 +103,7 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    navigate(path, { replace: true });  // replaceオプションを使用
+    navigate(path, { replace: true }); // baseUrlは絶対に付けない
     window.scrollTo(0, 0);
   };
 
