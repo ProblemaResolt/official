@@ -90,8 +90,7 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    // baseUrlを含むフルパスを構築
-    navigate(path); // ここからbaseUrlを削除
+    navigate(path, { replace: true }); // replaceオプションを追加
     window.scrollTo(0, 0);
   };
 
