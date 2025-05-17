@@ -1,7 +1,7 @@
 .blog-post {
-  max-width: 800px;
+  max-width: 90vw;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2vw 1rem;
 }
 
 .blog-post-header {
@@ -22,12 +22,6 @@
   color: white;
   padding: 0.2rem 0.8rem;
   border-radius: 4px;
-}
-
-.tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
 }
 
 .tag {

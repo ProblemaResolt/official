@@ -32,9 +32,17 @@ const BlogNavigation = () => {
     return `${year}年${month}月`;
   };
 
+  const now = new Date();
+  const year = now.getFullYear();
+
   return (
     <div className="blog-footer-navigation">
       <div className="footer-nav-grid">
+        <div className="footer-nav-section">
+          <div className="copyright">
+           <p>&copy; 2002‐{year} Portfolio</p>
+          </div>
+        </div>
         <div className="footer-nav-section archives">
           <h3>アーカイブ</h3>
           <ul>

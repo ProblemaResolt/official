@@ -75,22 +75,33 @@ const BlogList = () => {
                   <h3>{article.title}</h3>
                   <div className="blog-meta">
                     <dl>
-                    <dt>投稿日:</dt>
-                    <dd><time dateTime={article.date}>
-                      {new Date(article.date).toLocaleDateString('ja-JP')}
-                    </time>
-                    </dd>
+                      <dt>投稿日:</dt>
+                      <dd>
+                        <time dateTime={article.date}>
+                          {new Date(article.date).toLocaleDateString('ja-JP')}
+                        </time>
+                      </dd>
+                      </dl>
+                    <dl>
                     <dt>category:</dt>
-                    <span className="category">{article.category}</span>
-                    <dt>tags:</dt>
-                    <dd className="tags">
-                      {article.tags.map(tag => (
-                       <span key={tag} className="tag">{tag}</span>
-                      ))}
-                    </dd>
+                    <dd><span className="category">{article.category}</span></dd>
+                    </dl>
+                    <dl>
+                      <dt>tags:</dt>
+                      <dd className="tags">
+                        {article.tags.map(tag => (
+                        <span key={tag} className="tag">{tag}</span>
+                        ))}
+                      </dd>
+                    </dl>
+                    <dl>
+                      <dt>Summary:</dt>
+                      <dd className="tags">
+                        {article.summary}
+                      </dd>
                     </dl>
                   </div>
-                  <p>{article.summary}</p>
+                  
                 </Link>
               </article>
             ))}

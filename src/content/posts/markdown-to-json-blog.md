@@ -6,8 +6,6 @@ category: 開発
 summary: Markdownで記事を書き、ビルド時に自動でHTML化・JSON化してReactで表示する静的ブログ構築手法を解説します。
 ---
 
-# React+ViteでMarkdownブログを自動HTML化して公開する方法
-
 ## 概要
 
 Markdownで記事を書き、ビルド時に自動でHTML化・JSON化してReactで表示する静的ブログ構築手法を解説します。

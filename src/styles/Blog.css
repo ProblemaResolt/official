@@ -1,11 +1,17 @@
 .blog-meta {
-  display: flex;
-  gap: 1rem;
   margin: 1rem 0;
-  align-items: center;
-  flex-wrap: wrap;
 }
-
+.blog-meta dl {
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 4rem 1fr;
+}
+.blog-meta dl dt {
+  font-weight: bold;
+  color: #333; 
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
 .blog-meta time {
   color: #666;
 }
@@ -15,12 +21,6 @@
   color: white;
   padding: 0.2rem 0.8rem;
   border-radius: 4px;
-}
-
-.tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
 }
 
 .tag {
@@ -39,6 +39,16 @@
   transition: box-shadow 0.3s ease;
 }
 
+.blog-item p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #333; 
+  line-height: 1.6;
+  font-weight: 400;
+}
 .blog-item:hover {
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }

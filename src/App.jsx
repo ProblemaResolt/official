@@ -9,18 +9,13 @@ import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import BlogNavigation from './components/BlogNavigation';
-import SiteMap from './components/SiteMap';
 
 const Career = React.lazy(() => import('./pages/Career'));
 
 const BlogFooter = ({ location }) => {
   return (
     <footer className="footer">
-      <SiteMap />
       <BlogNavigation />
-      <div className="copyright">
-        <p>&copy; 2025 Portfolio</p>
-      </div>
     </footer>
   );
 };
@@ -111,7 +106,8 @@ const App = () => {
 
   const handleReturnToTop = () => {
     navigate('/', { replace: true });
-    setShowHero(true);
+    setShowHero(false);
+    setActiveTab('');
   };
 
   const handleGoBack = () => {
@@ -178,8 +174,6 @@ const App = () => {
                     <Route path="/skills" element={<Skills />} />
                     <Route path="/blog" element={<BlogList />} />
                     <Route path="/blog/:id" element={<BlogPost />} />
-                    <Route path="/sitemap" element={<SiteMap />} />
-                    {/* 追加: /official でもHeroを表示（basenameが効かない場合の保険） */}
                     <Route path="/official" element={<Hero onNavigate={handleNavigate} />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
