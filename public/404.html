@@ -4,22 +4,24 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // 外部サイトからの遷移か確認
-      const isExternalRedirect = document.referrer && new URL(document.referrer).host !== location.host;
       const pathname = location.pathname;
-
-      if (pathname.includes('/official/official')) {
-        // 重複パスの修正
+      // /official/official でアクセスされた場合は必ず /official にリダイレクト
+      if (pathname === '/official/official' || pathname === '/official/official/') {
+        location.replace('/official');
+      } else if (pathname.startsWith('/official/official/')) {
+        // /official/official/xxx の場合も /official/xxx へ
         location.replace(pathname.replace('/official/official', '/official'));
-      } else if (isExternalRedirect) {
-        // 外部サイトからの遷移の場合は直接パスに遷移
-        const segments = pathname.replace(/^\/official\/?/, '');
-        location.replace('/official/' + segments);
       } else {
-        // 通常のSPA内遷移
-        const segments = pathname.replace(/^\/official\/?/, '');
-        sessionStorage.setItem('redirect', segments);
-        location.replace('/official/');
+        // 通常のリダイレクト処理
+        const isExternalRedirect = document.referrer && new URL(document.referrer).host !== location.host;
+        if (isExternalRedirect) {
+          const segments = pathname.replace(/^\/official\/?/, '');
+          location.replace('/official/' + segments);
+        } else {
+          const segments = pathname.replace(/^\/official\/?/, '');
+          sessionStorage.setItem('redirect', segments);
+          location.replace('/official/');
+        }
       }
     </script>
   </head>
