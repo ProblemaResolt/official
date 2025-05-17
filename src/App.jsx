@@ -61,7 +61,7 @@ const App = () => {
       setActiveTab(pathname);
       window.history.replaceState({ page: pathname }, '', `${baseUrl}${pathname}`);
     } else {
-      // ここを修正: baseUrlが空なら'/'、そうでなければ必ず末尾に'/'をつける
+      // Heroページのときは必ず /official/ で終わるようにする
       window.history.replaceState({ page: 'hero' }, '', baseUrl ? `${baseUrl}/` : '/');
     }
   }, []);

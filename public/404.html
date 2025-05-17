@@ -4,26 +4,32 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      const pathname = location.pathname;
-      // /official または /official/ の場合はリダイレクトせずSPAに任せる
-      if (pathname === '/official' || pathname === '/official/') {
-        // 何もしない
-      } else if (pathname === '/official/official' || pathname === '/official/official/') {
-        location.replace('/official');
-      } else if (pathname.startsWith('/official/official/')) {
-        location.replace(pathname.replace('/official/official', '/official'));
-      } else {
-        // 通常のリダイレクト処理
-        const isExternalRedirect = document.referrer && new URL(document.referrer).host !== location.host;
-        if (isExternalRedirect) {
-          const segments = pathname.replace(/^\/official\/?/, '');
-          location.replace('/official/' + segments);
-        } else {
-          const segments = pathname.replace(/^\/official\/?/, '');
-          sessionStorage.setItem('redirect', segments);
-          location.replace('/official/');
-        }
-      }
+ const pathname = location.pathname;
+
+const isExternalReferrer = () => {
+  try {
+    return document.referrer && new URL(document.referrer).host !== location.host;
+  } catch (e) {
+    return false;
+  }
+};
+
+if (pathname === '/official' || pathname === '/official/') {
+  // SPA に任せる
+} else if (pathname === '/official/official' || pathname === '/official/official/') {
+  location.replace('/');
+} else if (pathname.startsWith('/official/official/')) {
+  location.replace(pathname.replace('/official/official', '/official'));
+} else {
+  const pathTail = pathname.replace(/^\/official\/?/, '');
+  if (isExternalReferrer()) {
+    location.replace('/official/' + pathTail);
+  } else {
+    sessionStorage.setItem('redirect', pathTail);
+    location.replace('/official/');
+  }
+}
+
     </script>
   </head>
   <body>
