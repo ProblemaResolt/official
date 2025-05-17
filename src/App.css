@@ -9,3 +9,125 @@
 @import './styles/profile.css';
 @import './styles/Blog.css';
 @import './styles/BlogPost.css';
+
+/* SNSシェアボタンのスタイル */
+.social-share {
+  margin: 1rem 0;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.share-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+.share-button:hover {
+  opacity: 0.8;
+}
+
+.share-button.twitter {
+  background-color: #1DA1F2;
+}
+
+.share-button.facebook {
+  background-color: #1877F2;
+}
+
+.share-button.line {
+  background-color: #00B900;
+}
+
+.share-button.linkedin {
+  background-color: #0A66C2;
+}
+
+/* ブログフッターナビゲーション */
+.blog-footer-navigation {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* レスポンシブ対応を追加 */
+@media (max-width: 768px) {
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-nav-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.footer-nav-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav-section li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-nav-section a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-nav-section a:hover {
+  color: #3498db;
+}
+
+.tag-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-button {
+  padding: 0.25rem 0.75rem;
+  background: #e9ecef;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.tag-button:hover,
+.tag-button.active {
+  background: #3498db;
+  color: white;
+}
+
+/* フッターのコピーライト */
+.copyright {
+  text-align: center;
+  padding: 1rem;
+  background: #333;
+  color: white;
+}

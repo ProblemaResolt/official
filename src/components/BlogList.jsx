@@ -4,38 +4,27 @@ import Profile from './pages/Profile';
 import Skills from './pages/Skills';
 import Hero from './pages/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation, Navigate, useSearchParams } from 'react-router-dom';
 import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
-import BlogNavigation from './components/BlogNavigation';
 
 const Career = React.lazy(() => import('./pages/Career'));
-
-const BlogFooter = ({ location }) => {
-  return (
-    <footer className="footer">
-      <BlogNavigation />
-      <div className="copyright">
-        <p>&copy; 2025 Portfolio</p>
-      </div>
-    </footer>
-  );
-};
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const tag = searchParams.get('tag');
+  const category = searchParams.get('category');
 
   useEffect(() => {
     const redirect = sessionStorage.getItem('redirect');
     if (redirect) {
       sessionStorage.removeItem('redirect');
-      // パスの重複を防ぐために置換処理を追加
-      const cleanPath = redirect.replace(/^\/official/, '');
-      navigate(cleanPath, { replace: true });
+      navigate(redirect);
     }
-  }, [navigate]);
+  }, []);
 
   // ベースURLを環境に応じて設定（本番環境では/officialを使用）
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
@@ -93,9 +82,7 @@ const App = () => {
     setPreviousTab(activeTab);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = tab.startsWith('/') ? tab : `/${tab}`;
-    // baseUrlを含むフルパスを構築
-    navigate(path); // ここからbaseUrlを削除
+    navigate(tab); // パスをシンプルに
     window.scrollTo(0, 0);
   };
 
@@ -103,8 +90,7 @@ const App = () => {
     setShowHero(false);
     setActiveTab(tab);
     setMenuOpen(false);
-    const path = tab.startsWith('/') ? tab : `/${tab}`;
-    navigate(path, { replace: true });  // replaceオプションを使用
+    navigate(tab); // パスをシンプルに
     window.scrollTo(0, 0);
   };
 
@@ -167,23 +153,23 @@ const App = () => {
 
                 <main className="main-content">
                   <Routes>
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/career" element={
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="career" element={
                       <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
                         <Career />
                       </Suspense>
                     } />
-                    <Route path="/skills" element={<Skills />} />
-                    <Route path="/blog" element={<BlogList />} />
-                    <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path="skills" element={<Skills />} />
+                    <Route path="blog" element={<BlogList />} />
+                    <Route path="blog/:id" element={<BlogPost />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
 
                 <div id="modal-root"></div>
 
-                <footer>
-                  <BlogFooter location={location} />
+                <footer className="footer text-center">
+                  <p>&copy; 2025 Portfolio</p>
                 </footer>
               </>
             )}

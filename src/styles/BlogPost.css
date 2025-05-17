@@ -44,15 +44,35 @@
 .blog-post-content strong {
   color: #2980b9;
 }
-pre {
-  padding: 1em;
- margin: 0 0 1.5em;
- border: solid 1px #4d4d4d;
- background: #25292f;
+    pre, code {
+      font-family: 'Fira Code', monospace;
+      font-size: 15px;
+      line-height: 1.6;
+      background-color: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
+      display: block;
+    }
+
+    /* 疑似的なシンタックスハイライト */
+    .keyword { color: #81a1c1; }
+    .string  { color: #a3be8c; }
+    .comment { color: #616e88; font-style: italic; }
+    .function { color: #88c0d0; }
+
+.blog-post-content h2 {
+    font-size: clamp(1.2rem, 4vw, 2.2em);
+    line-height: 1.1;
+    text-align: left;
+    color: #000000;
+    opacity: 1;
 }
-code {
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  color: #f1f2f3;
-  margin: 0 0.2em;
+
+.blog-post-content h2, h3, h4 {
+/*opacity: 0; *
+    /* transform: translateY(20px); */
+    /* transition: opacity 0.5s ease, transform 0.5s ease; */ 
+
 }
