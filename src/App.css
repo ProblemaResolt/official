@@ -131,3 +131,53 @@
   background: #333;
   color: white;
 }
+
+/* サイトマップのスタイル */
+.site-map {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.site-map ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.site-map a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.site-map a:hover {
+  color: #217dbb;
+}
+
+.site-map-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 400px;
+}
+.site-map-list li {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+.site-map-list a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.site-map-list a:hover {
+  color: #217dbb;
+}
+
+.site-map-desc {
+  margin-left: 0.5em;
+  color: #888;
+  font-size: 0.95em;
+}
