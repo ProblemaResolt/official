@@ -18,13 +18,35 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const response = await fetch(`${baseUrl}/data/blog-posts.json`);
-        if (!response.ok) {
-          throw new Error('記事の取得に失敗しました');
+        // メタデータの取得
+        const metaResponse = await fetch(`${baseUrl}/data/blog-posts.json`);
+        if (!metaResponse.ok) {
+          throw new Error('メタデータの取得に失敗しました');
         }
-        const data = await response.json();
-        const foundArticle = data.find(article => article.id === id);
-        setArticle(foundArticle);
+        const metaData = await metaResponse.json();
+        const foundArticle = metaData.find(article => article.id === id);
+        if (!foundArticle) {
+          throw new Error('記事が見つかりません');
+        }
+
+        try {
+          // コンテンツの取得
+          const contentResponse = await fetch(`${baseUrl}/data/contents/${id}.json`);
+          if (!contentResponse.ok) {
+            throw new Error('コンテンツの取得に失敗しました');
+          }
+          const contentData = await contentResponse.json();
+
+          // 記事データの結合
+          setArticle({
+            ...foundArticle,
+            content: contentData.content
+          });
+        } catch (contentError) {
+          console.error("コンテンツ取得エラー:", contentError);
+          // コンテンツ取得に失敗した場合は、メタデータのみで表示
+          setArticle(foundArticle);
+        }
       } catch (error) {
         console.error("記事の取得エラー:", error);
       }

@@ -2,28 +2,28 @@
   {
     "id": "react-metatags-implementation",
     "date": "2025-05-01",
-    "tags": ["React", "SEO", "メタタグ", "実装"],
+    "tags": ["React19", "SEO", "メタタグ"],
     "category": "SEO",
     "title": "ReactのMetaTagsコンポーネントの実装解説",
     "summary": "SEOに必要不可欠なMetaTagsコンポーネントの実装方法を詳しく解説します。",
-    "content": "<h2>MetaTagsコンポーネントの実装解説</h2><p>ReactアプリケーションでSEO対策を行うためには、各ページごとに適切なメタタグを設定する必要があります。今回は、その実装方法について解説します。</p><h3>1. コンポーネントの基本構造</h3><pre><code>const MetaTags = ({ \n  title,\n  description,\n  keywords,\n  ogImage,\n  twitterSite,\n  twitterCreator\n}) => {\n  // ...\n};</code></pre><p>プロパティとして以下の値を受け取ります：</p><ul><li><strong>title</strong>: ページのタイトル</li><li><strong>description</strong>: ページの説明文</li><li><strong>keywords</strong>: 検索キーワード</li><li><strong>ogImage</strong>: OGP画像のURL</li><li><strong>twitterSite</strong>: TwitterのサイトアカウントID</li><li><strong>twitterCreator</strong>: Twitterの作成者アカウントID</li></ul><h3>2. useEffectによるメタタグの更新</h3><pre><code>useEffect(() => {\n  // タイトルの設定\n  document.title = title ? `${title} | Portfolio` : 'Portfolio';\n\n  // 基本的なメタタグ\n  document.querySelector('meta[name=\"description\"]')?.setAttribute('content', description || '');\n  document.querySelector('meta[name=\"keywords\"]')?.setAttribute('content', keywords || '');\n}, [title, description, keywords]);</code></pre><p>useEffectを使用することで、コンポーネントのマウント時やプロパティの更新時にメタタグを動的に更新します。</p><h3>3. OGPタグの設定</h3><pre><code>// OGPタグの更新\ndocument.querySelector('meta[property=\"og:title\"]')?.setAttribute('content', title ? `${title} | Portfolio` : 'Portfolio');\ndocument.querySelector('meta[property=\"og:description\"]').setAttribute('content', description || '');</code></pre><p>OGP（Open Graph Protocol）は、FacebookやTwitterなどのSNSでシェアされた際の表示を制御するためのメタタグです。</p><h3>4. Twitterカードの設定</h3><pre><code>// Twitterカードの設定\ndocument.querySelector('meta[name=\"twitter:card\"]').setAttribute('content', 'summary_large_image');\ndocument.querySelector('meta[name=\"twitter:title\"]').setAttribute('content', title);</code></pre><p>Twitterカードは、Twitterでシェアされた際の表示を最適化するための設定です。</p><h3>5. コンポーネントの使用方法</h3><pre><code>import MetaTags from '../components/MetaTags';\n\nconst BlogPost = () => {\n  return (\n    &lt;&gt;\n      &lt;MetaTags\n        title=\"記事タイトル\"\n        description=\"記事の説明\"\n        keywords=\"キーワード1, キーワード2\"\n        ogImage=\"https://example.com/image.jpg\"\n        twitterSite=\"@siteaccount\"\n        twitterCreator=\"@creator\"\n      /&gt;\n      // ページコンテンツ\n    &lt;/&gt;\n  );\n};</code></pre><h3>6. 注意点と実装のポイント</h3><ul><li>Optional Chainingを使用して安全にメタタグを更新</li><li>未設定の値に対してフォールバック値を用意</li><li>依存配列を適切に設定してパフォーマンスを最適化</li></ul><p>このような実装により、SPAでありながらSEOに対応したReactアプリケーションを構築することができます。</p>"
+    "contentPath": "contents/react-metatags-implementation.json"
   },
   {
     "id": "text-animation-implementation",
     "date": "2025-05-10",
-    "tags": ["React", "JavaScript", "アニメーション", "CSS"],
-    "category": "React19",
+    "tags": ["React19", "JavaScript", "アニメーション", "CSS"],
+    "category": "React",
     "title": "ReactでのCSSアニメーションを使用したテキストアニメーションの実装",
     "summary": "Reactでテキスト文字を1文字ずつアニメーション表示する実装方法を解説します。",
-    "content": "<h2>テキストアニメーションの実装解説</h2><p>Reactでテキストを1文字ずつアニメーション表示する方法を解説します。CSSカスタムプロパティとReactコンポーネントを組み合わせて実現します。</p><h3>1. ユーティリティ関数の実装</h3><pre><code>// textAnimation.jsx\nimport React from 'react';\n\nexport const splitTextToSpans = (text) => {\n  return text.split('').map((char, i) => (\n    &lt;span \n      key={i} \n      className=\"drop-animation\"\n      style={{ '--char-index': i }}\n    &gt;\n      {char}\n    &lt;/span&gt;\n  ));\n};</code></pre><p>この関数は以下の処理を行います：</p><ul><li>テキストを1文字ずつ分割</li><li>各文字をspanタグでラップ</li><li>CSSアニメーション用のクラスを付与</li><li>カスタムプロパティで文字のインデックスを設定</li></ul><h3>2. CSSアニメーションの実装</h3><pre><code>.drop-animation {\n  opacity: 0;\n  animation: dropIn 0.5s ease-out forwards;\n  animation-delay: calc(var(--char-index) * 0.1s);\n}\n\n@keyframes dropIn {\n  0% {\n    opacity: 0;\n    transform: translateY(-20px);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}</code></pre><h3>3. 使用例</h3><pre><code>import { splitTextToSpans } from '../utils/textAnimation';\n\nconst AnimatedText = () => {\n  return (\n    &lt;div&gt;\n      {splitTextToSpans('Hello, World!')}\n    &lt;/div&gt;\n  );\n};</code></pre><h3>4. 実装のポイント</h3><ul><li><strong>カスタムプロパティの活用</strong>: --char-indexを使用して各文字の遅延時間を制御</li><li><strong>アニメーションの最適化</strong>: transformとopacityのみを使用してパフォーマンスを確保</li><li><strong>Reactのキー管理</strong>: mapで生成する要素に適切なkeyを設定</li></ul><h3>5. 応用例</h3><p>この実装は以下のようなケースで活用できます：</p><ul><li>ページタイトルのアニメーション</li><li>ローディング時のテキストアニメーション</li><li>モーダル表示時の演出</li></ul><h3>6. パフォーマンスの考慮点</h3><p>大量の文字に対してアニメーションを適用する場合は、以下の点に注意が必要です：</p><ul><li>文字数が多い場合は遅延時間を調整</li><li>will-changeプロパティの適切な使用</li><li>アニメーション完了後のクリーンアップ</li></ul><p>このような実装により、シンプルながら効果的なテキストアニメーションを実現することができます。</p>"
+    "contentPath": "contents/text-animation-implementation.json"
   },
   {
     "id": "skills-implementation",
     "date": "2025-05-11",
-    "tags": ["React", "JavaScript", "アニメーション", "Intersection Observer"],
-    "category": "React19",
-    "title": "スキルページの実装解説",
-    "summary": "Reactでスキルページを作成する際の実装方法とアニメーションの実装について解説します。",
-    "content": "<h2>スキルページの実装解説</h2><p>Reactでスキルを視覚的に表現するページの実装方法を解説します。Intersection Observerを使用したアニメーションと、データの動的な読み込みを組み合わせています。</p><h3>1. 基本構造</h3><pre><code>const Skills = () => {\\n  const [skills, setSkills] = useState(null);\\n  const [error, setError] = useState(null);\\n  // ...\\n};</code></pre><p>スキルデータの状態管理には、useStateフックを使用しています。</p><h3>2. データの読み込み</h3><pre><code>useEffect(() => {\\n  const baseUrl = process.env.NODE_ENV === \\\"production\\\" \\n    ? \\\"/official\\\"\\n    : \\\"\\\";\\n    \\n  fetch(`${baseUrl}/data/skills.json`)\\n    .then(response => response.json())\\n    .then(data => setSkills(data));\\n}, []);</code></pre><p>環境に応じたベースURLを使用してJSONデータを読み込みます。</p><h3>3. スキルバーのアニメーション</h3><pre><code>useEffect(() => {\\n  if (!skills) return;\\n\\n  const observer = new IntersectionObserver(\\n    (entries) => {\\n      entries.forEach((entry) => {\\n        if (entry.isIntersecting) {\\n          const bar = entry.target;\\n          const percentage = bar.getAttribute(\\\"data-percentage\\\");\\n          bar.style.width = `${percentage}%`;\\n        }\\n      });\\n    },\\n    { threshold: 0.1 }\\n  );\\n}, [skills]);</code></pre><p>Intersection Observerを使用して、要素が画面に表示されたときにアニメーションを開始します。</p><h3>4. 経験年数の計算</h3><pre><code>const experience = skill.experience.match(/(\\d+)年|(\\d+)ヶ月/g);\\nlet totalMonths = 0;\\n\\nif (experience) {\\n  experience.forEach((exp) => {\\n    if (exp.includes(\\\"年\\\")) {\\n      totalMonths += parseInt(exp) * 12;\\n    } else if (exp.includes(\\\"ヶ月\\\")) {\\n      totalMonths += parseInt(exp);\\n    }\\n  });\\n}</code></pre><p>正規表現を使用して経験年数を月数に変換し、スキルバーの長さを計算します。</p><h3>5. カテゴリー別の表示</h3><pre><code>&lt;div className=\\\"skill-categories\\\"&gt;\\n  &lt;div className=\\\"skill-category\\\"&gt;\\n    &lt;h3&gt;OS&lt;/h3&gt;\\n    {renderSkillBars(skills.os)}\\n  &lt;/div&gt;\\n  // その他のカテゴリー\\n&lt;/div&gt;</code></pre><p>スキルをカテゴリー別に整理して表示します。</p><h3>6. パフォーマンスの最適化</h3><ul><li>Intersection Observerの適切な閾値設定</li><li>アニメーション実行タイミングの調整</li><li>コンポーネントのクリーンアップ処理</li></ul><h3>7. アクセシビリティ</h3><ul><li>適切なHTML構造</li><li>セマンティックなマークアップ</li><li>キーボード操作への対応</li></ul><p>このように、視覚的な表現とパフォーマンス、アクセシビリティを両立させた実装を行っています。</p>"
+    "tags": ["React19", "JavaScript", "アニメーション", "Intersection Observer"],
+    "category": "React",
+    "title": "スキルページのバーアニメーション実装解説",
+    "summary": "バーアニメーション実装について解説します。",
+    "contentPath": "contents/skills-implementation.json"
   }
 ]

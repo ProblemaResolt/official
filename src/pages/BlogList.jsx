@@ -71,6 +71,19 @@ const BlogList = () => {
                       {splitTextToSpans('Blogs')}</h2>
           
           <div className="blog-filters">
+            <div className="archives">
+              <h3>アーカイブ</h3>
+              <ul>
+                {archives.map(archive => (
+                  <li key={archive}>
+                    <Link to={`/blog?date=${archive}`}>
+                      {formatArchiveDate(archive)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className="categories">
               <h3>カテゴリー</h3>
               <ul>
