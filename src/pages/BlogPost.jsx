@@ -9,10 +9,10 @@ const BlogPost = () => {
   const [article, setArticle] = useState(null);
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
 
+  // createPath関数を修正
   const createPath = (path) => {
-    return process.env.NODE_ENV === 'production' 
-      ? path
-      : path;
+    // パスをそのまま返す（baseUrlは React Router が処理する）
+    return path;
   };
 
   useEffect(() => {
