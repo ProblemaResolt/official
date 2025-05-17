@@ -168,6 +168,7 @@ const App = () => {
 
                 <main className="main-content">
                   <Routes>
+                    <Route path="/" element={<Hero onNavigate={handleNavigate} />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/career" element={
                       <Suspense fallback={<div className="loading-screen"><div className="loading-spinner"></div></div>}>
@@ -178,6 +179,8 @@ const App = () => {
                     <Route path="/blog" element={<BlogList />} />
                     <Route path="/blog/:id" element={<BlogPost />} />
                     <Route path="/sitemap" element={<SiteMap />} />
+                    {/* 追加: /official でもHeroを表示（basenameが効かない場合の保険） */}
+                    <Route path="/official" element={<Hero onNavigate={handleNavigate} />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
