@@ -19,9 +19,11 @@ const App = () => {
     const redirect = sessionStorage.getItem('redirect');
     if (redirect) {
       sessionStorage.removeItem('redirect');
-      navigate(redirect);
+      // パスの重複を防ぐために置換処理を追加
+      const cleanPath = redirect.replace(/^\/official/, '');
+      navigate(cleanPath, { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
   // ベースURLを環境に応じて設定（本番環境では/officialを使用）
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
@@ -90,7 +92,7 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const path = tab.startsWith('/') ? tab : `/${tab}`;
-    navigate(path, { replace: true }); // replaceオプションを追加
+    navigate(path, { replace: true });  // replaceオプションを使用
     window.scrollTo(0, 0);
   };
 
