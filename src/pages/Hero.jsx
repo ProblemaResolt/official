@@ -241,6 +241,12 @@ const Hero = ({ onNavigate }) => {
     };
   }, [onNavigate]);
 
+  const handleButtonClick = (path) => {
+    // パスの重複を防ぐ
+    const cleanPath = path.replace(/^\/official/, '');
+    onNavigate(cleanPath);
+  };
+
   return (
     <>
       <MetaTags 
@@ -279,16 +285,16 @@ const Hero = ({ onNavigate }) => {
           </p>
           <div className="hero-buttons">
             {[
-              { ref: profileBtnRef, text: 'Profile', handler: () => onNavigate('profile') },
-              { ref: careerBtnRef, text: 'Career', handler: () => onNavigate('career') },
-              { ref: skillsBtnRef, text: 'Skills', handler: () => onNavigate('skills') },
-              { ref: blogBtnRef, text: 'Blog', handler: () => onNavigate('blog') }
+              { ref: profileBtnRef, text: 'Profile', path: 'profile' },
+              { ref: careerBtnRef, text: 'Career', path: 'career' },
+              { ref: skillsBtnRef, text: 'Skills', path: 'skills' },
+              { ref: blogBtnRef, text: 'Blog', path: 'blog' }
             ].map((button, index) => (
               <div
                 key={index}
                 ref={button.ref}
                 className="animated-link"
-                onClick={button.handler}
+                onClick={() => handleButtonClick(button.path)}
                 style={{ 
                   opacity: 0,
                   transform: 'translate3d(-100px, 0, 0)',
