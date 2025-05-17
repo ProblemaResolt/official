@@ -8,8 +8,20 @@ import { useNavigate, Routes, Route, useLocation, Navigate } from 'react-router-
 import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
+import BlogNavigation from './components/BlogNavigation';
 
 const Career = React.lazy(() => import('./pages/Career'));
+
+const BlogFooter = ({ location }) => {
+  return (
+    <footer className="footer">
+      <BlogNavigation />
+      <div className="copyright">
+        <p>&copy; 2025 Portfolio</p>
+      </div>
+    </footer>
+  );
+};
 
 const App = () => {
   const navigate = useNavigate();
@@ -170,8 +182,8 @@ const App = () => {
 
                 <div id="modal-root"></div>
 
-                <footer className="footer text-center">
-                  <p>&copy; 2025 Portfolio</p>
+                <footer>
+                  <BlogFooter location={location} />
                 </footer>
               </>
             )}

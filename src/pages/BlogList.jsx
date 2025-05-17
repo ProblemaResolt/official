@@ -67,50 +67,7 @@ const BlogList = () => {
       />
       <section className="section">
         <div className="container">
-          <h2 className="section-title">
-                      {splitTextToSpans('Blogs')}</h2>
-          
-          <div className="blog-filters">
-            <div className="archives">
-              <h3>アーカイブ</h3>
-              <ul>
-                {archives.map(archive => (
-                  <li key={archive}>
-                    <Link to={`/blog?date=${archive}`}>
-                      {formatArchiveDate(archive)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="categories">
-              <h3>カテゴリー</h3>
-              <ul>
-                {categories.map(category => (
-                  <li key={category}>
-                    <Link to={`/blog?category=${category}`}>{category}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="tag-filter">
-              <h3>タグ</h3>
-              <div className="tag-buttons">
-                {tags.map(tag => (
-                  <Link 
-                    key={tag}
-                    to={`/blog?tag=${tag}`}
-                    className={`tag-button ${filterTag === tag ? 'active' : ''}`}
-                  >
-                    {tag}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          <h2 className="section-title">{splitTextToSpans('Blogs')}</h2>
           <div className="blog-list">
             {filteredArticles.map(article => (
               <article key={article.id} className="blog-item">
