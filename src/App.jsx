@@ -24,7 +24,7 @@ const App = () => {
   }, []);
 
   // ベースURLを環境に応じて設定（本番環境では/officialを使用）
-  const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
+  const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '/';
 
   const [showHero, setShowHero] = useState(() => {
     // URLパスが初期状態の場合のみHeroを表示
@@ -75,12 +75,20 @@ const App = () => {
     return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
 
+  // パス生成のヘルパー関数を追加
+  const createPath = (path) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return process.env.NODE_ENV === 'production' 
+      ? `${baseUrl}/${cleanPath}`.replace('/official/official/', '/official/')
+      : `/${cleanPath}`;
+  };
+
   const handleTabClick = (tab, params = '') => {
     setPreviousTab(activeTab);
     setActiveTab(tab);
     setMenuOpen(false);
     const query = params ? `?${params}` : '';
-    navigate(`${tab}${query}`);
+    navigate(createPath(`${tab}${query}`));
     window.scrollTo(0, 0);
   };
 
@@ -89,12 +97,12 @@ const App = () => {
     setActiveTab(tab);
     setMenuOpen(false);
     const query = params ? `?${params}` : '';
-    navigate(`${tab}${query}`);
+    navigate(createPath(`${tab}${query}`));
     window.scrollTo(0, 0);
   };
 
   const handleReturnToTop = () => {
-    window.history.pushState({ page: 'hero' }, '', baseUrl);
+    window.history.pushState({ page: 'hero' }, '', baseUrl || '/');
     setShowHero(true);
   };
 
