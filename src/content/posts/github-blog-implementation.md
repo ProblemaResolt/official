@@ -2,7 +2,7 @@
 title: GitHub Pagesでブログ機能を実装する方法
 date: 2025-05-13
 tags: [React19, GitHub Pages, ブログ]
-category: React
+category: 開発
 summary: React + GitHub Pagesでブログ機能を実装する方法を解説します。
 ---
 

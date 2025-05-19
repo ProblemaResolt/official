@@ -2,7 +2,7 @@
 title: スキルページのバーアニメーション実装解説
 date: 2025-05-11
 tags: [React19, JavaScript, アニメーション, Intersection Observer]
-category: React
+category: 開発
 summary: バーアニメーション実装について解説します。
 ---
 

@@ -2,7 +2,7 @@
 title: ReactでのSNSシェアボタンの実装方法
 date: 2025-05-12
 tags: [React19, SNS, シェアボタン]
-category: React
+category: 開発
 summary: ブログ記事にTwitter、Facebook、LINE、LinkedInのシェアボタンを実装する方法を解説します。
 ---
 

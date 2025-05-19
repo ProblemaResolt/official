@@ -9,6 +9,7 @@ import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import BlogNavigation from './components/BlogNavigation';
+import SiteMap from './components/SiteMap';
 
 const Career = React.lazy(() => import('./pages/Career'));
 
@@ -147,13 +148,13 @@ const App = () => {
                         ☰
                       </button>
                       <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                        {['profile', 'career', 'skills', 'blog'].map((tab) => (
+                        {['profile', 'career', 'skills', 'blog', 'sitemap'].map((tab) => (
                           <li key={tab} className={activeTab === tab ? 'active' : ''}>
                             <a onClick={(e) => {
                               e.preventDefault();
                               handleTabClick(tab);
                             }}>
-                              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                              {tab === 'sitemap' ? 'Sitemap' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                             </a>
                           </li>
                         ))}
@@ -174,6 +175,7 @@ const App = () => {
                     <Route path="/skills" element={<Skills />} />
                     <Route path="/blog" element={<BlogList />} />
                     <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path="/sitemap" element={<SiteMap setActiveTab={setActiveTab} />} />
                     <Route path="/official" element={<Hero onNavigate={handleNavigate} />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

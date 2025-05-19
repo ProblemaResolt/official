@@ -2,7 +2,7 @@
 title: ReactでのCSSアニメーションを使用したテキストアニメーションの実装
 date: 2025-05-10
 tags: [React19, JavaScript, アニメーション, CSS]
-category: React
+category: 開発
 summary: Reactでテキスト文字を1文字ずつアニメーション表示する実装方法を解説します。
 ---
 
