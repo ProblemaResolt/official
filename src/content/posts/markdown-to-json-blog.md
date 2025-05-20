@@ -42,33 +42,33 @@ summary: Markdownで記事を書き、ビルド時に自動でHTML化・JSON化�
 
 ## 3. Markdown→HTML(JSON)変換スクリプト
 
-`scripts/md-to-json.cjs` を作成します。
+`scripts/md-to-json.js` を作成します。
 
 ```javascript
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
-const MarkdownIt = require('markdown-it');
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
+import { join, basename } from 'path';
+import matter from 'gray-matter';
+import MarkdownIt from 'markdown-it';
+
 const md = new MarkdownIt();
+const POSTS_DIR = join(__dirname, '../src/content/posts');
+const CONTENTS_DIR = join(__dirname, '../public/data/contents');
+const BLOGPOSTS_PATH = join(__dirname, '../public/data/blog-posts.json');
 
-const POSTS_DIR = path.join(__dirname, '../src/content/posts');
-const CONTENTS_DIR = path.join(__dirname, '../public/data/contents');
-const BLOGPOSTS_PATH = path.join(__dirname, '../public/data/blog-posts.json');
-
-if (!fs.existsSync(CONTENTS_DIR)) fs.mkdirSync(CONTENTS_DIR, { recursive: true });
+if (!existsSync(CONTENTS_DIR)) mkdirSync(CONTENTS_DIR, { recursive: true });
 
 const blogPosts = [];
 
-fs.readdirSync(POSTS_DIR).forEach(filename => {
+readdirSync(POSTS_DIR).forEach(filename => {
   if (filename.endsWith('.md')) {
-    const filePath = path.join(POSTS_DIR, filename);
-    const { data, content } = matter(fs.readFileSync(filePath, 'utf8'));
-    const id = path.basename(filename, '.md');
+    const filePath = join(POSTS_DIR, filename);
+    const { data, content } = matter(readFileSync(filePath, 'utf8'));
+    const id = basename(filename, '.md');
     const htmlContent = md.render(content);
 
     // 記事本文を書き出し
-    fs.writeFileSync(
-      path.join(CONTENTS_DIR, `${id}.json`),
+    writeFileSync(
+      join(CONTENTS_DIR, `${id}.json`),
       JSON.stringify({ content: htmlContent }, null, 2)
     );
 
@@ -80,13 +80,15 @@ fs.readdirSync(POSTS_DIR).forEach(filename => {
       category: data.category,
       title: data.title,
       summary: data.summary,
-      contentPath: `contents/${id}.json`
+      contentPath: `contents/${id}.json`,
+      ogImage: data.ogImage || '',
+      description: data.description || data.summary || ''
     });
   }
 });
 
 // 記事一覧を書き出し
-fs.writeFileSync(
+writeFileSync(
   BLOGPOSTS_PATH,
   JSON.stringify(blogPosts, null, 2)
 );
