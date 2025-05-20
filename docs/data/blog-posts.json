@@ -55,6 +55,21 @@
     "contentPath": "contents/react-metatags-implementation.json"
   },
   {
+    "id": "sitemap-xml-seo",
+    "date": "2025-05-20T00:00:00.000Z",
+    "tags": [
+      "SEO",
+      "サイトマップ",
+      "Google",
+      "検索エンジン",
+      "XML"
+    ],
+    "category": "SEO",
+    "title": "sitemap.xmlの作り方とSEOへの効果",
+    "summary": "sitemap.xmlの役割・作り方・SEOへの効果、そして自動生成の実践例までを解説します。",
+    "contentPath": "contents/sitemap-xml-seo.json"
+  },
+  {
     "id": "skills-implementation",
     "date": "2025-05-11T00:00:00.000Z",
     "tags": [
