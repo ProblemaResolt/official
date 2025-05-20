@@ -4,12 +4,12 @@ import Profile from './pages/Profile';
 import Skills from './pages/Skills';
 import Hero from './pages/Hero';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 import MetaTags from './components/MetaTags';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import BlogNavigation from './components/BlogNavigation';
-import SiteMap from './components/SiteMap';
+import WorkPage from './pages/WorkPage';
 
 const Career = React.lazy(() => import('./pages/Career'));
 
@@ -148,13 +148,13 @@ const App = () => {
                         ☰
                       </button>
                       <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                        {['profile', 'career', 'skills', 'blog', 'sitemap'].map((tab) => (
+                        {['profile', 'career', 'skills', 'blog'].map((tab) => (
                           <li key={tab} className={activeTab === tab ? 'active' : ''}>
                             <a onClick={(e) => {
                               e.preventDefault();
                               handleTabClick(tab);
                             }}>
-                              {tab === 'sitemap' ? 'Sitemap' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                              {tab.charAt(0).toUpperCase() + tab.slice(1)}
                             </a>
                           </li>
                         ))}
@@ -175,7 +175,7 @@ const App = () => {
                     <Route path="/skills" element={<Skills />} />
                     <Route path="/blog" element={<BlogList />} />
                     <Route path="/blog/:id" element={<BlogPost />} />
-                    <Route path="/sitemap" element={<SiteMap setActiveTab={setActiveTab} />} />
+                    <Route path="/work" element={<WorkPage />} />
                     <Route path="/official" element={<Hero onNavigate={handleNavigate} />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

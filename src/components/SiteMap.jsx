@@ -25,3 +25,4 @@ const SiteMap = ({ setActiveTab }) => {
 };
 
 export default SiteMap;
+// Sitemapページとナビゲーションのリンク削除済み

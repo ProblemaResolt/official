@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const SiteMap = () => (
   <section className="section">
@@ -7,23 +6,23 @@ const SiteMap = () => (
       <h2 className="section-title">サイトマップ</h2>
       <ul className="site-map-list">
         <li>
-          <Link to="/">トップ</Link>
+          <a href="/">トップ</a>
           <span className="site-map-desc">… サイトのホームページ</span>
         </li>
         <li>
-          <Link to="/profile">プロフィール</Link>
+          <a href="/profile">プロフィール</a>
           <span className="site-map-desc">… 管理人のプロフィール</span>
         </li>
         <li>
-          <Link to="/career">キャリア</Link>
+          <a href="/career">キャリア</a>
           <span className="site-map-desc">… 職歴・経歴の紹介</span>
         </li>
         <li>
-          <Link to="/skills">スキル</Link>
+          <a href="/skills">スキル</a>
           <span className="site-map-desc">… 技術スキル一覧</span>
         </li>
         <li>
-          <Link to="/blog">ブログ</Link>
+          <a href="/blog">ブログ</a>
           <span className="site-map-desc">… 技術ブログ記事一覧</span>
         </li>
       </ul>

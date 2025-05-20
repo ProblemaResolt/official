@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:content": "node scripts/md-to-json.cjs",
+    "build:content": "node scripts/md-to-json.js && node scripts/generate-sitemap.js",
     "build": "npm run build:content && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

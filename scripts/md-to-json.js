@@ -1,9 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
-const MarkdownIt = require('markdown-it');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import matter from 'gray-matter';
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt();
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const POSTS_DIR = path.join(__dirname, '../src/content/posts');
 const CONTENTS_DIR = path.join(__dirname, '../public/data/contents');
 const BLOGPOSTS_PATH = path.join(__dirname, '../public/data/blog-posts.json');
