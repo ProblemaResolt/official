@@ -100,7 +100,7 @@ writeFileSync(
 
 ```json
 "scripts": {
-  "build:content": "node scripts/md-to-json.cjs",
+  "build:content": "node scripts/md-to-json.js",
   "build": "npm run build:content && vite build"
 }
 ```

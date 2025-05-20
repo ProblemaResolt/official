@@ -45,19 +45,29 @@ function urlEntry(loc, lastmod) {
 }
 
 function generateSitemap(blogPosts) {
+  // 直近24時間以内に更新されたファイルのみを対象にする
+  const now = new Date();
+  const ONE_DAY = 24 * 60 * 60 * 1000;
+
   let urls = staticPaths.map(p => {
-    // public or docs の index.html などを参照
     let file = p === '/' ? '../public/index.html' : `../public${p}.html`;
-    const lastmod = getLastModForPath(resolve(__dirname, file)) || new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
-    return urlEntry(`${BASE_URL}${p}`, lastmod);
-  });
+    const absPath = resolve(__dirname, file);
+    const lastmod = getLastModForPath(absPath) || new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
+    // 24時間以内に更新されたものだけ出力
+    if (lastmod && (now - new Date(lastmod.replace('+09:00', 'Z'))) < ONE_DAY) {
+      return urlEntry(`${BASE_URL}${p}`, lastmod);
+    }
+    return null;
+  }).filter(Boolean);
 
   // ブログ記事
   blogPosts.forEach(post => {
-    // 記事のjsonファイルの更新日時を取得
     const contentPath = post.contentPath ? `../public/data/${post.contentPath}` : null;
-    const lastmod = contentPath ? getLastModForPath(resolve(__dirname, contentPath)) : new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
-    urls.push(urlEntry(`${BASE_URL}/blog/${escapeXml(post.id)}`, lastmod));
+    const absPath = contentPath ? resolve(__dirname, contentPath) : null;
+    const lastmod = absPath ? getLastModForPath(absPath) : new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
+    if (lastmod && (now - new Date(lastmod.replace('+09:00', 'Z'))) < ONE_DAY) {
+      urls.push(urlEntry(`${BASE_URL}/blog/${escapeXml(post.id)}`, lastmod));
+    }
   });
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
