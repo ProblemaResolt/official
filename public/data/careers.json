@@ -1,8 +1,27 @@
 [
+{
+      "company": "Pro-SPIER",
+      "position": "SESエンジニア",
+      "period": "2025年08月 〜 現在",
+      "duties": "CakePHP5開発",
+      "projects": [
+        {
+          "title": "業務管理サイト開発業務",
+          "period": "2025年5月 ~ 現在",
+          "description": "業務管理サイトの開発業務。",
+          "tasks": [
+            "CakePHP5を使用した業務管理サイトの開発",
+            "設計書をもとに実装"
+          ],
+          "environment": "Javascript, Android Studio",
+          "role": "メンバー (要員数：8名, PJ全体：8名)"
+        }
+      ]
+    },
     {
       "company": "NTS Japan",
       "position": "SESエンジニア",
-      "period": "2018年01月 〜 現在",
+      "period": "2018年01月 〜 2025年07月",
       "duties": "フロントエンド開発が中心。要件定義から詳細設計などの開発を経験。",
       "projects": [
         {
@@ -39,9 +58,9 @@
           "role": "メンバー (要員数：4名, PJ全体：20名)"
         },
         {
-          "title": "ホテル業務システム リニューアル業務",
+          "title": "業務システム リニューアル業務",
           "period": "2024年01月 ~ 2024年05月",
-          "description": "ホテル業務システムをVBAからJavaSpringbootへ改修業務。",
+          "description": "業務システムをVBAからJavaSpringbootへ改修業務。",
           "tasks": [
             "Restful API 作成",
             "単体テストコード 作成",
