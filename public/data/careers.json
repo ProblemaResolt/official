@@ -186,7 +186,23 @@
       "company": "株式会社BMC",
       "position": "Web広告担当",
       "period": "2011年01月 〜 2011年04月",
-      "duties": "ナイトレジャーのWeb広告出稿、イベント企画などに従事"
+      "duties": "ナイトレジャーのWeb広告出稿、イベント企画などに従事",
+      
+      "projects": [
+        {
+          "title": "自社サイトのコンテンツ作成、マーケティング（広告）担当",
+          "period": "2011年1月～2011年04月",
+          "description": "企画運営",
+          "tasks": [
+            "フロントエンドサイトコーディング",
+            "他部署との連携",
+            "サイト解析",
+            "広告担当"
+          ],
+          "environment": "DreamWerver、Photoshop、HTML、CSS、PHP、Javascript、Apache、MySQL",
+          "role": "メンバー (要員数：3名, PJ全体：6名)"
+        }
+      ]
     },
     {
       "company": "株式会社スターリンク",
