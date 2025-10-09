@@ -2,8 +2,8 @@ import React from 'react';
 
 const works = [
   {
-    title: 'Action is the foundational Key to all success.',
-    description: '“行動がすべての成功への基本的な鍵である。”\n美術分野の巨匠と呼ばれるピカソの言葉です。',
+    title: 'サイトテンプレート作成',
+    description: '企業サイトのテンプレート作成。',
     image: './docs/assets/hero-bg.jpg',
     url: '//ss961168.stars.ne.jp/',
   },

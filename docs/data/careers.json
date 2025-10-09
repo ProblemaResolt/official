@@ -1,6 +1,6 @@
 [
 {
-      "company": "Pro-SPIER",
+      "company": "システムインテグレーション事業会社",
       "position": "Webエンジニア",
       "period": "2025年08月 〜 現在",
       "duties": "CakePHP5開発",
@@ -30,7 +30,7 @@
           "description": "Androidアプリの開発業務。主にフロントエンドの開発を担当。",
           "tasks": [
             "フロントエンドの開発を単体テスト、結合テスト、Javascript修正担当",
-            "フロントエンドとミドルウェアテスト担当"
+            "フロントエンドとJavaミドルウェアテスト担当"
           ],
           "environment": "Javascript, Android Studio",
           "role": "メンバー (要員数：1名, PJ全体：6名)"
@@ -227,12 +227,39 @@
       "company": "有限会社ハイテクラボ",
       "position": "電子基板作成",
       "period": "2006年02月 〜 2008年05月",
-      "duties": "電子基板作成、電子基板ケース作成"
+      "duties": "電子基板作成、電子基板ケース作成",
+      
+      "projects": [
+        {
+          "title": "2DCADを使用した電子基板の外装設計、作成",
+          "period": "2006年02月 〜 2008年05月",
+          "description": "2DCADを使用した電子基板の外装設計、作成",
+          "tasks": [
+            "2DCADを使用した外装パッケージ設計",
+            "試作基盤作成"
+          ],
+          "environment": "プリント基板（PCB）、2DCAD",
+          "role": "メンバー (要員数：3名, PJ全体：6名)"
+        }
+      ]
     },
     {
       "company": "有限会社ゲーム",
       "position": "HTMLコーダー",
       "period": "2002年04月 〜 2005年12月",
-      "duties": "HTMLコーディング業務"
+      "duties": "HTMLコーディング業務",
+      
+      "projects": [
+        {
+          "title": "自社サイトのコンテンツ作成",
+          "description": "企画運営",
+          "tasks": [
+            "フロントエンドサイトコーディング",
+            "サイト解析"
+          ],
+          "environment": "DreamWerver、Photoshop、HTML、CSS、PHP、Javascript、Apache、MySQL",
+          "role": "メンバー (要員数：5名, PJ全体：11名)"
+        }
+      ]
     }
   ]

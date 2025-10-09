@@ -17,7 +17,9 @@
         "languages": "言語",
         "frameworks": "フレームワーク",
         "databases": "データベース",
-        "others": "その他"
+        "servers": "サーバー",
+        "others": "その他",
+        "virtualenvironment": "仮想環境"
       }
     }
   }

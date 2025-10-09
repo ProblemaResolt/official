@@ -148,7 +148,7 @@ const App = () => {
                         ☰
                       </button>
                       <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                        {['profile', 'career', 'skills', 'blog'].map((tab) => (
+                        {['profile', 'career', 'skills', 'blog', 'work'].map((tab) => (
                           <li key={tab} className={activeTab === tab ? 'active' : ''}>
                             <a onClick={(e) => {
                               e.preventDefault();

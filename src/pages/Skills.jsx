@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
 import MetaTags from '../components/MetaTags.jsx';
 
 const Skills = () => {
   const [skills, setSkills] = useState(null);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const baseUrl = process.env.NODE_ENV === 'production' 
@@ -89,16 +91,6 @@ const Skills = () => {
     });
   };
 
-  const categoryLabels = {
-    os: 'OS',
-    languages: '言語',
-    frameworks: 'フレームワーク',
-    databases: 'データベース',
-    servers: 'サーバー',
-    others: 'その他',
-    virtualenvironment: '仮想環境',
-  };
-
   return (
     <>
       <MetaTags 
@@ -109,12 +101,12 @@ const Skills = () => {
       <section id="skills" className="section">
         <div className="container">
           <h2 className="section-title">
-            {splitTextToSpans('Technical Skill')}
+            {splitTextToSpans(t('sections.skills.title'))}
           </h2>
           <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
             {Object.entries(skills).map(([key, skillItems]) => (
               <div key={key} className="skill-category">
-                <h3>{categoryLabels[key] || key}</h3>
+                <h3>{t(`sections.skills.categories.${key}`, { defaultValue: key })}</h3>
                 {renderSkillBars(skillItems || [])}
               </div>
             ))}
