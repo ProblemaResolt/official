@@ -1,0 +1,26 @@
+{
+  "header": {
+    "profile": "Profile",
+    "career": "Career",
+    "skills": "Skills"
+  },
+  "sections": {
+    "profile": {
+      "title": "Profile",
+      "summary": "Professional Summary",
+      "experience": "Experience & Skills"
+    },
+    "skills": {
+      "title": "Technical Skill",
+      "categories": {
+        "os": "OS",
+        "languages": "Languages",
+        "frameworks": "Frameworks",
+        "databases": "Databases",
+        "servers": "Servers",
+        "others": "Others",
+        "virtualenvironment": "Virtual Environment"
+      }
+    }
+  }
+}
