@@ -89,6 +89,16 @@ const Skills = () => {
     });
   };
 
+  const categoryLabels = {
+    os: 'OS',
+    languages: '言語',
+    frameworks: 'フレームワーク',
+    databases: 'データベース',
+    servers: 'サーバー',
+    others: 'その他',
+    virtualenvironment: '仮想環境',
+  };
+
   return (
     <>
       <MetaTags 
@@ -102,26 +112,12 @@ const Skills = () => {
             {splitTextToSpans('Technical Skill')}
           </h2>
           <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
-            <div className="skill-category">
-              <h3>OS</h3>
-              {renderSkillBars(skills.os)}
-            </div>
-            <div className="skill-category">
-              <h3>言語</h3>
-              {renderSkillBars(skills.languages)}
-            </div>
-            <div className="skill-category">
-              <h3>フレームワーク</h3>
-              {renderSkillBars(skills.frameworks)}
-            </div>
-            <div className="skill-category">
-              <h3>データベース</h3>
-              {renderSkillBars(skills.databases)}
-            </div>
-            <div className="skill-category">
-              <h3>その他</h3>
-              {renderSkillBars(skills.others)}
-            </div>
+            {Object.entries(skills).map(([key, skillItems]) => (
+              <div key={key} className="skill-category">
+                <h3>{categoryLabels[key] || key}</h3>
+                {renderSkillBars(skillItems || [])}
+              </div>
+            ))}
           </div>
         </div>
       </section>

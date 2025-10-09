@@ -13,7 +13,7 @@
             "CakePHP5を使用した業務管理サイトの開発",
             "設計書をもとに実装"
           ],
-          "environment": "Javascript, Android Studio",
+          "environment": "Javascript, PHP,CakePHP5, MySQL",
           "role": "メンバー (要員数：8名, PJ全体：8名)"
         }
       ]
@@ -26,22 +26,23 @@
       "projects": [
         {
           "title": "Androidアプリ開発業務",
-          "period": "2025年2月 ~ 現在",
+          "period": "2025年2月 ~ 2025年5月",
           "description": "Androidアプリの開発業務。主にフロントエンドの開発を担当。",
           "tasks": [
             "フロントエンドの開発を単体テスト、結合テスト、Javascript修正担当",
             "フロントエンドとミドルウェアテスト担当"
           ],
           "environment": "Javascript, Android Studio",
-          "role": "PL (要員数：1名, PJ全体：6名)"
+          "role": "メンバー (要員数：1名, PJ全体：6名)"
         },
         {
           "title": "Windowインフラ管理業務",
-          "period": "2024年9月 ~ 現在",
-          "description": "LDAPサーバとActiveDirectoryを使用したOffice365のアカウントエラーの調査解消業務。",
-          "tasks": ["インシデント報告", "インシデント調査"],
+          "period": "2024年9月 ~ 2025年1月",
+          "description": "LDAPサーバとActiveDirectoryを使用したOffice365のアカウントエラーの調査解消業務。また、Windowsサーバのインシデント対応業務。",
+          "tasks": ["インシデント報告", "インシデント調査", "インシデント解消", "ドキュメント作成", 
+            "定例会議参加", "問い合わせ対応", "システム運用", "システム監視", "システム改善提案", "システム障害対応"],
           "environment": "Windows PowerShell, SQL Management Studio, EXCEL, sakura Editor",
-          "role": "PL (要員数：2名～6名, PJ全体：10名～16名)"
+          "role": "メンバー (要員数：2名～6名, PJ全体：10名～16名)"
         },
         {
           "title": "学校CMS サイトリニューアル業務",
@@ -69,7 +70,7 @@
             "ドキュメント作成&整理"
           ],
           "environment": "Javascript（angular), Java(JavaSpringBoot)",
-          "role": "メンバー (要員数：1名, PJ全体：20名)"
+          "role": "サブリーダー (要員数：1名, PJ全体：20名)"
         },
         {
           "title": "サイト運営＆改修業務",
@@ -87,7 +88,7 @@
             "計測チーム＆マーケティングチームと連携しABテストやアンケート機能の実装"
           ],
           "environment": "Javascript（jQuery), React(Next.js)",
-          "role": "メンバー (要員数：2名, PJ全体：40名)"
+          "role": "サブリーダー (要員数：2名, PJ全体：40名)"
         },
         {
           "title": "レジャープラットフォーム サイトリニューアル業務",
@@ -102,10 +103,13 @@
             "業務ドキュメント整理",
             "要件定義（基本設計、詳細設計作成）",
             "コンポーネント作成",
-            "Figmaを使ったコンポーネント整理"
+            "Figmaを使ったコンポーネント整理",
+            "ドキュメント作成&整理",
+            "インシデント調査",
+            "director 進捗状況管理"
           ],
           "environment": "HTML5, Javascript, CSS3",
-          "role": "メンバー (要員数：15名, PJ全体：60名)"
+          "role": "サブリーダー (要員数：15名, PJ全体：60名)"
         },
         {
           "title": "サービス開発（業務委託）",
@@ -128,7 +132,7 @@
             "他部署との連携や社内調整を行い、社内の要望や改善点をまとめ制作の仕様決めから制作まで行っていました。"
           ],
           "environment": "HTML,CSS2,CSS3,PHP（Laravel),Javascript（jQuery,React,Vue),MySQL",
-          "role": "メンバー (要員数：2名, PJ全体：13名)"
+          "role": "サブリーダー (要員数：2名, PJ全体：13名)"
         }
       ]
     },
@@ -182,13 +186,42 @@
       "company": "株式会社BMC",
       "position": "Web広告担当",
       "period": "2011年01月 〜 2011年04月",
-      "duties": "ナイトレジャーのWeb広告出稿、イベント企画などに従事"
+      "duties": "ナイトレジャーのWeb広告出稿、イベント企画などに従事",
+      
+      "projects": [
+        {
+          "title": "自社サイトのコンテンツ作成、マーケティング（広告）担当",
+          "period": "2011年1月～2011年04月",
+          "description": "企画運営",
+          "tasks": [
+            "フロントエンドサイトコーディング",
+            "他部署との連携",
+            "サイト解析",
+            "広告担当"
+          ],
+          "environment": "DreamWerver、Photoshop、HTML、CSS、PHP、Javascript、Apache、MySQL",
+          "role": "メンバー (要員数：3名, PJ全体：6名)"
+        }
+      ]
     },
     {
       "company": "株式会社スターリンク",
       "position": "HTMLコーダー",
       "period": "2008年05月 〜 2010年12月",
-      "duties": "HTMLコーディング業務"
+      "duties": "HTMLコーディング業務",
+      
+      "projects": [
+        {
+          "title": "自社サイトのコンテンツ作成",
+          "description": "企画運営",
+          "tasks": [
+            "フロントエンドサイトコーディング",
+            "サイト解析"
+          ],
+          "environment": "DreamWerver、Photoshop、HTML、CSS、PHP、Javascript、Apache、MySQL",
+          "role": "メンバー (要員数：5名, PJ全体：11名)"
+        }
+      ]
     },
     {
       "company": "有限会社ハイテクラボ",
