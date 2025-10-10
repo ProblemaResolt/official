@@ -21,6 +21,16 @@
         "others": "その他",
         "virtualenvironment": "仮想環境"
       }
+    },
+    "work": {
+      "title": "Works",
+      "lead": "制作したサイトやテンプレートの一部をご紹介します。",
+      "visit": "サイトを見る",
+      "meta": {
+        "title": "制作実績",
+        "description": "制作したサイトやテンプレートの一覧",
+        "keywords": "制作実績, Web制作, ポートフォリオ"
+      }
     }
   }
 }

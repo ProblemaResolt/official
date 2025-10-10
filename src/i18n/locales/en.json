@@ -21,6 +21,16 @@
         "others": "Others",
         "virtualenvironment": "Virtual Environment"
       }
+    },
+    "work": {
+      "title": "Works",
+      "lead": "A selection of recent website and template projects.",
+      "visit": "Visit site",
+      "meta": {
+        "title": "Works",
+        "description": "Collection of delivered websites and templates.",
+        "keywords": "works, portfolio, web development"
+      }
     }
   }
 }
