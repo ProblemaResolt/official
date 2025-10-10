@@ -40,10 +40,13 @@
       { "name": "XDEBUG", "experience": "3年", "level": "環境にインストールから設定可能" },
       { "name": "phpMyAdmin", "experience": "5年以上", "level": "環境にインストールから設定可能" },
       { "name": "Adminer", "experience": "3年", "level": "環境にインストールから設定可能" },
-      { "name": "pgAdmin", "experience": "3年", "level": "環境にインストールから設定可能" },
-      { "name": "HeidiSQL", "experience": "1年", "level": "環境にインストールから設定可能" }
+      { "name": "pgAdmin", "experience": "3年", "level": "環境にインストールから設定可能" }
     ],
-    "others": [
+    "cms": [  
+      { "name": "WordPress", "experience": "3年以上", "level": "基本的な操作が可能" },   
+      { "name": "MovableType", "experience": "3年以上", "level": "基本的な操作が可能" }
+    ],
+    "tools": [
       { "name": "Figma", "experience": "1年", "level": "基本操作と編集が可能" },
       { "name": "PhotoShop", "experience": "3年", "level": "レタッチ、修正が可能" },
       { "name": "Illustrator", "experience": "3年", "level": "簡単なイラスト作成が可能" },
@@ -60,9 +63,16 @@
       { "name": "Zoom", "experience": "3年以上", "level": "基本的な操作が可能" },
       { "name": "Microsoft Teams", "experience": "1年", "level": "基本的な操作が可能" },
       { "name": "Notion", "experience": "1年", "level": "基本的な操作が可能" },   
-      { "name": "Confluence", "experience": "3年以上", "level": "基本的な操作が可能" },  
-      { "name": "WordPress", "experience": "3年以上", "level": "基本的な操作が可能" },   
-      { "name": "MovableType", "experience": "3年以上", "level": "基本的な操作が可能" },   
-      { "name": "Google Analytics", "experience": "3年以上", "level": "基本的な操作が可能" }
+      { "name": "Confluence", "experience": "3年以上", "level": "基本的な操作が可能" }
+    ],
+    "marketing": [
+        { "name": "Google Analytics", "experience": "3年以上", "level": "基本的な操作が可能" },
+        { "name": "Google Tag Manager", "experience": "1年", "level": "基本的な操作が可能" },
+        { "name": "Google Optimize", "experience": "6ヶ月", "level": "基本的な操作が可能" },
+        { "name": "Google Ads", "experience": "1年", "level": "基本的な操作が可能" },
+        { "name": "Ahrefs", "experience": "2年", "level": "基本的な操作が可能" },
+        { "name": "SEMrush", "experience": "2ヶ月", "level": "基本的な操作が可能" },
+        { "name": "Moz", "experience": "2年", "level": "基本的な操作が可能" },
+        { "name": "Google Search Console", "experience": "3年以上", "level": "基本的な操作が可能" }
     ]
   }

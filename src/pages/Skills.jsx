@@ -16,7 +16,7 @@ const Skills = () => {
     fetch(`${baseUrl}/data/skills.json`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('スキルデータの読み込みに失敗しました');
+          throw new Error(t('errors.skillsLoadFailed'));
         }
         return response.json();
       })
@@ -25,7 +25,7 @@ const Skills = () => {
         console.error('Error loading skills:', error);
         setError(error.message);
       });
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (!skills) return;
@@ -49,8 +49,8 @@ const Skills = () => {
     return () => observer.disconnect();
   }, [skills]);
 
-  if (error) return <div>Error: {error}</div>;
-  if (!skills) return <div>Loading...</div>;
+  if (error) return <div>{t('common.errorPrefix')} {error}</div>;
+  if (!skills) return <div>{t('common.loading')}</div>;
 
   const renderSkillBars = (skillSet) => {
     return skillSet.map((skill, index) => {
@@ -94,9 +94,9 @@ const Skills = () => {
   return (
     <>
       <MetaTags 
-        title="スキル"
-        description="使用可能なスキルセット"
-        keywords="スキル, React, Javascript, PHP"
+        title={t('sections.skills.meta.title')}
+        description={t('sections.skills.meta.description')}
+        keywords={t('sections.skills.meta.keywords')}
       />
       <section id="skills" className="section">
         <div className="container">

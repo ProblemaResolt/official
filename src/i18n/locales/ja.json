@@ -4,14 +4,186 @@
     "career": "職務経歴",
     "skills": "スキル"
   },
+  "navigation": {
+    "profile": "プロフィール",
+    "career": "職務経歴",
+    "skills": "スキル",
+    "blog": "ブログ",
+    "work": "制作実績"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "errorPrefix": "エラー:",
+    "locale": "ja-JP"
+  },
+  "errors": {
+    "skillsLoadFailed": "スキルデータの読み込みに失敗しました。",
+    "careersLoadFailed": "職務経歴データの読み込みに失敗しました。",
+    "blogListLoadFailed": "ブログ記事一覧の取得に失敗しました。",
+    "blogMetaLoadFailed": "ブログ記事のメタデータを取得できませんでした。",
+    "blogNotFound": "指定された記事が見つかりませんでした。",
+    "blogContentLoadFailed": "記事本文の取得に失敗しました。",
+    "blogContentLoadLog": "記事本文の読み込みエラー:",
+    "blogFetchLog": "ブログデータ取得時にエラーが発生しました:"
+  },
+  "app": {
+    "title": "Portfolio",
+    "meta": {
+      "title": "Portfolio",
+      "description": "山本 高廣（Webエンジニア）のポートフォリオサイトです。フロントエンド開発とSEO支援の取り組みを掲載しています。",
+      "keywords": "山本 高廣, Webエンジニア, フロントエンド, SEO"
+    }
+  },
   "sections": {
+    "hero": {
+      "title": "Portfolio",
+      "subtitle": "Front-end development and SEO improvements to support business growth",
+      "buttons": {
+        "profile": "プロフィール",
+        "career": "職務経歴",
+        "skills": "スキル",
+        "blog": "ブログ"
+      },
+      "meta": {
+        "title": "トップ | 山本 高廣 ポートフォリオ",
+        "description": "山本 高廣（Webエンジニア）のポートフォリオ。フロントエンド開発とSEO支援の実績を紹介します。",
+        "keywords": "山本 高廣, Webエンジニア, フロントエンド, SEO",
+        "twitterSite": "@ProblemaResolt",
+        "twitterCreator": "@ProblemaResolt"
+      }
+    },
     "profile": {
       "title": "プロフィール",
-      "summary": "職務要約",
-      "experience": "経験・知識・技術"
+      "meta": {
+        "title": "プロフィール | 山本 高廣",
+        "description": "山本 高廣の職務要約とスキル、マーケティングと開発の経験をまとめています。",
+        "keywords": "山本 高廣, プロフィール, フロントエンド, SEO"
+      },
+      "summary": {
+        "heading": "職務要約",
+        "body": [
+          "フロントエンド開発とSEO/マーケティング施策に強みを持つWebエンジニアです。",
+          "SESや受託案件でBtoCサービスの改善や社内向け業務効率化を担当し、要件整理から実装・運用まで状況に応じて対応してきました。"
+        ]
+      },
+      "experienceHeading": "得意分野",
+      "expertise": [
+        {
+          "heading": "マーケティング",
+          "body": [
+            "Google Analyticsなどのデータをもとに流入改善とコンテンツ制作をリード。",
+            "ランディングページ改善や広告運用で売上・申込数の向上を実現。",
+            "長期的に上位表示を維持するSEO施策の運用経験があります。"
+          ]
+        },
+        {
+          "heading": "プロジェクトマネジメント",
+          "body": [
+            "Webディレクターとしてスケジュール/進捗管理や関係者調整を担当。",
+            "外部ベンダーやオフショアと連携し、品質とスピードの両立を支援。",
+            "課題の早期発見とフォローでチームのアウトプットを安定化させてきました。"
+          ]
+        },
+        {
+          "heading": "開発・運用",
+          "body": [
+            "ReactやVue.jsを中心としたフロントエンド開発を継続。",
+            "LaravelやCakePHPなどでのAPI実装や保守も経験。",
+            "解析タグの設定やCMS運用改善など周辺業務もまとめて対応します。"
+          ]
+        }
+      ],
+      "promotion": {
+        "title": "Promotion",
+        "items": [
+          {
+            "heading": "マーケティング支援のスタンス",
+            "body": [
+              "SEOやコンテンツ改善、広告連携を組み合わせて事業目標に沿った導線を設計します。",
+              "数字の変化を追いながら仮説検証を繰り返し、成果に直結する施策を優先します。"
+            ]
+          },
+          {
+            "heading": "実装と運用までの伴走",
+            "body": [
+              "要件整理からデザイン反映、実装、リリース後の調整まで必要に応じてカバーします。",
+              "フロントエンド開発を軸に、API連携や解析タグ設定など周辺作業もまとめて対応します。"
+            ]
+          },
+          {
+            "heading": "チームサポート",
+            "body": [
+              "メンバーの躓きを拾い上げ、進め方や手順を一緒に整えることでチームの自走を支援します。",
+              "ナレッジ共有やドキュメント整備を通じて引き継ぎコストを減らします。"
+            ]
+          }
+        ]
+      },
+      "caseStudies": {
+        "title": "Case Study",
+        "items": [
+          {
+            "heading": "【チームリーダー】進捗遅延メンバーの伴走",
+            "body": [
+              "進捗が遅れていたメンバーと1on1で課題を言語化し、設計意図の再共有と技術サポートを実施。",
+              "切り捨てるのではなく伴走する方針を取り、信頼関係を維持。",
+              "結果的に作業スピードが戻り、計画通りに納品できました。"
+            ]
+          },
+          {
+            "heading": "【ディレクター】部門間のコミュニケーション調整",
+            "body": [
+              "デザイナーとエンジニア間で仕様共有が不足していたため、要件整理と合意形成をリード。",
+              "伝達ミスによるリワークを減らし、確認工数を削減しました。"
+            ]
+          },
+          {
+            "heading": "【マーケティング】SEOペナルティ解除",
+            "body": [
+              "原因不明だったSEO手動ペナルティに対し、施策を洗い直して再申請。",
+              "解除までのフローを文書化し、他案件にも活用できる知見として展開しました。"
+            ]
+          },
+          {
+            "heading": "【マーケティング】自然検索流入の増加",
+            "body": [
+              "ECサイトで顧客の悩みに合わせたコンテンツを設計し、検索順位とCVRを向上。",
+              "単一キーワードでの上位表示を10年以上維持しています。"
+            ]
+          },
+          {
+            "heading": "【エンジニア】手作業の自動化提案",
+            "body": [
+              "外部ツール禁止の環境で1時間以上かかっていた定型業務をVBAで約10分に短縮する手順を提案。",
+              "現場方針の都合で導入は見送られたものの、ナレッジとして参照されました。"
+            ]
+          }
+        ]
+      }
+    },
+    "career": {
+      "title": "職務経歴",
+      "meta": {
+        "title": "職務経歴 | 山本 高廣",
+        "description": "山本 高廣がこれまで担当してきた案件や役割、プロジェクト概要を紹介します。",
+        "keywords": "山本 高廣, 職務経歴, プロジェクト, 実績"
+      },
+      "projects": {
+        "title": "担当プロジェクト",
+        "period": "期間",
+        "description": "概要",
+        "tasks": "担当業務",
+        "environment": "開発環境",
+        "role": "役割"
+      }
     },
     "skills": {
       "title": "テクニカルスキル",
+      "meta": {
+        "title": "スキル | 山本 高廣",
+        "description": "プログラミング言語、フレームワーク、ツールなどのスキルセットを紹介します。",
+        "keywords": "山本 高廣, スキル, 技術スタック"
+      },
       "categories": {
         "os": "OS",
         "languages": "言語",
@@ -27,10 +199,64 @@
       "lead": "制作したサイトやテンプレートの一部をご紹介します。",
       "visit": "サイトを見る",
       "meta": {
-        "title": "制作実績",
-        "description": "制作したサイトやテンプレートの一覧",
-        "keywords": "制作実績, Web制作, ポートフォリオ"
+        "title": "制作実績 | 山本 高廣",
+        "description": "山本 高廣が制作・担当したサイトやテンプレートの一覧です。",
+        "keywords": "山本 高廣, 制作実績, Web制作, ポートフォリオ"
       }
+    },
+    "blogList": {
+      "title": "ブログ",
+      "archiveLabel": "{{year}}年{{month}}月",
+      "postedAt": "投稿日",
+      "category": "カテゴリ",
+      "tags": "タグ",
+      "summary": "概要",
+      "meta": {
+        "title": "ブログ一覧 | 山本 高廣",
+        "description": "React・フロントエンド・運用改善に関する記事の一覧です。",
+        "keywords": "山本 高廣, ブログ, React, フロントエンド, ポートフォリオ",
+        "tag": "タグ: {{tag}}",
+        "category": "カテゴリ: {{category}}"
+      }
+    },
+    "blogPost": {
+      "notFoundTitle": "記事が見つかりませんでした",
+      "notFoundBody": "指定したURLの記事は削除されたか、URLが変更された可能性があります。",
+      "backToList": "一覧に戻る"
+    },
+    "siteMap": {
+      "title": "サイトマップ",
+      "items": [
+        {
+          "href": "/profile",
+          "label": "プロフィール",
+          "description": "職務要約と提供価値の紹介"
+        },
+        {
+          "href": "/career",
+          "label": "職務経歴",
+          "description": "担当案件と役割を時系列で掲載"
+        },
+        {
+          "href": "/skills",
+          "label": "スキル",
+          "description": "使用経験のある技術スタック"
+        },
+        {
+          "href": "/work",
+          "label": "制作実績",
+          "description": "制作したサイト・テンプレート"
+        },
+        {
+          "href": "/blog",
+          "label": "ブログ",
+          "description": "技術記事や実装メモ"
+        }
+      ]
     }
+  },
+  "notFound": {
+    "title": "404 Not Found",
+    "message": "ページが見つかりませんでした。"
   }
 }

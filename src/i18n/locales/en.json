@@ -4,14 +4,186 @@
     "career": "Career",
     "skills": "Skills"
   },
+  "navigation": {
+    "profile": "Profile",
+    "career": "Career",
+    "skills": "Skills",
+    "blog": "Blog",
+    "work": "Works"
+  },
+  "common": {
+    "loading": "Loading...",
+    "errorPrefix": "Error:",
+    "locale": "en-US"
+  },
+  "errors": {
+    "skillsLoadFailed": "Failed to load skills data.",
+    "careersLoadFailed": "Failed to load career history data.",
+    "blogListLoadFailed": "Failed to fetch blog list.",
+    "blogMetaLoadFailed": "Unable to load blog metadata.",
+    "blogNotFound": "The requested article could not be found.",
+    "blogContentLoadFailed": "Failed to load article content.",
+    "blogContentLoadLog": "Error while loading article body:",
+    "blogFetchLog": "An error occurred while fetching blog data:"
+  },
+  "app": {
+    "title": "Takahiro Yamamoto Portfolio",
+    "meta": {
+      "title": "Takahiro Yamamoto Portfolio",
+      "description": "Portfolio of Takahiro Yamamoto, a web engineer focused on front-end development and SEO support.",
+      "keywords": "Takahiro Yamamoto, web engineer, front-end, SEO"
+    }
+  },
   "sections": {
+    "hero": {
+      "title": "Takahiro Yamamoto / Web Engineer",
+      "subtitle": "Supporting growth through front-end development and SEO improvements",
+      "buttons": {
+        "profile": "Profile",
+        "career": "Career",
+        "skills": "Skills",
+        "blog": "Blog"
+      },
+      "meta": {
+  "title": "Home | Takahiro Yamamoto Portfolio",
+  "description": "Portfolio of Takahiro Yamamoto, highlighting front-end development and SEO support projects.",
+  "keywords": "Takahiro Yamamoto, web engineer, front-end, SEO",
+        "twitterSite": "@ProblemaResolt",
+        "twitterCreator": "@ProblemaResolt"
+      }
+    },
     "profile": {
       "title": "Profile",
-      "summary": "Professional Summary",
-      "experience": "Experience & Skills"
+      "meta": {
+  "title": "Profile | Takahiro Yamamoto",
+  "description": "Summary of Takahiro Yamamoto's background in front-end development, SEO, and project coordination.",
+  "keywords": "Takahiro Yamamoto, web engineer, front-end, SEO"
+      },
+      "summary": {
+        "heading": "Professional summary",
+        "body": [
+          "Takahiro Yamamoto (ProblemaResolt) is a web engineer specializing in front-end development, SEO, and marketing initiatives.",
+          "Has supported B2C services and internal tooling through SES and contract engagements, adapting from requirement clarification to implementation and operations."
+        ]
+      },
+      "experienceHeading": "Core strengths",
+      "expertise": [
+        {
+          "heading": "Marketing",
+          "body": [
+            "Lead traffic growth and content initiatives using Google Analytics and related data sources.",
+            "Executed landing page improvements and advertising campaigns that boosted sales and sign-ups.",
+            "Experience operating SEO programs that maintain top rankings over the long term."
+          ]
+        },
+        {
+          "heading": "Project management",
+          "body": [
+            "Worked as a web director, covering schedule/progress management and stakeholder alignment.",
+            "Collaborated with external vendors and offshore teams to balance quality with delivery speed.",
+            "Stabilized team output by surfacing issues early and following through with support."
+          ]
+        },
+        {
+          "heading": "Development & operations",
+          "body": [
+            "Continuous experience building front-end applications with React and Vue.js.",
+            "Implemented and maintained APIs with frameworks such as Laravel and CakePHP.",
+            "Handle adjacent tasks like analytics tagging and CMS operation improvements."
+          ]
+        }
+      ],
+      "promotion": {
+        "title": "Promotion",
+        "items": [
+          {
+            "heading": "Marketing approach",
+            "body": [
+              "Design user journeys that tie SEO, content improvements, and advertising together around business goals.",
+              "Track numbers closely, iterate on hypotheses, and prioritize initiatives that move the needle."
+            ]
+          },
+          {
+            "heading": "Partnering through delivery",
+            "body": [
+              "Cover requirement refinement, design hand-off, implementation, and post-release adjustments as needed.",
+              "Center work on front-end development while handling API integrations and analytics instrumentation."
+            ]
+          },
+          {
+            "heading": "Team support",
+            "body": [
+              "Proactively surface member blockers and co-create processes so the team can move forward confidently.",
+              "Document workflows and share knowledge to reduce handover friction."
+            ]
+          }
+        ]
+      },
+      "caseStudies": {
+        "title": "Case Study",
+        "items": [
+          {
+            "heading": "[Team lead] Coaching a delayed member",
+            "body": [
+              "Ran one-on-one sessions with a member falling behind to surface blockers and clarify design intent.",
+              "Chose to accompany the member instead of cutting scope, preserving trust within the team.",
+              "Velocity recovered and the deliverable shipped on schedule."
+            ]
+          },
+          {
+            "heading": "[Director] Aligning designers and engineers",
+            "body": [
+              "Filled the gap when requirement sharing between designers and engineers fell short, leading alignment workshops.",
+              "Cut rework from miscommunication and lowered the confirmation effort for both sides."
+            ]
+          },
+          {
+            "heading": "[Marketing] Resolving an SEO penalty",
+            "body": [
+              "Reassessed initiatives and resubmitted requests to clear a manual SEO penalty with unclear origins.",
+              "Documented the recovery process so it could be reused across projects."
+            ]
+          },
+          {
+            "heading": "[Marketing] Growing organic traffic",
+            "body": [
+              "Planned content around customer pain points, improving rankings and conversion rate on an e-commerce site.",
+              "Maintained top positions for high-priority keywords for over a decade."
+            ]
+          },
+          {
+            "heading": "[Engineer] Automating manual work",
+            "body": [
+              "In a setting where external tools were disallowed, redesigned a one-hour manual flow into a ~10 minute VBA automation.",
+              "The rollout was declined due to policy, yet the documented method remained as a reference."
+            ]
+          }
+        ]
+      }
+    },
+    "career": {
+      "title": "Career",
+      "meta": {
+  "title": "Career | Takahiro Yamamoto",
+  "description": "Timeline of roles, responsibilities, and project summaries handled by Takahiro Yamamoto.",
+  "keywords": "Takahiro Yamamoto, career, project history, achievements"
+      },
+      "projects": {
+        "title": "Projects",
+        "period": "Period",
+        "description": "Overview",
+        "tasks": "Responsibilities",
+        "environment": "Tech stack",
+        "role": "Role"
+      }
     },
     "skills": {
-      "title": "Technical Skill",
+      "title": "Technical Skills",
+      "meta": {
+  "title": "Skills | Takahiro Yamamoto",
+  "description": "Overview of programming languages, frameworks, databases, and tools in use.",
+  "keywords": "Takahiro Yamamoto, skills, tech stack"
+      },
       "categories": {
         "os": "OS",
         "languages": "Languages",
@@ -24,13 +196,67 @@
     },
     "work": {
       "title": "Works",
-      "lead": "A selection of recent website and template projects.",
+      "lead": "A snapshot of websites and templates I've delivered.",
       "visit": "Visit site",
       "meta": {
-        "title": "Works",
-        "description": "Collection of delivered websites and templates.",
-        "keywords": "works, portfolio, web development"
+  "title": "Works | Takahiro Yamamoto",
+  "description": "Collection of websites and templates delivered by Takahiro Yamamoto.",
+  "keywords": "Takahiro Yamamoto, works, portfolio, web development"
       }
+    },
+    "blogList": {
+      "title": "Blog",
+      "archiveLabel": "{{month}}/{{year}}",
+      "postedAt": "Published",
+      "category": "Category",
+      "tags": "Tags",
+      "summary": "Summary",
+      "meta": {
+  "title": "Blog | Takahiro Yamamoto",
+  "description": "Articles on React, front-end development, and continuous improvement.",
+  "keywords": "Takahiro Yamamoto, blog, React, front-end, portfolio",
+        "tag": "Tag: {{tag}}",
+        "category": "Category: {{category}}"
+      }
+    },
+    "blogPost": {
+      "notFoundTitle": "Article not found",
+      "notFoundBody": "The article may have been deleted or the URL might be incorrect.",
+      "backToList": "Back to list"
+    },
+    "siteMap": {
+      "title": "Site map",
+      "items": [
+        {
+          "href": "/profile",
+          "label": "Profile",
+          "description": "Professional summary and value proposition"
+        },
+        {
+          "href": "/career",
+          "label": "Career",
+          "description": "Chronological view of roles and projects"
+        },
+        {
+          "href": "/skills",
+          "label": "Skills",
+          "description": "Technical stack and tools"
+        },
+        {
+          "href": "/work",
+          "label": "Works",
+          "description": "Delivered websites and templates"
+        },
+        {
+          "href": "/blog",
+          "label": "Blog",
+          "description": "Notes on development and operations"
+        }
+      ]
     }
+  },
+  "notFound": {
+    "title": "404 Not Found",
+    "message": "We couldn't find the page you're looking for."
   }
 }

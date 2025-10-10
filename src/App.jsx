@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, useMemo } from 'react';
 import './App.css';
 import Profile from './pages/Profile';
 import Skills from './pages/Skills';
@@ -10,6 +10,7 @@ import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import BlogNavigation from './components/BlogNavigation';
 import WorkPage from './pages/WorkPage';
+import { useTranslation } from 'react-i18next';
 
 const Career = React.lazy(() => import('./pages/Career'));
 
@@ -24,6 +25,14 @@ const BlogFooter = ({ location }) => {
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
+  const navTabs = useMemo(() => ([
+    { key: 'profile', label: t('navigation.profile') },
+    { key: 'career', label: t('navigation.career') },
+    { key: 'skills', label: t('navigation.skills') },
+    { key: 'blog', label: t('navigation.blog') },
+    { key: 'work', label: t('navigation.work') }
+  ]), [t]);
 
   useEffect(() => {
     const redirect = sessionStorage.getItem('redirect');
@@ -118,9 +127,9 @@ const App = () => {
   return (
     <>
       <MetaTags
-        title="Portfolio"
-        description="ポートフォリオサイト"
-        keywords="ポートフォリオ, React, JavaScript"
+        title={t('app.meta.title')}
+        description={t('app.meta.description')}
+        keywords={t('app.meta.keywords')}
       />
       <div className="app">
         <AnimatePresence mode="wait">
@@ -137,7 +146,7 @@ const App = () => {
               <>
                 <header className="header text-center d-flex align-items-center justify-content-between">
                   <h1 className="title mb-0" onClick={handleReturnToTop} style={{ cursor: 'pointer' }}>
-                    Portfolio
+                    {t('app.title')}
                   </h1>
                   <nav className="navigation">
                     <div className="container">
@@ -148,13 +157,13 @@ const App = () => {
                         ☰
                       </button>
                       <ul className={`tabs ${menuOpen ? 'open' : ''}`}>
-                        {['profile', 'career', 'skills', 'blog', 'work'].map((tab) => (
-                          <li key={tab} className={activeTab === tab ? 'active' : ''}>
+                        {navTabs.map(({ key, label }) => (
+                          <li key={key} className={activeTab === key ? 'active' : ''}>
                             <a onClick={(e) => {
                               e.preventDefault();
-                              handleTabClick(tab);
+                              handleTabClick(key);
                             }}>
-                              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                              {label}
                             </a>
                           </li>
                         ))}
@@ -198,6 +207,7 @@ const App = () => {
 const NotFound = () => {
   const navigate = useNavigate();
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
+  const { t } = useTranslation();
 
   useEffect(() => {
     // 開発環境では/に、本番環境では/official/にリダイレクト
@@ -206,8 +216,8 @@ const NotFound = () => {
 
   return (
     <div className="not-found">
-      <h1>404 Not Found</h1>
-      <p>ページが見つかりませんでした。</p>
+      <h1>{t('notFound.title')}</h1>
+      <p>{t('notFound.message')}</p>
     </div>
   );
 };

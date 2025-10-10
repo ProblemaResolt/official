@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import MetaTags from '../components/MetaTags.jsx';
 import mojs from '@mojs/core';
 
@@ -12,8 +13,11 @@ const Hero = ({ onNavigate }) => {
   const blogBtnRef = useRef();
   const [titleVisible, setTitleVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
-  const titleChars = 'Portfolio'.split('');
-  const subtitleChars = 'Web Developer'.split('');
+  const { t } = useTranslation();
+  const heroTitle = t('sections.hero.title');
+  const heroSubtitle = t('sections.hero.subtitle');
+  const titleChars = useMemo(() => heroTitle.split(''), [heroTitle]);
+  const subtitleChars = useMemo(() => heroSubtitle.split(''), [heroSubtitle]);
 
   useEffect(() => {
     const canvas = document.createElement('canvas');
@@ -250,11 +254,11 @@ const Hero = ({ onNavigate }) => {
   return (
     <>
       <MetaTags 
-        title="トップページ"
-        description="ポートフォリオサイトです。"
-        keywords="ポートフォリオ, Web Developer, React, JavaScript"
-        twitterSite="@ProblemaResolt"
-        twitterCreator="@ProblemaResolt"
+        title={t('sections.hero.meta.title')}
+        description={t('sections.hero.meta.description')}
+        keywords={t('sections.hero.meta.keywords')}
+        twitterSite={t('sections.hero.meta.twitterSite')}
+        twitterCreator={t('sections.hero.meta.twitterCreator')}
       />
       <div className="hero-section" style={{ position: 'relative', overflow: 'hidden' }}>
         <div ref={animDomRef} className="animation-background"></div>
@@ -285,10 +289,10 @@ const Hero = ({ onNavigate }) => {
           </p>
           <div className="hero-buttons">
             {[
-              { ref: profileBtnRef, text: 'Profile', path: 'profile' },
-              { ref: careerBtnRef, text: 'Career', path: 'career' },
-              { ref: skillsBtnRef, text: 'Skills', path: 'skills' },
-              { ref: blogBtnRef, text: 'Blog', path: 'blog' }
+              { ref: profileBtnRef, text: t('sections.hero.buttons.profile'), path: 'profile' },
+              { ref: careerBtnRef, text: t('sections.hero.buttons.career'), path: 'career' },
+              { ref: skillsBtnRef, text: t('sections.hero.buttons.skills'), path: 'skills' },
+              { ref: blogBtnRef, text: t('sections.hero.buttons.blog'), path: 'blog' }
             ].map((button, index) => (
               <div
                 key={index}

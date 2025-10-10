@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
+import { useTranslation } from 'react-i18next';
 
 const BlogList = () => {
   const [articles, setArticles] = useState([]);
@@ -15,6 +16,7 @@ const BlogList = () => {
   const filterTag = queryParams.get('tag');
   const filterCategory = queryParams.get('category');
   const filterDate = queryParams.get('date');
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`${baseUrl}/data/blog-posts.json`)
@@ -37,8 +39,8 @@ const BlogList = () => {
         }))].sort().reverse();
         setArchives(archiveList);
       })
-      .catch(error => console.error("Error fetching blog posts:", error));
-  }, []);
+      .catch(error => console.error(t('errors.blogListLoadFailed'), error));
+  }, [baseUrl, t]);
 
   // フィルタリングされた記事を取得
   const filteredArticles = articles.filter(article => {
@@ -55,19 +57,27 @@ const BlogList = () => {
 
   const formatArchiveDate = (dateStr) => {
     const [year, month] = dateStr.split('-');
-    return `${year}年${month}月`;
+    return t('sections.blogList.archiveLabel', { year, month });
   };
+
+  const metaTitle = useMemo(() => {
+    const segments = [t('sections.blogList.meta.title')];
+    if (filterTag) segments.push(t('sections.blogList.meta.tag', { tag: filterTag }));
+    if (filterCategory) segments.push(t('sections.blogList.meta.category', { category: filterCategory }));
+    if (filterDate) segments.push(formatArchiveDate(filterDate));
+    return segments.join(' - ');
+  }, [filterTag, filterCategory, filterDate, t]);
 
   return (
     <>
       <MetaTags 
-        title={`ブログ${filterTag ? ` - ${filterTag}` : ''}${filterCategory ? ` - ${filterCategory}` : ''}${filterDate ? ` - ${formatArchiveDate(filterDate)}` : ''}`}
-        description="ブログ記事一覧"
-        keywords="ブログ, React, SEO"
+        title={metaTitle}
+        description={t('sections.blogList.meta.description')}
+        keywords={t('sections.blogList.meta.keywords')}
       />
       <section className="section">
         <div className="container">
-          <h2 className="section-title">{splitTextToSpans('Blogs')}</h2>
+          <h2 className="section-title">{splitTextToSpans(t('sections.blogList.title'))}</h2>
           <div className="blog-list">
             {filteredArticles.map(article => (
               <article key={article.id} className="blog-item">
@@ -75,19 +85,19 @@ const BlogList = () => {
                   <h3>{article.title}</h3>
                   <div className="blog-meta">
                     <dl>
-                      <dt>投稿日:</dt>
+                      <dt>{t('sections.blogList.postedAt')}:</dt>
                       <dd>
                         <time dateTime={article.date}>
-                          {new Date(article.date).toLocaleDateString('ja-JP')}
+                          {new Date(article.date).toLocaleDateString(t('common.locale'))}
                         </time>
                       </dd>
                       </dl>
                     <dl>
-                    <dt>category:</dt>
+                    <dt>{t('sections.blogList.category')}:</dt>
                     <dd><span className="category">{article.category}</span></dd>
                     </dl>
                     <dl>
-                      <dt>tags:</dt>
+                      <dt>{t('sections.blogList.tags')}:</dt>
                       <dd className="tags">
                         {article.tags.map(tag => (
                         <span key={tag} className="tag">{tag}</span>
@@ -95,7 +105,7 @@ const BlogList = () => {
                       </dd>
                     </dl>
                     <dl>
-                      <dt>Summary:</dt>
+                      <dt>{t('sections.blogList.summary')}:</dt>
                       <dd className="tags">
                         {article.summary}
                       </dd>

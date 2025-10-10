@@ -3,11 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
+import { useTranslation } from 'react-i18next';
 
 const BlogPost = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
   const baseUrl = process.env.NODE_ENV === 'production' ? '/official' : '';
+  const { t } = useTranslation();
 
   // SNSシェア用のURLを生成する関数を追加
   const getShareLinks = (title) => {
@@ -34,19 +36,19 @@ const BlogPost = () => {
         // メタデータの取得
         const metaResponse = await fetch(`${baseUrl}/data/blog-posts.json`);
         if (!metaResponse.ok) {
-          throw new Error('メタデータの取得に失敗しました');
+          throw new Error(t('errors.blogMetaLoadFailed'));
         }
         const metaData = await metaResponse.json();
         const foundArticle = metaData.find(article => article.id === id);
         if (!foundArticle) {
-          throw new Error('記事が見つかりません');
+          throw new Error(t('errors.blogNotFound'));
         }
 
         try {
           // コンテンツの取得
           const contentResponse = await fetch(`${baseUrl}/data/contents/${id}.json`);
           if (!contentResponse.ok) {
-            throw new Error('コンテンツの取得に失敗しました');
+            throw new Error(t('errors.blogContentLoadFailed'));
           }
           const contentData = await contentResponse.json();
 
@@ -56,17 +58,17 @@ const BlogPost = () => {
             content: contentData.content
           });
         } catch (contentError) {
-          console.error("コンテンツ取得エラー:", contentError);
+          console.error(t('errors.blogContentLoadLog'), contentError);
           // コンテンツ取得に失敗した場合は、メタデータのみで表示
           setArticle(foundArticle);
         }
       } catch (error) {
-        console.error("記事の取得エラー:", error);
+        console.error(t('errors.blogFetchLog'), error);
       }
     };
 
     fetchArticle();
-  }, [id, baseUrl]);
+  }, [id, baseUrl, t]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -81,8 +83,8 @@ const BlogPost = () => {
     return (
       <section className="section">
         <div className="container">
-          <h2>記事が見つかりませんでした</h2>
-          <p>指定されたIDの記事は見つかりませんでした。</p>
+          <h2>{t('sections.blogPost.notFoundTitle')}</h2>
+          <p>{t('sections.blogPost.notFoundBody')}</p>
         </div>
       </section>
     );
@@ -99,7 +101,7 @@ const BlogPost = () => {
         <div className="container">
           <div className="blog-navigation">
             <Link to="/blog" className="back-to-list">
-              ← 記事一覧に戻る
+              ← {t('sections.blogPost.backToList')}
             </Link>
           </div>
           <article className="blog-post">
@@ -108,7 +110,7 @@ const BlogPost = () => {
               <div className="blog-meta">
                 <Link to={createPath(`/blog?date=${article.date}`)}>
                   <time dateTime={article.date}>
-                    {new Date(article.date).toLocaleDateString('ja-JP')}
+                    {new Date(article.date).toLocaleDateString(t('common.locale'))}
                   </time>
                 </Link>
                 <Link to={createPath(`/blog?category=${article.category}`)}>

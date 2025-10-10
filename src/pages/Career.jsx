@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
 import MetaTags from '../components/MetaTags.jsx';
 
@@ -7,6 +8,7 @@ const Career = () => {
   const [expandedItem, setExpandedItem] = useState(null);
   const [careers, setCareers] = useState(null);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const baseUrl = process.env.NODE_ENV === 'production' 
@@ -16,7 +18,7 @@ const Career = () => {
     fetch(`${baseUrl}/data/careers.json`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('キャリアデータの読み込みに失敗しました');
+          throw new Error(t('errors.careersLoadFailed'));
         }
         return response.json();
       })
@@ -25,7 +27,7 @@ const Career = () => {
         console.error('Error loading careers:', error);
         setError(error.message);
       });
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (!careers) return;
@@ -72,20 +74,20 @@ const Career = () => {
     }
   };
 
-  if (error) return <div>Error: {error}</div>;
-  if (!careers) return <div>Loading...</div>;
+  if (error) return <div>{t('common.errorPrefix')} {error}</div>;
+  if (!careers) return <div>{t('common.loading')}</div>;
 
   return (
     <>
       <MetaTags 
-        title="職務経歴"
-        description="職務経歴"
-        keywords="職務経歴, プロジェクト, 経験, ケーススタディ"
+        title={t('sections.career.meta.title')}
+        description={t('sections.career.meta.description')}
+        keywords={t('sections.career.meta.keywords')}
       />
       <section id="career" className="section">
         <div className="container">
           <h2 className="section-title">
-            {splitTextToSpans('職務経歴')}
+            {splitTextToSpans(t('sections.career.title'))}
           </h2>
           <div className="timeline">
             {careers.map((career, index) => (
@@ -115,33 +117,33 @@ const Career = () => {
                   </div>
                   <p className="timeline-duties">{career.duties}</p>
                   {career.projects && expandedItem === index && (
-                    <><h3>参加プロジェクト</h3>
+                    <><h3>{t('sections.career.projects.title')}</h3>
                     <div className="projects-list">
                       {career.projects.map((project, pIndex) => (
                         <div key={`project-${pIndex}`} className="project-item">
                           <h4>{project.title}</h4>
                           <div className="project-details">
                             <dl>
-                              <dt>プロジェクト期間:</dt>
+                              <dt>{t('sections.career.projects.period')}:</dt>
                               <dd className="project-period">{project.period}</dd>
                             </dl>
                             <dl>
-                              <dt>業務内容:</dt>
+                              <dt>{t('sections.career.projects.description')}:</dt>
                               <dd className="project-period">
                                 <p>{project.description}</p>
                               </dd>
                             </dl>
                             
                             <dl className="project-info">
-                              <dt><h5>担当業務：</h5></dt>
+                              <dt><h5>{t('sections.career.projects.tasks')}</h5></dt>
                               <dd>
                                 <ul>
                                   {project.tasks.map((task, i) => (
                                     <li key={`task-${pIndex}-${i}`}>{task}</li>
                                   ))}
                                 </ul>
-                                <p><strong>環境：</strong> {project.environment}</p>
-                                <p><strong>役割：</strong> {project.role}</p>
+                                <p><strong>{t('sections.career.projects.environment')}:</strong> {project.environment}</p>
+                                <p><strong>{t('sections.career.projects.role')}:</strong> {project.role}</p>
                               </dd>
                             </dl>
                           </div>
