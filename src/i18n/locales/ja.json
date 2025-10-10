@@ -184,6 +184,15 @@
         "description": "プログラミング言語、フレームワーク、ツールなどのスキルセットを紹介します。",
         "keywords": "山本 高廣, スキル, 技術スタック"
       },
+      "actions": {
+        "downloadCsv": "CSVをダウンロード"
+      },
+      "csvHeaders": {
+        "category": "カテゴリ",
+        "name": "スキル名",
+        "experience": "経験",
+        "notes": "メモ"
+      },
       "categories": {
         "os": "OS",
         "languages": "言語",
@@ -191,7 +200,11 @@
         "databases": "データベース",
         "servers": "サーバー",
         "others": "その他",
-        "virtualenvironment": "仮想環境"
+        "virtualenvironment": "仮想環境",
+        "version control": "バージョン管理",
+        "sqlclienttools": "SQLクライアントツール",
+        "marketing": "マーケティング",
+        "cms": "CMS"
       }
     },
     "work": {

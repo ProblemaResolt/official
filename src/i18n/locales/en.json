@@ -180,9 +180,18 @@
     "skills": {
       "title": "Technical Skills",
       "meta": {
-  "title": "Skills | Takahiro Yamamoto",
-  "description": "Overview of programming languages, frameworks, databases, and tools in use.",
-  "keywords": "Takahiro Yamamoto, skills, tech stack"
+        "title": "Skills | Takahiro Yamamoto",
+        "description": "Overview of programming languages, frameworks, databases, and tools in use.",
+        "keywords": "Takahiro Yamamoto, skills, tech stack"
+      },
+      "actions": {
+        "downloadCsv": "Download CSV"
+      },
+      "csvHeaders": {
+        "category": "Category",
+        "name": "Skill",
+        "experience": "Experience",
+        "notes": "Notes"
       },
       "categories": {
         "os": "OS",
@@ -191,7 +200,11 @@
         "databases": "Databases",
         "servers": "Servers",
         "others": "Others",
-        "virtualenvironment": "Virtual Environment"
+        "virtualenvironment": "Virtual Environment",
+        "version control": "Version Control",
+        "sqlclienttools": "SQL Client Tools",
+        "marketing": "Marketing",
+        "cms": "CMS"
       }
     },
     "work": {

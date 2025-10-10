@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
 import MetaTags from '../components/MetaTags.jsx';
@@ -7,12 +7,11 @@ const Skills = () => {
   const [skills, setSkills] = useState(null);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
+  const baseUrl = useMemo(() => (
+    process.env.NODE_ENV === 'production' ? '/official' : ''
+  ), []);
 
   useEffect(() => {
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? '/official'
-      : '';
-      
     fetch(`${baseUrl}/data/skills.json`)
       .then(response => {
         if (!response.ok) {
@@ -25,7 +24,7 @@ const Skills = () => {
         console.error('Error loading skills:', error);
         setError(error.message);
       });
-  }, [t]);
+  }, [t, baseUrl]);
 
   useEffect(() => {
     if (!skills) return;
@@ -48,6 +47,50 @@ const Skills = () => {
     document.querySelectorAll('.skill-bar-fill').forEach((bar) => observer.observe(bar));
     return () => observer.disconnect();
   }, [skills]);
+
+  const handleDownloadCsv = () => {
+    if (!skills) return;
+
+    const rows = [[
+      t('sections.skills.csvHeaders.category'),
+      t('sections.skills.csvHeaders.name'),
+      t('sections.skills.csvHeaders.experience'),
+      t('sections.skills.csvHeaders.notes')
+    ]];
+
+    Object.entries(skills).forEach(([categoryKey, items]) => {
+      (items || []).forEach((skill) => {
+        rows.push([
+          t(`sections.skills.categories.${categoryKey}`, { defaultValue: categoryKey }),
+          skill.name || '',
+          skill.experience || '',
+          skill.level || ''
+        ]);
+      });
+    });
+
+    const escapeCsvValue = (value) => {
+      const stringValue = `${value ?? ''}`;
+      if (/[",\n]/.test(stringValue)) {
+        return `"${stringValue.replace(/"/g, '""')}"`;
+      }
+      return stringValue;
+    };
+
+    const csvContent = rows
+      .map((row) => row.map(escapeCsvValue).join(','))
+      .join('\r\n');
+
+    const blob = new Blob(['\uFEFF', csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'skills.csv';
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
 
   if (error) return <div>{t('common.errorPrefix')} {error}</div>;
   if (!skills) return <div>{t('common.loading')}</div>;
@@ -100,9 +143,18 @@ const Skills = () => {
       />
       <section id="skills" className="section">
         <div className="container">
-          <h2 className="section-title">
-            {splitTextToSpans(t('sections.skills.title'))}
-          </h2>
+          <div className="section-header">
+            <h2 className="section-title">
+              {splitTextToSpans(t('sections.skills.title'))}
+            </h2>
+            <button
+              type="button"
+              className="download-button"
+              onClick={handleDownloadCsv}
+            >
+              {t('sections.skills.actions.downloadCsv')}
+            </button>
+          </div>
           <div className="skill-categories"> {/* レスポンシブ対応のクラス */}
             {Object.entries(skills).map(([key, skillItems]) => (
               <div key={key} className="skill-category">
