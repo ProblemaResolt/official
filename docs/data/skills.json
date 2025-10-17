@@ -192,13 +192,18 @@
       "level": "環境にインストールから設定可能"
     },
     {
-      "name": "Adminer",
+      "name": "DBearver",
       "experience": "3年",
       "level": "環境にインストールから設定可能"
     },
     {
       "name": "pgAdmin",
       "experience": "3年",
+      "level": "環境にインストールから設定可能"
+    },
+    {
+      "name": "mysql workbench",
+      "experience": "1年",
       "level": "環境にインストールから設定可能"
     }
   ],

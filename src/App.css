@@ -1,6 +1,6 @@
 /* ベーススタイル */
 /* -------------------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Engagement);
+@import url(//fonts.googleapis.com/css?family=Engagement);
 @import './styles/base.css';
 @import './styles/nav.css';
 @import './styles/Career.css';

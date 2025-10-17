@@ -17,10 +17,10 @@ const BlogPost = () => {
     const encodedUrl = encodeURIComponent(`${window.location.origin}${baseUrl}/blog/${id}`);
     
     return {
-      twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      line: `https://social-plugins.line.me/lineit/share?url=${encodedUrl}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+      twitter: `//twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      facebook: `//www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      line: `//social-plugins.line.me/lineit/share?url=${encodedUrl}`,
+      linkedin: `//www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
     };
   };
 

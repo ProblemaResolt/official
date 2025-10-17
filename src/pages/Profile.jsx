@@ -46,13 +46,13 @@ const Profile = () => {
                   ))}
 
                   <div className="social-links">
-                    <a href="https://www.linkedin.com/in/takahiro-yamamoto-07614391/" target="_blank" rel="noopener noreferrer">
+                    <a href="//www.linkedin.com/in/takahiro-yamamoto-07614391/" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
+                    <a href="//github.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-github"></i>
                     </a>
-                    <a href="https://x.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
+                    <a href="//x.com/ProblemaResolt" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-twitter"></i>
                     </a>
                   </div>

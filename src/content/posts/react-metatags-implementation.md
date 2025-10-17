@@ -79,7 +79,7 @@ const BlogPost = () => {
         title="記事タイトル"
         description="記事の説明"
         keywords="キーワード1, キーワード2"
-        ogImage="https://example.com/image.jpg"
+        ogImage="//example.com/image.jpg"
         twitterSite="@siteaccount"
         twitterCreator="@creator"
       />

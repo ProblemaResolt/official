@@ -2,7 +2,7 @@ import { statSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const BASE_URL = 'https://problemaresolt.github.io';
+const BASE_URL = '//problemaresolt.github.io';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const blogJsonPath = resolve(__dirname, '../public/data/blog-posts.json');
 const sitemapPath = resolve(__dirname, '../public/sitemap.xml');

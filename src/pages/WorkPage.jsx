@@ -8,17 +8,17 @@ const works = [
     title: 'サイトテンプレート作成',
     description: '企業サイトのテンプレート作成。',
     image: null,
-    url: 'https://ss961168.stars.ne.jp/',
+    url: 'http://ss961168.stars.ne.jp/',
   },
   // ここに他のカードを追加できます
 ];
 
 const normalizeUrl = (url) => {
   if (!url) return null;
-  if (url.startsWith('http://') || url.startsWith('https://')) {
+  if (url.startsWith('http://') || url.startsWith('//')) {
     return url;
   }
-  return `https://${url.replace(/^\/\//, '')}`;
+  return `//${url.replace(/^\/\//, '')}`;
 };
 
 const WorkPage = () => {

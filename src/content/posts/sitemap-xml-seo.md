@@ -23,13 +23,13 @@ sitemap.xmlは、Webサイト内のページ情報を検索エンジンに伝え
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.com/</loc>
+    <loc>//example.com/</loc>
     <priority>1.0</priority>
     <lastmod>2025-05-20T13:00:00+09:00</lastmod>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://example.com/blog/post-1</loc>
+    <loc>//example.com/blog/post-1</loc>
     <priority>0.8</priority>
     <lastmod>2025-05-19T10:00:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -52,7 +52,7 @@ import { statSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const BASE_URL = 'https://yourdomain.com';
+const BASE_URL = '//yourdomain.com';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const blogJsonPath = resolve(__dirname, '../public/data/blog-posts.json');
 const sitemapPath = resolve(__dirname, '../public/sitemap.xml');
