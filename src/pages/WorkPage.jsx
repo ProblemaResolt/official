@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MetaTags from '../components/MetaTags.jsx';
 import { splitTextToSpans } from '../utils/textAnimation.jsx';
@@ -9,6 +9,8 @@ const works = [
     description: '企業サイトのテンプレート作成。',
     image: null,
     url: 'http://ss961168.stars.ne.jp/',
+    displayUrlOnly: true,
+    disclaimerKey: 'sections.work.testServerNotice',
   },
   // ここに他のカードを追加できます
 ];
@@ -23,6 +25,41 @@ const normalizeUrl = (url) => {
 
 const WorkPage = () => {
   const { t } = useTranslation();
+  const [copiedIndex, setCopiedIndex] = useState(null);
+  const copyTimeoutRef = useRef(null);
+  const canUseClipboard =
+    typeof navigator !== 'undefined' &&
+    navigator.clipboard &&
+    typeof navigator.clipboard.writeText === 'function';
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleCopy = async (text, idx) => {
+    if (!canUseClipboard) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedIndex(idx);
+
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+
+      copyTimeoutRef.current = setTimeout(() => {
+        setCopiedIndex(null);
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy work URL', error);
+    }
+  };
 
   return (
     <>
@@ -41,6 +78,8 @@ const WorkPage = () => {
             {works.map((work, idx) => {
               const normalizedUrl = normalizeUrl(work.url);
               const hasImage = Boolean(work.image);
+              const showUrlOnly = Boolean(work.displayUrlOnly);
+              const isLinkCard = Boolean(normalizedUrl) && !showUrlOnly;
               const cardBody = (
                 <>
                   {hasImage ? (
@@ -58,7 +97,7 @@ const WorkPage = () => {
                   <div className="workpage-card-content">
                     <h3 className="workpage-card-title">{work.title}</h3>
                     <p className="workpage-card-desc">{work.description}</p>
-                    {normalizedUrl && (
+                    {isLinkCard && (
                       <span className="workpage-card-link-label">{t('sections.work.visit')}</span>
                     )}
                   </div>
@@ -67,7 +106,7 @@ const WorkPage = () => {
 
               return (
                 <article className="workpage-card" key={idx}>
-                  {normalizedUrl ? (
+                  {isLinkCard ? (
                     <a
                       href={normalizedUrl}
                       className="workpage-card-link"
@@ -77,7 +116,27 @@ const WorkPage = () => {
                       {cardBody}
                     </a>
                   ) : (
-                    cardBody
+                    <>
+                      {cardBody}
+                      {showUrlOnly && work.url && (
+                        <div className="workpage-card-url">
+                          <code>{work.url}</code>
+                          <button
+                            type="button"
+                            className="workpage-copy-button"
+                            onClick={() => handleCopy(work.url, idx)}
+                            disabled={!canUseClipboard}
+                          >
+                            {copiedIndex === idx
+                              ? t('sections.work.copySuccess')
+                              : t('sections.work.copyUrl')}
+                          </button>
+                        </div>
+                      )}
+                      {work.disclaimerKey && (
+                        <p className="workpage-card-note">{t(work.disclaimerKey)}</p>
+                      )}
+                    </>
                   )}
                 </article>
               );

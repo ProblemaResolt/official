@@ -211,6 +211,9 @@
       "title": "Works",
       "lead": "A snapshot of websites and templates I've delivered.",
       "visit": "Visit site",
+      "copyUrl": "Copy URL",
+      "copySuccess": "Copied!",
+      "testServerNotice": "Note: This link points to a test server that only supports HTTP. If your browser forces HTTPS and the page fails to load, copy the URL and open it manually using the http:// scheme.",
       "meta": {
   "title": "Works | Takahiro Yamamoto",
   "description": "Collection of websites and templates delivered by Takahiro Yamamoto.",
