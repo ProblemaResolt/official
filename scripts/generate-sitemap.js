@@ -1,4 +1,4 @@
-import { statSync, readFileSync, writeFileSync } from 'fs';
+import { statSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -19,6 +19,18 @@ const staticPaths = [
   '/404',
 ];
 
+const staticPathSourceMap = {
+  '/': resolve(__dirname, '../src/pages/Hero.jsx'),
+  '/profile': resolve(__dirname, '../src/pages/Profile.jsx'),
+  '/career': resolve(__dirname, '../src/pages/Career.jsx'),
+  '/skills': resolve(__dirname, '../src/pages/Skills.jsx'),
+  '/blog': resolve(__dirname, '../src/pages/BlogList.jsx'),
+  '/work': resolve(__dirname, '../src/pages/WorkPage.jsx'),
+  '/contact': resolve(__dirname, '../src/components/Projects.jsx'),
+  '/projects': resolve(__dirname, '../src/components/Projects.jsx'),
+  '/404': resolve(__dirname, '../src/404.js'),
+};
+
 const defaultPriority = '1.0';
 const defaultChangefreq = 'always';
 
@@ -30,14 +42,64 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;');
 }
 
+function formatToJst(dateLike) {
+  const date = new Date(dateLike);
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+  const jstTime = date.getTime() + 9 * 60 * 60 * 1000;
+  return new Date(jstTime).toISOString().replace('Z', '+09:00');
+}
+
 function getLastModForPath(filePath) {
+  if (!filePath) return null;
   try {
     const stats = statSync(filePath);
-    // ISO8601 +09:00 形式
-    return new Date(stats.mtime).toISOString().replace(/\.\d{3}Z$/, '+09:00');
+    return formatToJst(stats.mtime);
   } catch {
     return null;
   }
+}
+
+function loadPreviousLastmods(xmlPath) {
+  if (!existsSync(xmlPath)) {
+    return new Map();
+  }
+
+  try {
+    const xml = readFileSync(xmlPath, 'utf-8');
+    const regex = /<url>\s*<loc>([^<]+)<\/loc>[\s\S]*?<lastmod>([^<]+)<\/lastmod>/g;
+    const lastmods = new Map();
+    let match;
+
+    while ((match = regex.exec(xml)) !== null) {
+      const loc = match[1].trim();
+      const lastmod = match[2].trim();
+      if (loc && lastmod) {
+        lastmods.set(loc, lastmod);
+      }
+    }
+
+    return lastmods;
+  } catch {
+    return new Map();
+  }
+}
+
+function pickLastmod({ loc, candidate, fallbackDate, previousLastmods }) {
+  if (candidate) {
+    return candidate;
+  }
+
+  if (previousLastmods.has(loc)) {
+    return previousLastmods.get(loc);
+  }
+
+  if (fallbackDate) {
+    return formatToJst(fallbackDate);
+  }
+
+  return formatToJst(Date.now());
 }
 
 function urlEntry(loc, lastmod) {
@@ -45,29 +107,34 @@ function urlEntry(loc, lastmod) {
 }
 
 function generateSitemap(blogPosts) {
-  // 直近24時間以内に更新されたファイルのみを対象にする
-  const now = new Date();
-  const ONE_DAY = 24 * 60 * 60 * 1000;
+  const previousLastmods = loadPreviousLastmods(sitemapPath);
+  const urls = [];
 
-  let urls = staticPaths.map(p => {
-    let file = p === '/' ? '../public/index.html' : `../public${p}.html`;
-    const absPath = resolve(__dirname, file);
-    const lastmod = getLastModForPath(absPath) || new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
-    // 24時間以内に更新されたものだけ出力
-    if (lastmod && (now - new Date(lastmod.replace('+09:00', 'Z'))) < ONE_DAY) {
-      return urlEntry(`${BASE_URL}${p}`, lastmod);
-    }
-    return null;
-  }).filter(Boolean);
+  staticPaths.forEach((p) => {
+    const loc = `${BASE_URL}${p}`;
+    const sourcePath = staticPathSourceMap[p];
+    const candidate = getLastModForPath(sourcePath);
+    const lastmod = pickLastmod({
+      loc,
+      candidate,
+      fallbackDate: Date.now(),
+      previousLastmods,
+    });
+    urls.push(urlEntry(loc, lastmod));
+  });
 
-  // ブログ記事
   blogPosts.forEach(post => {
-    const contentPath = post.contentPath ? `../public/data/${post.contentPath}` : null;
-    const absPath = contentPath ? resolve(__dirname, contentPath) : null;
-    const lastmod = absPath ? getLastModForPath(absPath) : new Date().toISOString().replace(/\.\d{3}Z$/, '+09:00');
-    if (lastmod && (now - new Date(lastmod.replace('+09:00', 'Z'))) < ONE_DAY) {
-      urls.push(urlEntry(`${BASE_URL}/blog/${escapeXml(post.id)}`, lastmod));
-    }
+    const loc = `${BASE_URL}/blog/${escapeXml(post.id)}`;
+    const absPath = post.contentPath ? resolve(__dirname, `../public/data/${post.contentPath}`) : null;
+    const datedSource = post.updatedAt || post.date;
+    const candidate = datedSource ? formatToJst(datedSource) : getLastModForPath(absPath);
+    const lastmod = pickLastmod({
+      loc,
+      candidate,
+      fallbackDate: datedSource || Date.now(),
+      previousLastmods,
+    });
+    urls.push(urlEntry(loc, lastmod));
   });
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;

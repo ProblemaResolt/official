@@ -12,6 +12,20 @@ const BLOGPOSTS_PATH = path.join(__dirname, '../public/data/blog-posts.json');
 
 if (!fs.existsSync(CONTENTS_DIR)) fs.mkdirSync(CONTENTS_DIR, { recursive: true });
 
+function writeJsonIfChanged(targetPath, data) {
+  const nextContent = `${JSON.stringify(data, null, 2)}\n`;
+
+  if (fs.existsSync(targetPath)) {
+    const currentContent = fs.readFileSync(targetPath, 'utf8');
+    if (currentContent === nextContent) {
+      return false;
+    }
+  }
+
+  fs.writeFileSync(targetPath, nextContent);
+  return true;
+}
+
 const blogPosts = [];
 
 fs.readdirSync(POSTS_DIR).forEach(filename => {
@@ -22,9 +36,9 @@ fs.readdirSync(POSTS_DIR).forEach(filename => {
     const htmlContent = md.render(content);
 
     // 記事本文を書き出し
-    fs.writeFileSync(
+    writeJsonIfChanged(
       path.join(CONTENTS_DIR, `${id}.json`),
-      JSON.stringify({ content: htmlContent }, null, 2)
+      { content: htmlContent }
     );
 
     // メタデータを配列に追加
@@ -41,7 +55,7 @@ fs.readdirSync(POSTS_DIR).forEach(filename => {
 });
 
 // 記事一覧を書き出し
-fs.writeFileSync(
+writeJsonIfChanged(
   BLOGPOSTS_PATH,
-  JSON.stringify(blogPosts, null, 2)
+  blogPosts
 );
