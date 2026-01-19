@@ -14,6 +14,20 @@
     "contentPath": "contents/blog-implementation-details.json"
   },
   {
+    "id": "devcontainer-setup",
+    "date": "2026-01-19T00:00:00.000Z",
+    "tags": [
+      "Docker",
+      "Dev Container",
+      "VS Code",
+      "開発環境"
+    ],
+    "category": "開発環境",
+    "title": "VS Code Dev Containerで統一された開発環境を構築する方法",
+    "summary": "Dev Containerを使用して、チーム全体で一貫性のある開発環境を簡単に構築する方法を解説します。",
+    "contentPath": "contents/devcontainer-setup.json"
+  },
+  {
     "id": "github-blog-implementation",
     "date": "2025-05-13T00:00:00.000Z",
     "tags": [
@@ -25,6 +39,20 @@
     "title": "GitHub Pagesでブログ機能を実装する方法",
     "summary": "React + GitHub Pagesでブログ機能を実装する方法を解説します。",
     "contentPath": "contents/github-blog-implementation.json"
+  },
+  {
+    "id": "i18n-implementation",
+    "date": "2026-01-19T00:00:00.000Z",
+    "tags": [
+      "React",
+      "i18next",
+      "国際化",
+      "多言語対応"
+    ],
+    "category": "開発",
+    "title": "React×i18nextで多言語対応を実装する完全ガイド",
+    "summary": "react-i18nextを使用した多言語対応の実装方法を、実際のコード例と共に詳しく解説します。",
+    "contentPath": "contents/i18n-implementation.json"
   },
   {
     "id": "markdown-to-json-blog",
